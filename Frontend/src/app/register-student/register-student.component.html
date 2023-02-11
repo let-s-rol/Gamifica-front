@@ -1,0 +1,57 @@
+<hr>
+<!-- Registro -->
+<h1>Registro Alumno</h1>
+<div>
+    <form novalidate [formGroup]="Student" (submit)="send()">
+      <!--    Input nombre -->
+      <div class="form-group">
+        <label for="name"> Nombre </label>
+        <input type="text" id="name" formControlName="name" />
+      </div>
+
+      <!--    Input apellido -->
+      <div class="form-group">
+        <label for="lastName">Apellido </label>
+        <input type="text" id="lastName" formControlName="lastName" />
+      </div>
+  
+      <!--    Input Nick -->
+      <div class="form-group">
+        <label for="nick">Nick </label>
+        <input type="text" id="nick" formControlName="nick" />
+      </div>
+  
+      <!--    Input correo -->
+      <div class="form-group">
+        <label for="email">Correo </label>
+        <input type="email" id="email" formControlName="email" />
+      </div>
+  
+      <!--    Input contraseña -->
+      <div class="form-group">
+        <label for="password">Contraseña </label>
+        <input type="password" id="password" formControlName="password" />
+      </div>
+  
+      <!-- Input Repetir contraseña  -->
+      <div class="form-group">
+        <label for="passwordRepeat">Repetir Contraseña </label>
+        <input type="password" id="passwordRepeat" formControlName="passwordRepeat"/>
+      </div>
+      <!-- Input fecha  de nacimiento-->
+      <div class="form-group">
+        <label for="date">Fecha de nacimiento </label>
+        <input type="date" id="date" formControlName="date"/>
+      </div>
+  
+      <!--    botton de enviar-->
+      <div>
+        <button [disabled]="Student.invalid">Enviar</button>
+      </div>
+    </form>
+</div>
+
+
+    <div>
+        <button ng>eres estudiante??</button>
+    </div>

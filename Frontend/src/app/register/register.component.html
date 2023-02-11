@@ -1,0 +1,6 @@
+<div *ngIf="student_flag()">
+  <app-register-student></app-register-student>
+</div>
+<div *ngIf="!student_flag()">
+  <app-register-teacher></app-register-teacher>
+</div>
