@@ -4,19 +4,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register-teacher',
   templateUrl: './register-teacher.component.html',
-  styleUrls: ['./register-teacher.component.css']
+  styleUrls: ['./register-teacher.component.css'],
 })
 export class RegisterTeacherComponent implements OnInit {
-
   constructor() {}
 
-
-
-  Student!: FormGroup;
   Teacher!: FormGroup;
 
   ngOnInit() {
-    this.Student = new FormGroup({
+    this.Teacher = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [
         Validators.required,
@@ -24,31 +20,30 @@ export class RegisterTeacherComponent implements OnInit {
       ]),
       nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      passwordRepeat: new FormControl('', Validators.required),
-      school:new FormControl('',Validators.required)
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      passwordRepeat: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      school: new FormControl('', Validators.required),
     });
-    
   }
-
-  
 
   send(): any {
-    console.log(this.Student.value);
+    console.log(this.Teacher.value);
+    //TODO: hacer que retorne esto al servidor y que lo guarde
   }
-
-
-  
- 
 }
 
-
-export interface Student {
+export interface Teacher {
   name: string;
   password: string;
   passwordRepeat: string;
   lastName: string;
   nick: string;
   email: string;
-  school:string;
+  school: string;
 }

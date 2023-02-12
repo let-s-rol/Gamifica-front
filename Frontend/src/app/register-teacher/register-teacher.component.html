@@ -2,7 +2,7 @@
 <!-- Registro -->
 <h1>Registro Profesor</h1>
 <div>
-    <form novalidate [formGroup]="Student" (submit)="send()">
+    <form novalidate [formGroup]="Teacher" (submit)="send()">
       <!--    Input nombre -->
       <div class="form-group">
         <label for="name"> Nombre </label>
@@ -46,7 +46,7 @@
   
       <!--    botton de enviar-->
       <div>
-        <button [disabled]="Student.invalid">Enviar</button>
+        <button [disabled]="Teacher.invalid">Enviar</button>
       </div>
     </form>
 </div>

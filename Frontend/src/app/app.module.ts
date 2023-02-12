@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
+import { UserComponent } from './user/user.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { RegisterStudentComponent } from './register-student/register-student.co
     HomeComponent,
     RegisterComponent,
     RegisterTeacherComponent,
-    RegisterStudentComponent
+    RegisterStudentComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
