@@ -36,12 +36,14 @@
   
         <!--    botton de enviar-->
         <div>
+
+
           <br />
           <button class="btn p-3 btn-success" [disabled]="Login.invalid">
-            <a [routerLink]="['../../']" class="nav-link"> Enviar </a>
+            <a [routerLink]="['../user']" class="nav-link"> Enviar </a>
           </button>
           <button class="btn p-3 m-3 btn-secondary" ng>
-            <a [routerLink]="['../register/student']" class="nav-link">
+            <a [routerLink]="['/register/student']" class="nav-link">
               no estas registrado?
             </a>
           </button>

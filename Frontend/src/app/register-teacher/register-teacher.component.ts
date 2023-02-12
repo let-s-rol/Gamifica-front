@@ -22,11 +22,11 @@ export class RegisterTeacherComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(8),
       ]),
       passwordRepeat: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(8),
       ]),
       school: new FormControl('', Validators.required),
     });
@@ -34,7 +34,7 @@ export class RegisterTeacherComponent implements OnInit {
 
   send(): any {
     console.log(this.Teacher.value);
-    //TODO: hacer que retorne esto al servidor y que lo guarde
+    //TODO: hacer que retorne esto al servidor y que lo guarde , tiene que retorne a laravel "this.teacher.value"
   }
 }
 

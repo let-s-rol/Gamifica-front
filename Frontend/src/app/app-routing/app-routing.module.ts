@@ -10,15 +10,12 @@ import { RegisterTeacherComponent } from '../register-teacher/register-teacher.c
 import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'register/teacher', component: RegisterTeacherComponent },
   { path: 'register/student', component: RegisterStudentComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
-  { path: '**', component: HomeComponent },
-
-  // TODO: hacer que si va a ** entre al '/' y no solo cargue el componente
-
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({

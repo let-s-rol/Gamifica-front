@@ -22,8 +22,8 @@ export class RegisterStudentComponent implements OnInit {
       ]),
       nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      passwordRepeat: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      passwordRepeat: new FormControl('',[Validators.required, Validators.minLength(3)]), //TODO hacer que se comprueben que las contraseñas son iguales
       date:new FormControl('',Validators.required) //TODO: mirar de hacer que comprueba una fecha razonable
     });
     

@@ -3,22 +3,33 @@
     <a class="navbar-brand">
       <h1 class="m-3">Navbar</h1>
     </a>
-    <form class="form-inline">
-      
-        <!-- Arreglar esto para que funcine fuera del home (que nos e añada sino que cambie) -->
+ 
+    <div *ngIf="log"> 
+      <!-- TODO hacer que el log revise si hay algún valor en usuario registrado -->
+      <form class="form-inline">
         <button class="btn btn-outline-secondary my-2 my-sm-0">
-          <a [routerLink]="['login']" class="nav-link">
-            Login
-          </a></button>
-      
-     
-        <!-- Arreglar esto para que funcine fuera del home (que nos e añada sino que cambie) -->
+          <a [routerLink]="['/login']" class="nav-link"> Login </a>
+        </button>
+
+
         <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
           <a [routerLink]="['/register/student']" class="nav-link">
-          Register
-        </a>
+            Register
+          </a>
         </button>
-  
-    </form>
+      </form>
+    </div>
+ 
+ 
+    <div *ngIf="!log">
+      <form class="form-inline">
+        <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
+          <a [routerLink]="['/user']" class="nav-link">
+            Tu Cuenta
+          </a>
+        </button>
+      </form>
+
+    </div>
   </nav>
 </div>
