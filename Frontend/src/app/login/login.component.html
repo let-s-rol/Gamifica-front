@@ -1,1 +1,53 @@
-<p>login works!</p>
+
+<!-- Registro -->
+<div class="container bg-light mt-5 p-3 rounded">
+    <div class="container">
+    <div class="p-3 bg-dark rounded mb-4">
+      <h1 class="text-light text-center">Login</h1>
+    </div>
+    <div>
+      <form novalidate [formGroup]="Login" (submit)="send()">
+   
+        <!--    Input correo -->
+        <div class="mt-2 form-group">
+          <label for="email">Correo </label>
+          <input
+            class=".text-muted p-3 form-control"
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Entra la contraseña"
+          />
+        </div>
+  
+        <!--    Input contraseña -->
+        <div class="mt-2 form-group">
+          <label for="password">Contraseña </label>
+          <input
+            class=".text-muted p-3 form-control"
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="Entra la contraseña"
+          />
+        </div>
+
+
+  
+        <!--    botton de enviar-->
+        <div>
+          <br />
+          <button class="btn p-3 btn-success" [disabled]="Login.invalid">
+            <a [routerLink]="['../../']" class="nav-link"> Enviar </a>
+          </button>
+          <button class="btn p-3 m-3 btn-secondary" ng>
+            <a [routerLink]="['../register/student']" class="nav-link">
+              no estas registrado?
+            </a>
+          </button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  

@@ -16,6 +16,9 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: HomeComponent },
+
+  // TODO: hacer que si va a ** entre al '/' y no solo cargue el componente
+
 ];
 
 @NgModule({
