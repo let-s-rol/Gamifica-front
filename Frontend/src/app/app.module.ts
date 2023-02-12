@@ -9,6 +9,7 @@ import { RegisterTeacherComponent } from './register-teacher/register-teacher.co
 import { RegisterStudentComponent } from './register-student/register-student.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     RegisterComponent,
     RegisterTeacherComponent,
     RegisterStudentComponent,
-    UserComponent
+    UserComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
