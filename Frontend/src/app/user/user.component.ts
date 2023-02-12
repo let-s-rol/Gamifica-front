@@ -23,9 +23,7 @@ export class UserComponent implements OnInit {
         "email": "lponts@ilerna.com", 
         "img":"https://picsum.photos/300/300",
         "nick": "Juan",
-        "alt":"Usuario"
-      }], 
-      "fechaFin": "2019-01-16" },
+        "alt":"Usuario" },
       ]
       }`;
 

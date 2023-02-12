@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
-
-import { UserComponent } from '../user/user.component';
 import { RegisterStudentComponent } from '../register-student/register-student.component';
 import { RegisterTeacherComponent } from '../register-teacher/register-teacher.component';
 import { LoginComponent } from '../login/login.component';
+import { UserPanelComponent } from '../user-panel/user-panel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register/teacher', component: RegisterTeacherComponent },
   { path: 'register/student', component: RegisterStudentComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

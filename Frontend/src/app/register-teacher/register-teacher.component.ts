@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './register-teacher.component.html',
   styleUrls: ['./register-teacher.component.css'],
 })
+
 export class RegisterTeacherComponent implements OnInit {
   constructor() {}
 
@@ -34,7 +35,7 @@ export class RegisterTeacherComponent implements OnInit {
 
   send(): any {
     console.log(this.Teacher.value);
-    //TODO: hacer que retorne esto al servidor y que lo guarde , tiene que retorne a laravel "this.teacher.value"
+    //TODO: hacer que retorne esto al servidor y que lo guarde , tiene que retorne a Laravel "this.teacher.value"
   }
 }
 
