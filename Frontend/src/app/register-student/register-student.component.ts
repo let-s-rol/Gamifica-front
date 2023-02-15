@@ -41,12 +41,3 @@ export class RegisterStudentComponent implements OnInit {
 }
 
 
-export interface Student {
-  name: string;
-  password: string;
-  passwordRepeat: string;
-  lastName: string;
-  nick: string;
-  email: string;
-  date:Date;
-}

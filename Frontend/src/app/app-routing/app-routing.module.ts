@@ -7,6 +7,7 @@ import { RegisterStudentComponent } from '../register-student/register-student.c
 import { RegisterTeacherComponent } from '../register-teacher/register-teacher.component';
 import { LoginComponent } from '../login/login.component';
 import { UserPanelComponent } from '../user-panel/user-panel.component';
+import { RegisterComponent } from '../register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register/student', component: RegisterStudentComponent },
   { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 

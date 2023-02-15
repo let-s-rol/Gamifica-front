@@ -39,12 +39,3 @@ export class RegisterTeacherComponent implements OnInit {
   }
 }
 
-export interface Teacher {
-  name: string;
-  password: string;
-  passwordRepeat: string;
-  lastName: string;
-  nick: string;
-  email: string;
-  school: string;
-}
