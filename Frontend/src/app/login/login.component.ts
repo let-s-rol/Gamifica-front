@@ -7,15 +7,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
-
+ 
+ 
   Login!: FormGroup;
+  constructor() {
 
-  ngOnInit() {
     this.Login = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
+  }
+
+
+  ngOnInit() {
+   
   }
 
   send(): any {
