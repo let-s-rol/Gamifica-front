@@ -30,26 +30,6 @@ export class RegisterComponent implements OnInit {
       ]), //TODO hacer que se comprueben que las contraseñas son iguales
     });
 
-/* TODO:
-    Al pasar de estudiante a profesor da un error: 
-        ERROR Error: Cannot find control with name: 'school'
-        at _throwError (forms.mjs:3204:11)
-        at setUpControl (forms.mjs:2990:13)
-        at FormGroupDirective.addControl (forms.mjs:4858:9)
-        at FormControlName._setUpControl (forms.mjs:5417:43)
-        at FormControlName.ngOnChanges (forms.mjs:5362:18)
-        at FormControlName.rememberChangeHistoryAndInvokeOnChangesHook (core.mjs:1526:14)
-        at callHook (core.mjs:2508:18)
-        at callHooks (core.mjs:2467:17)
-        at executeInitAndCheckHooks (core.mjs:2418:9)
-        at refreshView (core.mjs:12026:21)
-
-    Solo guarda el Date, no guarda el School aunque se cambie el flag "isTeacher"
-
-    El Botón de enviar se activa aunque no completemos la tabla de Date o la de School.
-
-
-  */
     if (this.isTeacher) {
       this.user.addControl('school', new FormControl('Validators.required'));
     } else {
@@ -65,6 +45,17 @@ export class RegisterComponent implements OnInit {
     console.log('click');
 
     this.isTeacher = !this.isTeacher;
+
+    if (this.isTeacher) {
+      this.user.removeControl('date');
+      this.user.addControl('school', new FormControl('Validators.required'));
+    } else {
+      this.user.removeControl('school');
+      this.user.addControl('date', new FormControl('Validators.required')); //TODO: mirar de hacer que comprueba una fecha razonable
+    }
+    
+    
+
   }
   ngOnInit(): void {}
 }

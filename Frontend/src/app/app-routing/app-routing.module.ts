@@ -23,4 +23,3 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 
-// TODO: cuando se eliminan las clases Register Student, o Register Teacher, da un error en el resto de rutas.
