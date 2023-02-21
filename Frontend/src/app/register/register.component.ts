@@ -37,15 +37,16 @@ export class RegisterComponent implements OnInit {
     }
   }
   send(): any {
-    
     //TODO: Usar esta funcion para mandar los datos al back
     console.log(this.user.value);
   }
   changeRol(): void {
-    console.log('click');
-
     this.isTeacher = !this.isTeacher;
 
+    this.selectTypeUser();
+  }
+
+  selectTypeUser() {
     if (this.isTeacher) {
       this.user.removeControl('date');
       this.user.addControl('school', new FormControl('Validators.required'));
@@ -53,9 +54,6 @@ export class RegisterComponent implements OnInit {
       this.user.removeControl('school');
       this.user.addControl('date', new FormControl('Validators.required')); //TODO: mirar de hacer que comprueba una fecha razonable
     }
-    
-    
-
   }
   ngOnInit(): void {}
 }
