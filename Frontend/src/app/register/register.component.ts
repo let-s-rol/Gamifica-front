@@ -38,8 +38,22 @@ export class RegisterComponent implements OnInit {
   }
   send(): any {
     //TODO: Usar esta funcion para mandar los datos al back
-    console.log(this.user.value);
+    
+
+    if (this.passwordRepeatValidatos() ){
+      console.log(this.user.value);
+    }
   }
+
+  passwordRepeatValidatos(){
+    if (this.user.value.password === this.user.value.passwordRepeat ){
+      return true;
+
+    }else{
+      return false;
+    }
+  }
+
   changeRol(): void {
     this.isTeacher = !this.isTeacher;
 
