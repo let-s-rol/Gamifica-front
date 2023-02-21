@@ -31,9 +31,9 @@ export class RegisterComponent implements OnInit {
     });
 
     if (this.isTeacher) {
-      this.user.addControl('school', new FormControl('Validators.required'));
+      this.user.addControl('school', new FormControl('', Validators.required));
     } else {
-      this.user.addControl('date', new FormControl('Validators.required')); //TODO: mirar de hacer que comprueba una fecha razonable
+      this.user.addControl('date', new FormControl('', Validators.required)); //TODO: mirar de hacer que comprueba una fecha razonable
     }
   }
   send(): any {
@@ -41,7 +41,9 @@ export class RegisterComponent implements OnInit {
     
 
     if (this.passwordRepeatValidatos() ){
-      console.log(this.user.value);
+      let form = this.user.value;
+      form['role'] = 'teacher';
+      console.log(form);
     }
   }
 
