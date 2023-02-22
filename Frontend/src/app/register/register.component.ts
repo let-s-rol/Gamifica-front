@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,13 +8,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  [x: string]: any;
 
   user: FormGroup;
   errorPassword: boolean = true;
 
   isTeacher: boolean = false;
 
-  constructor() {
+  constructor( public router:Router) {
     this.user = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [
@@ -46,10 +48,11 @@ export class RegisterComponent implements OnInit {
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
       console.log(this.user.value);
-      return this.errorPassword;
+     this.router.navigate([''])
+
     } else {
       console.log('falla');
-      return this.errorPassword;
+     
     }
   }
 
