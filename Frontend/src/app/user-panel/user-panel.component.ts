@@ -31,4 +31,3 @@ export class UserPanelComponent implements OnInit {
     console.log(this.usersList);
   }
 }
-

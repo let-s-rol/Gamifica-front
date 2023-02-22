@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   isTeacher: boolean = false;
 
-  constructor( public router:Router) {
+  constructor(public router: Router) {
     this.user = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       passwordRepeat: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-      ]), //TODO hacer que se comprueben que las contraseñas son iguales
+      ]),
     });
 
     if (this.isTeacher) {
@@ -48,20 +48,17 @@ export class RegisterComponent implements OnInit {
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
       console.log(this.user.value);
-     this.router.navigate([''])
-
+      this.router.navigate(['']);
     } else {
       console.log('falla');
-     
     }
   }
 
-  passwordRepeatValidator() {    
+  passwordRepeatValidator() {
     if (this.user.value.password === this.user.value.passwordRepeat) {
-      this.errorPassword= true;
-      
+      this.errorPassword = true;
     } else {
-      this.errorPassword=false;
+      this.errorPassword = false;
     }
     return this.errorPassword;
   }
