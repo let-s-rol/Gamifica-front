@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 // hace de flag en caso de haber algun usuario conectado muestra el boton "mi cuenta" en caso de no ser asi muestra los botones para registrarse y loguearse
 
-  log:boolean = true; 
-  constructor() { }
+// TODO hacer que esta flag cambie cuando hay alguien logueado.
+  log:boolean = false; 
+
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
   }

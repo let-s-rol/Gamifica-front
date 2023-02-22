@@ -26,11 +26,11 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(6),
       ]),
       passwordRepeat: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(6),
       ]),
     });
 
@@ -49,8 +49,6 @@ export class RegisterComponent implements OnInit {
     if (this.passwordRepeatValidator()) {
       console.log(this.user.value);
       this.router.navigate(['']);
-    } else {
-      console.log('falla');
     }
   }
 
