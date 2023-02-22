@@ -32,6 +32,9 @@ export class UserPanelComponent implements OnInit {
           Validators.required,
           Validators.minLength(6),
         ]),
+        img: new FormControl('', [
+          Validators.required,
+        ]),
       });
 // TODO hacer que coja los balores por defecto del json
     
