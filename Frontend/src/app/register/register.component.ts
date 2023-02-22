@@ -7,7 +7,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
   user: FormGroup;
+  errorPassword: boolean = true;
 
   isTeacher: boolean = false;
 
@@ -32,28 +34,33 @@ export class RegisterComponent implements OnInit {
 
     if (this.isTeacher) {
       this.user.addControl('school', new FormControl('', Validators.required));
+      this.user.addControl('rol', new FormControl('teacher'));
     } else {
       this.user.addControl('date', new FormControl('', Validators.required)); //TODO: mirar de hacer que comprueba una fecha razonable
+      this.user.addControl('rol', new FormControl('student'));
     }
   }
   send(): any {
     //TODO: Usar esta funcion para mandar los datos al back
-    
 
-    if (this.passwordRepeatValidatos() ){
-      let form = this.user.value;
-      form['role'] = 'teacher';
-      console.log(form);
+    //  return this.passwordRepeatValidator();
+    if (this.passwordRepeatValidator()) {
+      console.log(this.user.value);
+      return this.errorPassword;
+    } else {
+      console.log('falla');
+      return this.errorPassword;
     }
   }
 
-  passwordRepeatValidatos(){
-    if (this.user.value.password === this.user.value.passwordRepeat ){
-      return true;
-
-    }else{
-      return false;
+  passwordRepeatValidator() {    
+    if (this.user.value.password === this.user.value.passwordRepeat) {
+      this.errorPassword= true;
+      
+    } else {
+      this.errorPassword=false;
     }
+    return this.errorPassword;
   }
 
   changeRol(): void {

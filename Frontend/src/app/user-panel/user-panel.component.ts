@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersList } from '../inferfaces/UsersList';
 
 @Component({
   selector: 'app-user-panel',
@@ -31,12 +32,3 @@ export class UserPanelComponent implements OnInit {
   }
 }
 
-export interface UsersList {
-  id: number;
-  name: string;
-  lastName: string;
-  email: string;
-  school: string;
-  date: string;
-  type: String;
-}

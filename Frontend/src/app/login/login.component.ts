@@ -28,7 +28,4 @@ export class LoginComponent implements OnInit {
   }
 }
 
-export interface Login {
-  password: string;
-  email: string;
-}
+

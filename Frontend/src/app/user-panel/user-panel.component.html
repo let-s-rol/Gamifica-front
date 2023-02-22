@@ -24,13 +24,13 @@
                 <td></td>
                 <td></td>
               </tr>
-              <tr class="user" *ngIf="eq.type == 'teacher'">
+              <tr class="user" *ngIf="eq.rol == 'teacher'">
                 <th scope="row">Centro :</th>
                 <td>{{ eq.school }}</td>
                 <td></td>
                 <td></td>
               </tr>
-              <tr class="user" *ngIf="eq.type == 'student'">
+              <tr class="user" *ngIf="eq.rol == 'student'">
                 <th scope="row">Fecha de nacimiento :</th>
                 <td>{{ eq.date }}</td>
                 <td></td>
