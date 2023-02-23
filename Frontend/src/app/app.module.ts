@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { ChangeInfoComponent } from './change-info/change-info.component';
+import { StudentMenuComponent } from './student-menu/student-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ChangeInfoComponent } from './change-info/change-info.component';
     NavbarComponent,
     LoginComponent,
     UserPanelComponent,
-    ChangeInfoComponent
+    ChangeInfoComponent,
+    StudentMenuComponent
   ],
   imports: [
     BrowserModule,

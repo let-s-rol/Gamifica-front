@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,10 @@ export class LoginComponent implements OnInit {
 
   send(): any {
     console.log(this.Login.value);
+  }
+
+  validateData(){
+    //TODO llamar una funcion de register que compruebba que las cosas existan
   }
 }
 
