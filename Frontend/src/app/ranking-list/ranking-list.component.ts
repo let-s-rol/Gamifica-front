@@ -8,7 +8,8 @@ import { RankingList } from '../inferfaces/RankingList';
   styleUrls: ['./ranking-list.component.css']
 })
 export class RankingListComponent implements OnInit {
-  rankingList!: RankingList[];
+  rankingList!: RankingList[]
+  rankingEmptyList!:RankingList[]
 
 
   constructor() {

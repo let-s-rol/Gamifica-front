@@ -18,7 +18,7 @@
             id="name"
             class=".text-muted p-3 form-control"
             formControlName="name"
-            placeholder=" Entra el nombre"
+            placeholder=" Introduce tu nombre"
           />
         </div>
 
@@ -30,7 +30,7 @@
             id="lastName"
             class=".text-muted p-3 form-control"
             formControlName="lastName"
-            placeholder="Entra el apellido"
+            placeholder="Introduce tu apellido"
           />
         </div>
 
@@ -42,7 +42,7 @@
             id="nick"
             class=".text-muted p-3 form-control"
             formControlName="nick"
-            placeholder="Entra el nick"
+            placeholder="Introduce tu nick"
           />
         </div>
 
@@ -54,7 +54,7 @@
             id="email"
             class=".text-muted p-3 form-control"
             formControlName="email"
-            placeholder="Entra el correo"
+            placeholder="Introduce tu correo electrónico"
           />
         </div>
 
@@ -66,7 +66,7 @@
             id="password"
             class=".text-muted p-3 form-control"
             formControlName="password"
-            placeholder="Entra la contraseña"
+            placeholder="Introduce tu contraseña"
           />
         </div>
 
@@ -106,7 +106,7 @@
             type="text"
             id="school"
             formControlName="school"
-            placeholder="Entra el centro escolar"
+            placeholder="Introduce tu centro escolar"
           />
         </div>
         <!--    botton de enviar-->
@@ -120,7 +120,7 @@
           </button>
 
           <button (click)="changeRol()" class="btn p-3 m-3 btn-secondary">
-            Eres
+            ¿Eres
             <span *ngIf="!isTeacher">Profesor </span>
             <span *ngIf="isTeacher">Alumno </span>
             ?
@@ -131,7 +131,7 @@
             [routerLink]="['/login']"
             class="nav-link text-primary"
           >
-            Estas registrado?
+            ¿Estás registrado?
           </a>
         </div>
       </form>
