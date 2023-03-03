@@ -15,30 +15,24 @@ export class UserPanelComponent implements OnInit {
   usersList!: User[];
   isTeacher: boolean = false;
 
-    constructor(public router: Router) {
-      this.user = new FormGroup({
-        name: new FormControl("asd", [Validators.required, Validators.minLength(3)]),
-        lastName: new FormControl('', [
-          Validators.required,
-          Validators.minLength(3),
-        ]),
-        nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        // password: new FormControl('', [
-        //   Validators.required,
-        //   Validators.minLength(6),
-        // ]),
-        // passwordRepeat: new FormControl('', [
-        //   Validators.required,
-        //   Validators.minLength(6),
-        // ]),
-        img: new FormControl('', [
-          Validators.required,
-        ]),
-      });
-// TODO hacer que coja los balores por defecto del json
-    
-    // TODO:recoger usuario desde el Laravel al logear
+  constructor(public router: Router) {
+    this.user = new FormGroup({
+      name: new FormControl('asd', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+
+      img: new FormControl('', [Validators.required]),
+    });
+    // TODO hacer que coja los balores por defecto del json
+
+    // TODO recoger usuario desde el Laravel al logear
     const UserJSON: string = `{
       "users": [{
       "id":"1",
@@ -55,11 +49,12 @@ export class UserPanelComponent implements OnInit {
     const userDict: any = JSON.parse(UserJSON);
     this.usersList = userDict['users'];
   }
-  send(): any {
-   
-   
-      console.log(this.user.value);
+
+  Submit() {
     
+  }
+  send(): any {
+    console.log(this.user.value);
   }
 
   ngOnInit(): void {

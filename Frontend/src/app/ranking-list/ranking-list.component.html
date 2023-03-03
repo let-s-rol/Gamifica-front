@@ -1,0 +1,51 @@
+<div>
+  <div style="height: 150px; margin: auto" class="overflow-y-scroll">
+    <table class="mt-3 table table-striped table-secondary">
+      <tbody>
+        <tr>
+          <th scope="row">Profesor:</th>
+          <th scope="row">Imagen:</th>
+          <th scope="row">Nombre:</th>
+          <th scope="row">Puntos:</th>
+        </tr>
+        <tr style="" *ngFor="let eq of rankingList">
+          <td s>{{ eq.teacher }}</td>
+          <td>
+            <img
+              *ngIf="eq.teacherImg != 'def'"
+              style="width: 40px; border-radius: 15px"
+              src="{{ eq.teacherImg }}"
+              alt=""
+            />
+            <img
+              *ngIf="eq.teacherImg == 'def'"
+              style="width: 40px; border-radius: 15px"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
+              alt=""
+            />
+          </td>
+          <td>{{ eq.name }}</td>
+          <td>{{ eq.points }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <form class="mt-4" (ngSubmit)="newRanking()">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        id="lastName"
+        class="text-muted p-3 form-control input-group mb-3"
+        formControlName="lastName"
+        placeholder="Entra el Codigo"
+        aria-label="Escribe algo aquí"
+        aria-describedby="basic-addon2"
+      />
+      <div class="input-group-append">
+        <button class="ms-3 me-3 p-3 btn btn-success" type="button">
+           Botón 
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

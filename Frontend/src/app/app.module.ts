@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { ChangeInfoComponent } from './change-info/change-info.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
+import { RankingListComponent } from './ranking-list/ranking-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StudentMenuComponent } from './student-menu/student-menu.component';
     LoginComponent,
     UserPanelComponent,
     ChangeInfoComponent,
-    StudentMenuComponent
+    StudentMenuComponent,
+    RankingListComponent
   ],
   imports: [
     BrowserModule,
