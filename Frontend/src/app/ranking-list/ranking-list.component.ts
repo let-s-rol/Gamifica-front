@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RankingList } from '../inferfaces/RankingList';
 
 @Component({
@@ -9,7 +10,10 @@ import { RankingList } from '../inferfaces/RankingList';
 export class RankingListComponent implements OnInit {
   rankingList!: RankingList[];
 
+
   constructor() {
+
+  
 
     const rankingListJSON: string = `{
       "users": [
@@ -66,7 +70,8 @@ export class RankingListComponent implements OnInit {
    }
 
    
-   newRanking() {
+   searchNewRanking() {
+    //TODO hacer pedir un nuevo rankk al servidor dependiendo de la ip que le pasemos. y añadirlo al push o refrescar
       
    }
 
