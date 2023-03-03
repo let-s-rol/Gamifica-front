@@ -1,6 +1,6 @@
 <div>
   <div
-    *ngIf="rankingList.length > 0"
+    *ngIf="rankingList != null"
     style="height: 150px; margin: auto"
     class="overflow-y-scroll"
   >
@@ -11,13 +11,14 @@
           <th scope="row">Imagen:</th>
           <th scope="row">Nombre:</th>
           <th scope="row">Puntos:</th>
+          <th></th>
         </tr>
 
-        <tr style="" *ngFor="let eq of rankingList">
+        <tr *ngFor="let eq of rankingList">
           <td>{{ eq.teacher }}</td>
           <td>
             <img
-              *ngIf="eq.teacherImg != 'def'"
+              *ngIf="eq.teacherImg != null"
               style="width: 40px; border-radius: 15px"
               src="{{ eq.teacherImg }}"
               alt=""
@@ -31,6 +32,7 @@
           </td>
           <td>{{ eq.name }}</td>
           <td>{{ eq.points }}</td>
+          <td><a class="btn btn-outline-dark">VER</a></td>
         </tr>
       </tbody>
     </table>
@@ -45,14 +47,13 @@
         type="text"
         id="lastName"
         class="text-muted p-3 form-control input-group mb-3"
-       
         placeholder="Entra el Codigo"
         aria-label="Escribe algo aquí"
         aria-describedby="basic-addon2"
       />
       <div class="input-group-append">
         <button class="ms-3 me-3 p-3 btn btn-success" type="button">
-          Botón
+          Buscar
         </button>
       </div>
     </div>

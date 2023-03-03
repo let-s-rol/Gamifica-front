@@ -9,6 +9,7 @@ import { RankingList } from '../inferfaces/RankingList';
 })
 export class RankingListComponent implements OnInit {
   rankingList!: RankingList[];
+  rankingLasdist!: RankingList[];
 
 
   constructor() {

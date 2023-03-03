@@ -18,9 +18,16 @@
 
           <div class="">
             <label for="formFile" class="form-label">Cambiar Imagen</label>
-            <input class="form-control" type="file" id="formFile ">
+
+            <div class="input-group">
+              <input class="form-control" type="file" id="formFile " />
+              <div class="input-group-append">
+                <button class="ms-2 me-2 p-2 btn btn-success" type="button">
+                  Cambiar
+                </button>
+              </div>
+            </div>
           </div>
-          
         </div>
       </div>
 
@@ -62,12 +69,10 @@
   </div>
 
   <div class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
-    <div style="height: 250px; margin: auto" >
+    <div style="height: 250px; margin: auto">
       <div class=""></div>
       <app-ranking-list></app-ranking-list>
-      
     </div>
-    
   </div>
 
   <div class="align-content-center">

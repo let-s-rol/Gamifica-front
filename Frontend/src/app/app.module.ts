@@ -13,6 +13,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import { ChangeInfoComponent } from './change-info/change-info.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { RankingListComponent } from './ranking-list/ranking-list.component';
+import { ShowRankingComponent } from './show-ranking/show-ranking.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RankingListComponent } from './ranking-list/ranking-list.component';
     UserPanelComponent,
     ChangeInfoComponent,
     StudentMenuComponent,
-    RankingListComponent
+    RankingListComponent,
+    ShowRankingComponent
   ],
   imports: [
     BrowserModule,
