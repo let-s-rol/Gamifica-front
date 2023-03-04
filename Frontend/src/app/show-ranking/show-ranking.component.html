@@ -1,1 +1,35 @@
-<p>show-ranking works!</p>
+<!-- Registro -->
+<div class="container bg-light mt-5 p-3 rounded">
+  <div class="container">
+    <div class="p-3 bg-dark rounded mb-4">
+      <!-- poner el nombre del ranking -->
+      <h1 class="text-light text-center">{{ rankingName }}</h1>
+    </div>
+
+    <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
+      <table class="mt-3 table table-striped table-secondary">
+        <tbody>
+          <tr *ngFor="let eq of ranking; let i = index">
+            <td style="vertical-align: middle">
+              <strong> {{ i + 1 }} </strong>
+            </td>
+            <td style="vertical-align: middle">{{ eq.nick }}</td>
+            <td style="vertical-align: middle">
+              <img
+                style="width: 40px; border-radius: 15px"
+                src="{{ eq.img }}"
+                alt=""
+              />
+            </td>
+            <td style="vertical-align: middle">{{ eq.name }}</td>
+            <td style="vertical-align: middle">{{ eq.lastName }}</td>
+            <td style="vertical-align: middle; font-size: 20px">
+              <strong>{{ eq.points }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button [routerLink]="'/user'" class="btn btn-success">Volver</button>
+    </div>
+  </div>
+</div>
