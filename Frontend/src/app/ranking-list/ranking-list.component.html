@@ -33,8 +33,8 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="rankingEmptyList == null" style="height: 150px; margin: auto">
-    No estás registrado en ningún ranking, busca una y compite!
+  <div *ngIf="rankingEmptyList == null" style="height: 150px; display: flex; margin: auto; border: 3px solid orangered; color: orangered ; font-size: 28px; justify-content: center; align-items: center;   ">
+    No estás registrado en ningún ranking, ¡busca uno y compite ya!
   </div>
 
   <form class="mt-4" (ngSubmit)="searchNewRanking()">
