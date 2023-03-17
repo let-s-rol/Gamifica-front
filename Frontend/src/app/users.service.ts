@@ -44,20 +44,29 @@ export class UsersService {
       });
   }
 
-  login(login: Login) {
+  login(login: User) {
+
     return this._http.post(this.Url + 'login', login).pipe(
-      
-      filter((response: any) => {
+      filter((response) => {
         let found = false;
         if (response != null) {
           found = true;
-        } else {
-          found = false;
         }
         this.userData = response;
         return found;
       })
-
     );
   }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('access_token');
+    // si existe un token, el usuario está autenticado
+    return token !== null;
+  }
+
+
 }
