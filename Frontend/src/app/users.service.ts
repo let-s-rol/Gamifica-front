@@ -22,8 +22,6 @@ export class UsersService {
         let found = false;
         if (response != null) {
           found = true;
-        } else {
-          found = false;
         }
         this.userData = response;
         return found;
