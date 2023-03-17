@@ -23,8 +23,6 @@ export class UsersService {
         let found = false;
         if (response != null) {
           found = true;
-        } else {
-          found = false;
         }
         this.userData = response;
         return found;
@@ -34,20 +32,16 @@ export class UsersService {
   }
 
   addUser(user: User) {
-    return this._http.post(this.Url + 'register', user).pipe(
-      
-      filter((response: any) => {
+    return this._http
+    .post(this.Url + 'register', user)
+    .subscribe ((response) => {
         let found = false;
         if (response != null) {
           found = true;
-        } else {
-          found = false;
         }
         this.userData = response;
         return found;
-      })
-
-    );
+      });
   }
 
   login(login: Login) {
