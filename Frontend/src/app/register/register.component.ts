@@ -17,8 +17,7 @@ export class RegisterComponent implements OnInit {
 
   isTeacher: boolean = false;
 
-  constructor(public router: Router, private UsersService: UsersService ) {
-    
+  constructor(public router: Router, private UsersService: UsersService) {
     this.user = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [

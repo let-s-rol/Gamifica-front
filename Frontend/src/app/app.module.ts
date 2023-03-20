@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -31,6 +32,7 @@ import { TeacherRankingListComponent } from './teacher-ranking-list/teacher-rank
     TeacherRankingListComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule
