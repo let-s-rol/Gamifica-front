@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from '../users.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   isTeacher: boolean = false;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private UsersService: UsersService ) {
+    
     this.user = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [
@@ -49,6 +51,7 @@ export class RegisterComponent implements OnInit {
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
       console.log(this.user.value);
+      this.UsersService.addUser(this.user.value);
       this.router.navigate(['']);
     }
   }
