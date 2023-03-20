@@ -1,16 +1,31 @@
-0- TODO hacer enlaces login back logout
-1- TODO hacer enlace que guarde la foto del usuario
-2- TODO hacer pedir la imagen a la base de dato para mostrarla
-3- TODO pedir datos de usuario 
-4- TODO pedir lista de rankings 
-5- TODO pedir datos que se muestran en la lista de ranking
-6- TODO Enviar código de ranking
-7- TODO Crear pagina de usuario de Profesor
-8- TODO hacer pagina de ranking para Profesor
-9- TODO hacer lista de invitaciones de ranking 
-10- TODO Crear ejercicios donde el profesor pueda poner el enunciado 
-11- TODO Crear entrega de ejercicios en los ranking
-12- TODO hacer que el profesor pueda recibirlos y puntuar
-13- TODO poder eliminar practica ( con alert para confirmar )
-14- TODO Botón regenerar código del login
-15- TODO se hacer hacer edit y delete de 
+0- JOEL hacer enlaces login back logout 
+
+1- JOEL hacer enlace que guarde la foto del usuario
+
+2- JOEL hacer pedir la imagen a la base de dato para mostrarla
+
+3- JOEL pedir datos de usuario 
+
+4- JOEL pedir lista de rankings 
+
+5- JOEL pedir datos que se muestran en la lista de ranking
+
+6- JOEL Enviar código de ranking
+
+7- IAGO Crear pagina de usuario de Profesor
+
+8- IAGO hacer pagina de ranking para Profesor
+
+9- IAGO hacer lista de invitaciones de ranking 
+
+10- IAGO Crear ejercicios donde el profesor pueda poner el enunciado 
+
+11- IAGO Crear entrega de ejercicios en los ranking
+
+12- IAGO hacer que el profesor pueda recibirlos y puntuar
+
+13- IAGO poder eliminar practica ( con alert para confirmar )
+
+14- IAGO Botón regenerar código del login
+
+15- IAGO se hacer hacer edit y delete de 
