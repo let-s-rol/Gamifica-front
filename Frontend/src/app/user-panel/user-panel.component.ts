@@ -40,7 +40,7 @@ export class UserPanelComponent implements OnInit {
       "lastName":"Rodriguez",
       "email":"manolor@correo.com",
       "date":"14/12/1999",
-      "rol":"student",
+      "rol":"teacher",
       "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
       } 
     ]

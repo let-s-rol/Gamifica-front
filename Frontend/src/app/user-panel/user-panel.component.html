@@ -66,16 +66,30 @@
         </div>
       </div>
     </form>
-  </div>
 
-  <div class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
-    <div style="height: 250px; margin: auto">
-      <div class=""></div>
-      <app-ranking-list></app-ranking-list>
+    <!-- Alumnos -->
+    <div *ngFor="let eq of usersList">
+      <div
+        *ngIf="eq.rol == 'student'"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
+        <div style="height: 250px; margin: auto">
+          <app-ranking-list></app-ranking-list>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="align-content-center">
+    <div *ngFor="let eq of usersList">
+      <div
+        *ngIf="eq.rol == 'teacher'"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
+        <div style="height: 250px; margin: auto">
+          <app-teacher-ranking-list></app-teacher-ranking-list>
+        </div>
+      </div>
+    </div>
+
     <button class="btn p-3 m-3 btn-secondary" ng>
       <a [routerLink]="['/']" class="nav-link"> Volver al Home? </a>
     </button>

@@ -1,0 +1,49 @@
+<div>
+  <div
+    *ngIf="rankingList != null"
+    style="height: 150px; margin: auto"
+    class="overflow-y-scroll"
+  >
+    <table class="text-center mt-3 table table-striped table-secondary">
+      <tbody>
+        <tr>
+          <th scope="row">Nombre:</th>
+          <th scope="row"></th>
+          <th scope="row"></th>
+
+          <th>Acción</th>
+        </tr>
+
+        <tr *ngFor="let eq of rankingList">
+          <td>{{ eq.name }}</td>
+          <th></th>
+          <th></th>
+          <td>
+            <a [routerLink]="'/edit'" class="btn btn-outline-dark">VER</a>
+            <a class="btn ms-3 btn-danger">Borrar</a>
+            <!-- TODO Joel llamar función de delete -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    *ngIf="rankingList == null"
+    style="
+      height: 150px;
+      display: flex;
+      margin: auto;
+      border: 3px solid orangered;
+      color: orangered;
+      font-size: 28px;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    No creaste ningún ranking Crea uno
+  </div>
+
+  <!-- TODO CRear ranking -->
+  <button type="submit" class="btn p-2 m-4 btn-primary">Crear ranking</button>
+  <button type="submit" class="btn p-2 btn-warning">Alumnos pendientes</button>
+</div>

@@ -14,6 +14,7 @@ import { ChangeInfoComponent } from './change-info/change-info.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { RankingListComponent } from './ranking-list/ranking-list.component';
 import { ShowRankingComponent } from './show-ranking/show-ranking.component';
+import { TeacherRankingListComponent } from './teacher-ranking-list/teacher-ranking-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShowRankingComponent } from './show-ranking/show-ranking.component';
     ChangeInfoComponent,
     StudentMenuComponent,
     RankingListComponent,
-    ShowRankingComponent
+    ShowRankingComponent,
+    TeacherRankingListComponent
   ],
   imports: [
     BrowserModule,
