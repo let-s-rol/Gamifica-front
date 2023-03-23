@@ -11,7 +11,6 @@ export class NavbarComponent implements OnInit {
 // TODO hacer que esta flag cambie cuando hay alguien logueado.
 
   log:boolean = false
-  ; 
 
 
   constructor() {

@@ -14,7 +14,7 @@
         <tr>
           <th scope="row">Imagen:</th>
           <th scope="row">Nombre:</th>
-          <th scope="row">apellidos:</th>
+          <th scope="row">ranking</th>
           <th scope="row">acciones:</th>
         </tr>
 
@@ -31,8 +31,8 @@
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
             alt=""
           />
-          <td>{{ eq.name }}</td>
-          <td>{{ eq.lastName }}</td>
+          <td>{{ eq.name }}  {{eq.lastName}}</td>
+          <td>{{ eq.ranking }}</td>
           <td>
             <!-- TODO Joel hacer funciones para llamar al laravel para aceptar o borrar usuario -->
             <button type="submit" class="btn p-2 btn-success">
