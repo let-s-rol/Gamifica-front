@@ -16,6 +16,8 @@ import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { RankingListComponent } from './ranking-list/ranking-list.component';
 import { ShowRankingComponent } from './show-ranking/show-ranking.component';
 import { TeacherRankingListComponent } from './teacher-ranking-list/teacher-ranking-list.component';
+import { PendentUserComponent } from './pendent-user/pendent-user.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { TeacherRankingListComponent } from './teacher-ranking-list/teacher-rank
     StudentMenuComponent,
     RankingListComponent,
     ShowRankingComponent,
-    TeacherRankingListComponent
+    TeacherRankingListComponent,
+    PendentUserComponent,
   ],
   imports: [
     HttpClientModule,

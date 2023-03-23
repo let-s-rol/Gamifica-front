@@ -1,0 +1,62 @@
+<div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
+  <h1 class="text-dark text-center">Alumnos pendientes</h1>
+  <div class="container-sm">
+
+
+<div>
+  <div
+    *ngIf="pendentList != null"
+    style="height: 80vh; margin: auto"
+    class="overflow-y-scroll"
+  >
+    <table class="text-center mt-3 table table-striped table-secondary">
+      <tbody>
+        <tr>
+          <th scope="row">Imagen:</th>
+          <th scope="row">Nombre:</th>
+          <th scope="row">apellidos:</th>
+          <th scope="row">acciones:</th>
+        </tr>
+
+        <tr style="height: 40px;" *ngFor="let eq of pendentList">
+          <img
+            *ngIf="eq.img != null"
+            style="height: 60px; border-radius: 15px"
+            src="{{ eq.img }}"
+            alt=""
+          />
+          <img
+            *ngIf="eq.img == 'def'"
+            style="width: 40px; border-radius: 15px"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
+            alt=""
+          />
+          <td>{{ eq.name }}</td>
+          <td>{{ eq.lastName }}</td>
+          <td>
+            <!-- TODO Joel hacer funciones para llamar al laravel para aceptar o borrar usuario -->
+            <button type="submit" class="btn p-2 btn-success">
+              Aceptar
+            </button>
+            &nbsp;
+            <button type="submit" class="btn p-2 btn-danger">Denegar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      *ngIf="pendentList == null"
+      style="height: 150px; margin: auto"
+      class="overflow-y-scroll"
+    >
+  <!-- TODO hacer mensaje de que no se tiene ningún alumno pendiente -->
+
+  </div>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+

@@ -7,6 +7,7 @@ import { LoginComponent } from '../login/login.component';
 import { UserPanelComponent } from '../user-panel/user-panel.component';
 import { RegisterComponent } from '../register/register.component';
 import { ShowRankingComponent } from '../show-ranking/show-ranking.component';
+import { PendentUserComponent } from '../pendent-user/pendent-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'pendentList', component: PendentUserComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -23,7 +25,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {
-  
+
 }
 
 

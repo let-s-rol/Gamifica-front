@@ -18,7 +18,7 @@ export class UsersService {
   getUser() {
     // get
     return this._http.get<User[]>(this.Url + 'user').pipe(
-      
+
       filter((response: any) => {
         let found = false;
         if (response != null) {

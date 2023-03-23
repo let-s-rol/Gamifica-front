@@ -42,7 +42,7 @@ export class UserPanelComponent implements OnInit {
       "date":"14/12/1999",
       "rol":"teacher",
       "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
-      } 
+      }
     ]
       }`;
 
@@ -51,7 +51,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   Submit() {
-    
+
   }
   send(): any {
     console.log(this.user.value);
