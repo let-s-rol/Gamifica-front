@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RegisterComponent } from '../register/register.component';
+import { RegisterComponent } from '../../register/register.component';
 
 @Component({
   selector: 'app-login',

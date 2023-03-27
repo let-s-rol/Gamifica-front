@@ -9,15 +9,14 @@ import { RegisterComponent } from './register/register.component';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './navbar/login/login.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
-import { ChangeInfoComponent } from './change-info/change-info.component';
-import { StudentMenuComponent } from './student-menu/student-menu.component';
-import { RankingListComponent } from './ranking-list/ranking-list.component';
-import { ShowRankingComponent } from './show-ranking/show-ranking.component';
-import { TeacherRankingListComponent } from './teacher-ranking-list/teacher-ranking-list.component';
-import { PendentUserComponent } from './pendent-user/pendent-user.component';
 
+
+import { RankingListComponent } from './ranking/ranking-list/ranking-list.component';
+import { ShowRankingComponent } from './ranking/show-ranking/show-ranking.component';
+import { TeacherRankingListComponent } from './ranking/teacher-ranking-list/teacher-ranking-list.component';
+import { PendentUserComponent } from './pendent-user/pendent-user.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,6 @@ import { PendentUserComponent } from './pendent-user/pendent-user.component';
     NavbarComponent,
     LoginComponent,
     UserPanelComponent,
-    ChangeInfoComponent,
-    StudentMenuComponent,
     RankingListComponent,
     ShowRankingComponent,
     TeacherRankingListComponent,
@@ -38,9 +35,9 @@ import { PendentUserComponent } from './pendent-user/pendent-user.component';
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

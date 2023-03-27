@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './inferfaces/User';
+import { User } from '../../inferfaces/User';
 import { filter } from 'rxjs';
-import { Login } from './inferfaces/Login';
 
-// TODO hacer los enlaces de forma correcta
+
 @Injectable({
   providedIn: 'root',
 })

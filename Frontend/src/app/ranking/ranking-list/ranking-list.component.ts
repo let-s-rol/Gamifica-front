@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RankingList } from '../inferfaces/RankingList';
+import { RankingList } from 'src/app/inferfaces/RankingList';
+
 
 @Component({
   selector: 'app-ranking-list',

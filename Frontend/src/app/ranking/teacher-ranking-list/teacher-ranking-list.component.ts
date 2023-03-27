@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RankingList } from '../inferfaces/RankingList';
+import { RankingList } from '../../inferfaces/RankingList';
 
 @Component({
   selector: 'app-teacher-ranking-list',

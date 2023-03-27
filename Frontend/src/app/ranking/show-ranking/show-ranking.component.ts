@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ranking } from '../inferfaces/Ranking';
+import { Ranking } from 'src/app/inferfaces/Ranking';
+
 
 @Component({
   selector: 'app-show-ranking',

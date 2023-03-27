@@ -1,23 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../services/users/users.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-// hace de flag en caso de haber algun usuario conectado muestra el boton "mi cuenta" en caso de no ser asi muestra los botones para registrarse y loguearse
+  log: boolean;
+  servze: any;
 
-// TODO hacer que esta flag cambie cuando hay alguien logueado.
+  // hace de flag en caso de haber algun usuario conectado muestra el boton "mi cuenta" en caso de no ser asi muestra los botones para registrarse y loguearse
 
-  log:boolean = false
+  // TODO hacer que esta flag cambie cuando hay alguien logueado.
 
 
-  constructor() {
-    
+
+  constructor(public router: Router, public service: UsersService) {
+    this.log = service.isAuthenticated();
+    this.servze = service;
   }
 
-  ngOnInit(): void {
+  logout() {
+    let w = window as any;
+
+    this.service.logout();
+    w.location.reload();
   }
 
+  ngOnInit(): void {}
 }

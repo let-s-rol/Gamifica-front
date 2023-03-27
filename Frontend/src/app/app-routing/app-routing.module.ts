@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../navbar/login/login.component';
 import { UserPanelComponent } from '../user-panel/user-panel.component';
 import { RegisterComponent } from '../register/register.component';
-import { ShowRankingComponent } from '../show-ranking/show-ranking.component';
 import { PendentUserComponent } from '../pendent-user/pendent-user.component';
+import { ShowRankingComponent } from '../ranking/show-ranking/show-ranking.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
