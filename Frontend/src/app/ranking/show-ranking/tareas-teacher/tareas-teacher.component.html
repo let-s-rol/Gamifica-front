@@ -1,3 +1,50 @@
 <!-- Crear tarea -->
 
 <!-- TODO hacer nueva tarea cuando brayan me diga que pasa de informacion -->
+
+<div class="container bg-light mt-5 p-3 rounded">
+  <div class="container">
+    <div class="p-3 bg-dark rounded mb-4">
+      <h1 class="text-light text-center">Nueva tarea</h1>
+    </div>
+
+    <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
+      <form novalidate [formGroup]="user" (submit)="send()">
+        <!--    Input nombre -->
+        <div class="mt-2 form-group">
+          <label for="name"> Nombre </label>
+          <input
+            type="text"
+            id="name"
+            class=".text-muted p-3 form-control"
+            formControlName="name"
+            placeholder=" Introduce tu nombre"
+          />
+        </div>
+
+        <!--    Input Enunciado -->
+        <div class="mt-2 form-group">
+          <label for="task">Enunciado </label>
+          <input
+            type="text"
+            id="task"
+            class=".text-muted p-3 form-control"
+            formControlName="task"
+            placeholder="Introduce el enunciado"
+          />
+        </div>
+
+        <!--    botton de enviar-->
+        <div>
+          <br />
+          <button class="btn btn-success" [disabled]="user.invalid">
+            Enviar
+          </button>
+          <button [routerLink]="'/user'" class="btn ms-3 btn-secondary">
+            Volver
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
