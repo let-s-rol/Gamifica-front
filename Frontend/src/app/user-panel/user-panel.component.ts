@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../inferfaces/User';
+import { SharedService } from 'src/app/services/shared/shared.service';
 import { UsersList } from '../inferfaces/UsersList';
 
 @Component({
@@ -15,7 +16,11 @@ export class UserPanelComponent implements OnInit {
   usersList!: User[];
   isTeacher: boolean = false;
 
-  constructor(public router: Router) {
+
+  constructor(
+    public router: Router,
+    @Inject(SharedService) private sharedService: SharedService
+  ) {
     this.user = new FormGroup({
       name: new FormControl('asd', [
         Validators.required,
@@ -40,7 +45,7 @@ export class UserPanelComponent implements OnInit {
       "lastName":"Rodriguez",
       "email":"manolor@correo.com",
       "date":"14/12/1999",
-      "rol":"teacher",
+      "rol":"student",
       "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
       }
     ]
@@ -50,9 +55,6 @@ export class UserPanelComponent implements OnInit {
     this.usersList = userDict['users'];
   }
 
-  Submit() {
-
-  }
   send(): any {
     console.log(this.user.value);
   }

@@ -17,6 +17,8 @@ import { RankingListComponent } from './ranking/ranking-list/ranking-list.compon
 import { ShowRankingComponent } from './ranking/show-ranking/show-ranking.component';
 import { TeacherRankingListComponent } from './ranking/teacher-ranking-list/teacher-ranking-list.component';
 import { PendentUserComponent } from './pendent-user/pendent-user.component';
+import { TareasAlumnosComponent } from './ranking/show-ranking/tareas-alumnos/tareas-alumnos.component';
+import { TareasTeacherComponent } from './ranking/show-ranking/tareas-teacher/tareas-teacher.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PendentUserComponent } from './pendent-user/pendent-user.component';
     ShowRankingComponent,
     TeacherRankingListComponent,
     PendentUserComponent,
+    TareasAlumnosComponent,
+    TareasTeacherComponent,
   ],
   imports: [
     HttpClientModule,

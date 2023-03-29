@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/inferfaces/User';
 import { RankingList } from '../../inferfaces/RankingList';
 
 @Component({
@@ -8,8 +9,10 @@ import { RankingList } from '../../inferfaces/RankingList';
 })
 export class TeacherRankingListComponent implements OnInit {
 
-  rankingList!: RankingList[]
-  rankingEmptyList!:RankingList[]
+  rankingList!: RankingList[];
+  rankingEmptyList!:RankingList[];
+
+
   constructor() {
 
 

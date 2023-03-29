@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Ranking } from 'src/app/inferfaces/Ranking';
+import { SharedService } from 'src/app/services/shared/shared.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class ShowRankingComponent implements OnInit {
   ranking!: Ranking[];
   rankingName:string= "Daw2";
 
-  constructor() {
+  constructor(@Inject(SharedService) private sharedService: SharedService) {
     const rankingListJSON: string = `{
       "users": [
         {
@@ -21,7 +22,6 @@ export class ShowRankingComponent implements OnInit {
       "name":"sintesis",
       "points":"14",
       "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=220"
-      
     },
         {
 
@@ -30,7 +30,7 @@ export class ShowRankingComponent implements OnInit {
       "name":"casandra",
       "points":"12",
       "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=223"
-      
+
     },
         {
 
@@ -39,7 +39,7 @@ export class ShowRankingComponent implements OnInit {
       "name":"juan",
       "points":"11",
       "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=221"
-      
+
     },
         {
 
@@ -48,9 +48,9 @@ export class ShowRankingComponent implements OnInit {
       "name":"laura",
       "points":"10",
       "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=222"
-      
+
     }
-  
+
     ]
       }`;
 
