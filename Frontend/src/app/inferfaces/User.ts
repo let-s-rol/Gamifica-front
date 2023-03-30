@@ -7,6 +7,6 @@ export interface User {
   email: string;
   date: Date;
   school: string;
-  rol: String;
-  img:String;
+  rol: string;
+  img:string;
 }
