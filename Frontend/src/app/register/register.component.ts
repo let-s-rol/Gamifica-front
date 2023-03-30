@@ -15,11 +15,13 @@ export class RegisterComponent implements OnInit {
   errorPassword: boolean = true;
 
   isTeacher: boolean = false;
+  
+
 
   constructor(public router: Router, private UsersService: UsersService) {
     this.user = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      lastName: new FormControl('', [
+      lastname: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
       ]),
@@ -43,25 +45,33 @@ export class RegisterComponent implements OnInit {
       this.user.addControl('rol', new FormControl('student'));
     }
   }
+
+  
+
   send(): any {
     //TODO: Usar esta funcion para mandar los datos al back
 
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
+    
+      delete this.user.value.passwordRepeat;
       console.log(this.user.value);
       this.UsersService.addUser(this.user.value);
       this.router.navigate(['']);
     }
   }
 
-  passwordRepeatValidator() {
+    passwordRepeatValidator() {
     if (this.user.value.password === this.user.value.passwordRepeat) {
       this.errorPassword = true;
     } else {
       this.errorPassword = false;
     }
     return this.errorPassword;
-  }
+  } 
+
+
+  
 
   changeRol(): void {
     this.isTeacher = !this.isTeacher;

@@ -8,7 +8,7 @@ import { filter } from 'rxjs';
   providedIn: 'root',
 })
 export class UsersService {
-  readonly Url = 'https://127.0.0.1:8000/api/';
+  readonly Url = 'http://127.0.0.1:8000/api/';
 
   constructor(private _http: HttpClient) {}
 
@@ -31,6 +31,11 @@ export class UsersService {
   }
 
   addUser(user: User) {
+
+    console.log('Payload:', user);
+   
+    
+
     return this._http
     .post(this.Url + 'register', user)
     .subscribe ((response) => {
@@ -64,7 +69,8 @@ export class UsersService {
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
     // si existe un token, el usuario está autenticado
-    return token !== null;
+    //return token !== null;
+    return false;
   }
 
 
