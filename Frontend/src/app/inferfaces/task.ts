@@ -2,7 +2,7 @@ export interface task {
   name: string;
   description: string;
   idRanking: number;
-  id: number;
+  idTask: number;
   idUser: number;
   task: File;
 }
