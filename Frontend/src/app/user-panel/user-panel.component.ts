@@ -15,7 +15,7 @@
     user: FormGroup;
     usersList!: User[];
     isTeacher: boolean = false;
-    rol: string;
+    // rol: string;
   
 
 
@@ -56,7 +56,7 @@
 
       const userDict: any = JSON.parse(UserJSON);
       this.usersList = userDict['users'];
-      this.rol = this.usersList[0].rol;
+      // this.rol = this.usersList[0].rol;
     }
 
     send(): any {
