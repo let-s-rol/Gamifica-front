@@ -8,7 +8,8 @@
         <td>
           <a [routerLink]="'/edit'" class="btn btn-outline-dark">Ver</a>
 
-          <a  [routerLink]="'/edit'" class="btn ms-3 btn-danger">Borrar</a>
+          <a id="borrar" class="btn ms-3 btn-danger" (click)="deleteTask()">Borrar</a>
+
           <!-- TODO el borrar solo tiene que salir si es profesor ejecutar funcion de borrado -->
         </td>
       </tr>
