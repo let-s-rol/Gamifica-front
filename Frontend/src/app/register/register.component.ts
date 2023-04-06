@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { UsersService } from '../services/users/users.service';
 export class RegisterComponent implements OnInit {
   [x: string]: any;
 
+ 
   user: FormGroup;
   errorPassword: boolean = true;
 
@@ -57,6 +59,7 @@ export class RegisterComponent implements OnInit {
       delete this.user.value.passwordRepeat;
       console.log(this.user.value);
       this.UsersService.addUser(this.user.value);
+
       this.router.navigate(['']);
     }
   }
@@ -88,5 +91,10 @@ export class RegisterComponent implements OnInit {
       this.user.addControl('date', new FormControl('Validators.required')); //TODO: mirar de hacer que comprueba una fecha razonable
     }
   }
+
+  
+
+
+
   ngOnInit(): void {}
 }

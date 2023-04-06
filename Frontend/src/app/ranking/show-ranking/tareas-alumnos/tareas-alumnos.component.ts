@@ -12,7 +12,7 @@ import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 export class TareasAlumnosComponent implements OnInit {
   task!: task[];
   // rol!:string;
-  constructor(user:UserPanelComponent) {
+  constructor() {
     const taskListJSON: string = `{
       "task": [
         {
