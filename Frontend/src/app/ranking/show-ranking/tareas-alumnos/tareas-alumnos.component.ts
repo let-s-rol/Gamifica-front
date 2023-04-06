@@ -39,5 +39,10 @@ export class TareasAlumnosComponent implements OnInit {
 
   }
 
+  deleteTask(){
+    
+  
+  }
+
   ngOnInit(): void {}
 }
