@@ -3,6 +3,7 @@
   import { Router } from '@angular/router';
   import { User } from '../inferfaces/User';
   import { SharedService } from 'src/app/services/shared/shared.service';
+  import { UsersService } from '../services/users/users.service';
   import { UsersList } from '../inferfaces/UsersList';
 
   @Component({
@@ -21,7 +22,7 @@
 
     constructor(
       public router: Router,
-      @Inject(SharedService) private sharedService: SharedService
+      @Inject(SharedService) private sharedService: SharedService,  private userService: UsersService
     ) {
       this.user = new FormGroup({
         name: new FormControl('asd', [
@@ -65,6 +66,10 @@
 
 
     ngOnInit(): void {
-      console.log(this.usersList);
-    }
+      this.userService.getUser().subscribe (users => {
+        this.usersList = users;
+        console.log(this.usersList);
+    });
   }
+    
+}

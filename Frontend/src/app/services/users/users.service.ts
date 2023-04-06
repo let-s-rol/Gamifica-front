@@ -15,8 +15,12 @@ export class UsersService {
   userData: any;
 
   getUser() {
-    // get
-    return this._http.get<User[]>(this.Url + 'user').pipe(
+    
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('acces_token')
+  };
+    return this._http.get<User[]>(this.Url + 'user', { headers, withCredentials: true }).pipe(
 
       filter((response: any) => {
         let found = false;
