@@ -1,22 +1,18 @@
-0- JOEL hacer enlaces login back logout
+1- JOEL hacer enlace que guarde la foto del usuario (Hacer un enlace que guarde la foto y recargue la pagina)
 
-1- JOEL hacer enlace que guarde la foto del usuario
+3- JOEL pedir datos de usuario (Pedir enlace )
 
-2- JOEL hacer pedir la imagen a la base de dato para mostrarla
+4- JOEL pedir lista de rankings (pedir enlace)
 
-3- JOEL pedir datos de usuario
+5- JOEL pedir datos que se muestran en la lista de ranking (pedir enlace)
 
-4- JOEL pedir lista de rankings
-
-5- JOEL pedir datos que se muestran en la lista de ranking
-
-6- JOEL Enviar código de ranking
+6- JOEL Enviar código de ranking (Crear generador de código de ranking)
 
 11- IAGO Crear entrega de ejercicios en los ranking
 
 12- IAGO hacer que el profesor pueda recibirlos y puntuar
 
-13- IAGO poder eliminar practica ( con alert para confirmar )
+13- IAGO poder eliminar practica ( con alert para confirmar ) (enlace que le pase el id de la practica)
 
 14- IAGO Botón regenerar código del login ranking
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Ranking } from 'src/app/inferfaces/Ranking';
 import { task } from 'src/app/inferfaces/task';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 
@@ -11,25 +10,24 @@ import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 })
 export class TareasAlumnosComponent implements OnInit {
   task!: task[];
-  // rol!:string;
-  constructor() {
+  
+  constructor(user:UserPanelComponent) {
     const taskListJSON: string = `{
       "task": [
         {
 
       "name":"practica 1",
       "description":"rosa",
-      "idRanking":"sintesis",
-      "id":"14",
-      "idUser":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=220"
+      "idRanking":"001",
+      "id":"14"
+
     },
         {
 
       "name":"practica 2",
       "description":"rosa",
-      "idRanking":"sintesis",
-      "id":"14",
-      "idUser":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=220"
+      "idRanking":"001",
+      "id":"14"
     }
 
 
@@ -38,7 +36,7 @@ export class TareasAlumnosComponent implements OnInit {
 
     const taskListDict: any = JSON.parse(taskListJSON);
     this.task = taskListDict['task'];
-    // this.rol = user.rol;
+
   }
 
   ngOnInit(): void {}
