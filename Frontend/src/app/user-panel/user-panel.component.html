@@ -1,22 +1,14 @@
 <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
-  <h1 class="text-dark text-center">Tu Cuenta
+  <h1 class="text-dark text-center">Tu cuenta
 
-    
+
   </h1>
   <div class="container-sm">
     <form class="flex" novalidate [formGroup]="user" (submit)="send()">
-      <div
-        style="width: 100ch"
-        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
-      >
+      <div style="width: 100ch" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
         <div class="" *ngFor="let eq of usersList">
           <div class="d-flex justify-content-center">
-            <img
-              class=""
-              style="width: 200px; height: 200px"
-              src="{{ eq.img }}"
-              alt="user Photo"
-            />
+            <img class="" style="width: 200px; height: 200px" src="{{ eq.img }}" alt="user Photo" />
           </div>
 
           <div class="">
@@ -34,12 +26,9 @@
         </div>
       </div>
 
-      <div
-        style="width: 100ch"
-        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
-      >
-        <div *ngFor="let eq of usersList">
-          <div *ngIf="eq.school !== null">
+      <div style="width: 100ch" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+        <div *ngFor="let eq of usersListX">
+          <div >
             <table class="mt-3 table table-striped table-secondary">
               <!-- TODO, pasar esto a formulario y dejar editar los valores que de foto correo y contraseña -->
               <tbody>
@@ -71,22 +60,16 @@
     </form>
 
     <!-- Alumnos -->
-    <div *ngFor="let eq of usersList">
-      <div
-        *ngIf="eq.rol == 'student'"
-        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
-      >
+    <div *ngFor="let eq of usersListX">
+      <div *ngIf="eq.rol == 'student'" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
         <div style="height: 250px; margin: auto">
-          <app-ranking-list  [userInput]="usersList"></app-ranking-list>
+          <app-ranking-list [userInput]="usersList"></app-ranking-list>
         </div>
       </div>
     </div>
 
-    <div *ngFor="let eq of usersList">
-      <div
-        *ngIf="eq.rol == 'teacher'"
-        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
-      >
+    <div *ngFor="let eq of usersListX">
+      <div *ngIf="eq.rol == 'teacher'" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
         <div style="height: 250px; margin: auto">
           <app-teacher-ranking-list></app-teacher-ranking-list>
         </div>
@@ -94,7 +77,7 @@
     </div>
 
     <button class="btn p-3 m-3 btn-secondary" ng>
-      <a [routerLink]="['/']" class="nav-link"> Volver al Home? </a>
+      <a [routerLink]="['/']" class="nav-link"> ¿Volver al Home? </a>
     </button>
   </div>
 </div>

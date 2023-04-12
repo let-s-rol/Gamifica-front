@@ -14,7 +14,8 @@
   export class UserPanelComponent implements OnInit {
     userId: number = 1;
     user: FormGroup;
-    usersList!: User[];
+    usersList: User[] = [];
+    usersListX: User[] = [];
     isTeacher: boolean = false;
     // rol: string;
   
@@ -66,10 +67,14 @@
 
 
     ngOnInit(): void {
-      this.userService.getUser().subscribe (users => {
-        this.usersList = users;
-        console.log(this.usersList);
-    });
+      this.userService.getUser().subscribe({
+        next: (user: User) => {
+          this.usersListX.push(user);
+          
+          console.log(this.usersListX);
+        },
+        error: error => window.alert(error)
+      });
   }
     
 }

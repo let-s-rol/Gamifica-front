@@ -9,6 +9,7 @@ import { RegisterComponent } from '../register/register.component';
 import { PendentUserComponent } from '../pendent-user/pendent-user.component';
 import { ShowRankingComponent } from '../ranking/show-ranking/show-ranking.component';
 import { TareasTeacherComponent } from '../ranking/show-ranking/tareas-teacher/tareas-teacher.component';
+import { NewRankingComponent } from '../ranking/show-ranking/new-ranking/new-ranking.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'pendentList', component: PendentUserComponent},
+  { path: 'newRanking', component: NewRankingComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 

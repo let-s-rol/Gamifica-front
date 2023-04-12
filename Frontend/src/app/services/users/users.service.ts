@@ -18,7 +18,7 @@ export class UsersService {
     
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('acces_token')
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
   };
     return this._http.get<User[]>(this.Url + 'user', { headers, withCredentials: true }).pipe(
 

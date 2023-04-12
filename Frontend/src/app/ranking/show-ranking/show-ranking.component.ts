@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Ranking } from 'src/app/inferfaces/Ranking';
-import { SharedService } from 'src/app/services/shared/shared.service';
+
 
 
 @Component({
@@ -12,7 +12,7 @@ export class ShowRankingComponent implements OnInit {
   ranking!: Ranking[];
   rankingName:string= "Daw2";
 
-  constructor(@Inject(SharedService) private sharedService: SharedService) {
+  constructor() {
     const rankingListJSON: string = `{
       "users": [
         {
