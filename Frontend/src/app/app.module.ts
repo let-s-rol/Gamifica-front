@@ -43,7 +43,7 @@ import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-rank
     ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [UserPanelComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,27 +12,16 @@
         <form novalidate [formGroup]="user" (submit)="send()">
           <!--    Input nombre -->
           <div class="mt-2 form-group">
-            <label for="name"> Nombre </label>
+            <label for="ranking_name"> Nombre </label>
             <input
               type="text"
-              id="name"
+              id="ranking_name"
               class=".text-muted p-3 form-control"
-              formControlName="name"
+              formControlName="ranking_name"
               placeholder=" Introduce el nombre"
             />
           </div>
   
-          <!--    Input Enunciado -->
-          <div class="mt-2 form-group">
-            <label for="task">Descripción </label>
-            <input
-              type="text"
-              id="task"
-              class=".text-muted p-3 form-control"
-              formControlName="task"
-              placeholder="Introduce una descripción"
-            />
-          </div>
   
           <!--    botton de enviar-->
           <div>
