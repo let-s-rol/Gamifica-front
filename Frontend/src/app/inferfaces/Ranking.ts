@@ -1,4 +1,5 @@
-export interface Ranking {
+export interface RankingUser {
+    id_ranking: number;
     ranking_name: string;
     name: string;
     lastName: string;

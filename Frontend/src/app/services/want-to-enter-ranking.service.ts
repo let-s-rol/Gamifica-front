@@ -4,11 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SelectRankingInfoService {
+export class WantToEnterRankingService {
 
-  constructor() {
-
-    
-   }
-
+  constructor() { }
 }

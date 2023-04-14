@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Ranking } from 'src/app/inferfaces/Ranking';
+import { RankingUser } from 'src/app/inferfaces/Ranking';
 
 
 
@@ -9,7 +9,7 @@ import { Ranking } from 'src/app/inferfaces/Ranking';
   styleUrls: ['./show-ranking.component.css'],
 })
 export class ShowRankingComponent implements OnInit {
-  ranking!: Ranking[];
+  ranking!: RankingUser[];
   rankingName:string= "Daw2";
 
   constructor() {

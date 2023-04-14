@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Ranking } from '../inferfaces/Ranking';
+import { RankingUser } from '../../inferfaces/Ranking';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class NewRankingServiceService {
 
   newRankingData: any;
 
-  addNewRanking(newRanking: Ranking) {
+  addNewRanking(newRanking: RankingUser) {
     console.log('Payload:', newRanking); // Log the payload before making the request
 
 
@@ -49,6 +49,8 @@ export class NewRankingServiceService {
       });
 
   }
+
+
 
 
 
