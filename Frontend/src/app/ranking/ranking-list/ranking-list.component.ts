@@ -3,19 +3,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ranking } from 'src/app/inferfaces/RankingList';
 import { User } from 'src/app/inferfaces/User';
 import { SharedService } from 'src/app/services/shared/shared.service';
+import { WantToEnterRankingService } from 'src/app/services/want-to-enter-ranking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ranking-list',
   templateUrl: './ranking-list.component.html',
   styleUrls: ['./ranking-list.component.css'],
 })
+
+
+
 export class RankingListComponent implements OnInit {
   rankingList!: Ranking[];
   rankingEmptyList!: Ranking[];
   saveID:number = 0;
 
+  sendCode: FormGroup;
+
   @Input() userInput!: User[];
-  constructor(@Inject(SharedService) private sharedService: SharedService) {
+  constructor(@Inject(SharedService) private sharedService: SharedService, public router: Router, private WantToEnterRankingService:WantToEnterRankingService ) {
+  
+    this.sendCode = new FormGroup({
+
+      code: new FormControl('', [])
+
+    });
+
+  
     const rankingListJSON: string = `{
       "users": [
         {
@@ -76,6 +91,13 @@ export class RankingListComponent implements OnInit {
 
   searchNewRanking() {
     //TODO hacer pedir un nuevo rankk al servidor dependiendo de la ip que le pasemos. y añadirlo al push o refrescar
+
+    console.log(this.sendCode.value);
+
+    
+    const code = this.sendCode.value;
+    this.WantToEnterRankingService.sendCode(this.sendCode.value)
+
   }
 
   ngOnInit(): void {}

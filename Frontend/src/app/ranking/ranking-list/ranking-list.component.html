@@ -42,7 +42,7 @@
     No estás registrado en ningún ranking, ¡busca uno y compite ya!
   </div>
 
-  <form class="mt-4" (ngSubmit)="searchNewRanking()">
+  <form class="mt-4" (ngSubmit)="searchNewRanking()" [formGroup]="sendCode">
     <div class="input-group mb-3">
       <input
         type="text"
@@ -53,7 +53,7 @@
         aria-describedby="basic-addon2"
       />
       <div class="input-group-append">
-        <button class="ms-3 me-3 p-3 btn btn-success" type="button">
+        <button type="submit" [disabled]="!sendCode.valid" class="ms-3 me-3 p-3 btn btn-success" >
           Buscar
         </button>
       </div>

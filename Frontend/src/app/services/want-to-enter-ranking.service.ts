@@ -29,7 +29,7 @@ export class WantToEnterRankingService {
 
 
 
-    return this._http.post(this.Url+ 'access_ranking/' + code, { headers })
+    return this._http.post(this.Url + 'access_ranking/' + code, { headers })
       .toPromise()
       .then(response => {
         console.log(response);
