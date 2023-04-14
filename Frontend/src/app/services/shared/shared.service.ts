@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RankingList } from 'src/app/inferfaces/RankingList';
+import { Ranking } from 'src/app/inferfaces/RankingList';
 import { User } from 'src/app/inferfaces/User';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RankingList } from 'src/app/inferfaces/RankingList';
+import { Ranking } from 'src/app/inferfaces/RankingList';
 import { User } from 'src/app/inferfaces/User';
 import { SharedService } from 'src/app/services/shared/shared.service';
 
@@ -10,8 +10,8 @@ import { SharedService } from 'src/app/services/shared/shared.service';
   styleUrls: ['./ranking-list.component.css'],
 })
 export class RankingListComponent implements OnInit {
-  rankingList!: RankingList[];
-  rankingEmptyList!: RankingList[];
+  rankingList!: Ranking[];
+  rankingEmptyList!: Ranking[];
   saveID:number = 0;
 
   @Input() userInput!: User[];
