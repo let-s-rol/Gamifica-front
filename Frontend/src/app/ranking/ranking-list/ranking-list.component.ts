@@ -2,8 +2,9 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ranking } from 'src/app/inferfaces/RankingList';
 import { User } from 'src/app/inferfaces/User';
-import { SharedService } from 'src/app/services/shared/shared.service';
 import { WantToEnterRankingService } from 'src/app/services/want-to-enter-ranking.service';
+import { SharedService } from 'src/app/services/shared/shared.service';
+
 import { Router } from '@angular/router';
 
 @Component({
