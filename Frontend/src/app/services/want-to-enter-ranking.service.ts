@@ -6,30 +6,25 @@ import { Ranking } from '../inferfaces/RankingList';
   providedIn: 'root'
 })
 export class WantToEnterRankingService {
-  CharactersServiceComponentFactory(EnterRanking: WantToEnterRankingService) {
-    throw new Error('Method not implemented.');
-  }
 
   readonly Url = 'http://127.0.0.1:8000/api/';
-
 
   constructor(private _http: HttpClient) { }
 
   CodeData: any;
 
   sendCode(code: Ranking) {
-    console.log('Payload:', code); // Log the payload before making the request
-
+   
 
     const token = localStorage.getItem('access_token');
     console.log('Token:', token); // Log token value
     const headers = { Authorization: `Bearer ${token}` };
-    console.log(localStorage);
 
+    console.log('Payload:', headers, code); // Log the payload before making the request
+    const bodyCode = { code: code.code.trim() }; // Set the code in the request body
+   
 
-
-
-    return this._http.post(this.Url + 'access_ranking/' + code, { headers })
+    return this._http.post(this.Url + 'access_ranking/', bodyCode,  { headers })
       .toPromise()
       .then(response => {
         console.log(response);
@@ -46,6 +41,5 @@ export class WantToEnterRankingService {
         console.log(error);
         return false;
       });
-
   }
 }
