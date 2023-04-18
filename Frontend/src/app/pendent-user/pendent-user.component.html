@@ -35,11 +35,11 @@
           <td>{{ eq.ranking }}</td>
           <td>
             <!-- TODO Joel hacer funciones para llamar al laravel para aceptar o borrar usuario -->
-            <button type="submit" class="btn p-2 btn-success">
+            <button type="button" class="btn p-2 btn-success" (click)="validarUsuario(eq)">
               Aceptar
             </button>
             &nbsp;
-            <button type="submit" class="btn p-2 btn-danger">Denegar</button>
+            <button type="button" class="btn p-2 btn-danger">Denegar</button>
           </td>
         </tr>
       </tbody>

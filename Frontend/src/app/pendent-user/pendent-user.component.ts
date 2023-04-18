@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PendentList } from '../inferfaces/pendentList';
-import { WaitingForRankingStudentsService } from 'D:/Gamifica-front/Frontend/src/app/services/waiting-for-ranking-students.service' 
+import { WaitingForRankingStudentsService } from '../services/waiting-for-ranking-students.service'; 
+import { SolicitudeManagementService } from '../services/solicitude-management.service';
 
 
 @Component({
@@ -11,7 +12,9 @@ import { WaitingForRankingStudentsService } from 'D:/Gamifica-front/Frontend/src
 export class PendentUserComponent implements OnInit {
   pendentList!: PendentList[];
 
-  constructor(private WaitingForRankingStudentsService:WaitingForRankingStudentsService ) {
+  constructor(
+    private WaitingForRankingStudentsService:WaitingForRankingStudentsService,
+    private solicitud: SolicitudeManagementService ) {
   
     /*
     const pendentListJSON: string = `{
@@ -44,5 +47,15 @@ export class PendentUserComponent implements OnInit {
     });
 
 
+  }
+
+  validarUsuario(usuario: PendentList) {
+    this.solicitud.validateUser(usuario.id_ranking, usuario.id_user).subscribe({
+      next: (value: any) => console.log(value),
+      error: (error: any) => console.log(error)
+      
+    });
+    console.log("enviado");
+    
   }
 }
