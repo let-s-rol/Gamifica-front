@@ -17,6 +17,7 @@ export class SolicitudeManagementService {
     const headers = { Authorization: `Bearer ${token}` };
     const bodyJSON = { id_ranking, id_user};
     
+
     return this._http.post<any>(environment.server_url + 'validate_student', bodyJSON, { headers });
   }
 

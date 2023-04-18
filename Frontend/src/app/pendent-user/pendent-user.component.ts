@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PendentList } from '../inferfaces/pendentList';
-import { WaitingForRankingStudentsService } from '../services/waiting-for-ranking-students.service'; 
+import { WaitingForRankingStudentsService } from '../services/waiting-for-ranking-students.service';
 import { SolicitudeManagementService } from '../services/solicitude-management.service';
 
 
@@ -12,36 +12,22 @@ import { SolicitudeManagementService } from '../services/solicitude-management.s
 export class PendentUserComponent implements OnInit {
   pendentList!: PendentList[];
 
-  constructor(
-    private WaitingForRankingStudentsService:WaitingForRankingStudentsService,
-    private solicitud: SolicitudeManagementService ) {
-  
-    /*
-    const pendentListJSON: string = `{
-      "users": [
-        {
+  /**
+   * The constructor initializes variables and services for a TypeScript class.
+   * @param {ChangeDetectorRef} cd - ChangeDetectorRef is a service provided by Angular that allows you
+   * to manually trigger change detection in a component or directive.
+   * @param {WaitingForRankingStudentsService} WaitingForRankingStudentsService - This is a service
+   * that likely handles data related to students who are waiting for their ranking or evaluation.
+   * @param {SolicitudeManagementService} solicitud - It is an instance of the
+   * SolicitudeManagementService, which is a service used for managing requests or solicitations.
+   */
+  constructor( private cd: ChangeDetectorRef,
+    private WaitingForRankingStudentsService: WaitingForRankingStudentsService,
+    private solicitud: SolicitudeManagementService) {
 
-      "ranking":"smx",
-      "name":"wiktor",
-      "lastName":"calderon",
-      "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
-
-    },
-        {
-      "ranking":"daw",
-      "name":"manuel",
-      "lastName":"dolepki",
-      "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
-
-    }
-    ]
-      }`;
-
-    const pendentListDict: any = JSON.parse(pendentListJSON);
-    this.pendentList = pendentListDict['users']; */
   }
   ngOnInit(): void {
-    this.WaitingForRankingStudentsService.getPendentUsers().subscribe((response: PendentList[]) => { 
+    this.WaitingForRankingStudentsService.getPendentUsers().subscribe((response: PendentList[]) => {
       this.pendentList = response;
       console.log(response);
     });
@@ -50,12 +36,17 @@ export class PendentUserComponent implements OnInit {
   }
 
   validarUsuario(usuario: PendentList) {
+
+    let w = window as any;
+
     this.solicitud.validateUser(usuario.id_ranking, usuario.id_user).subscribe({
       next: (value: any) => console.log(value),
       error: (error: any) => console.log(error)
-      
+
     });
+
+    this.cd.detectChanges(); 
     console.log("enviado");
-    
+
   }
 }
