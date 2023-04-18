@@ -12,12 +12,13 @@ import { UsersService } from '../services/users/users.service';
 export class RegisterComponent implements OnInit {
   [x: string]: any;
 
- 
+  isCreate: boolean = false;
+
   user: FormGroup;
   errorPassword: boolean = true;
 
   isTeacher: boolean = false;
-  
+
 
 
   constructor(public router: Router, private UsersService: UsersService) {
@@ -48,33 +49,43 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
+
 
   send(): any {
     //TODO: Usar esta funcion para mandar los datos al back
 
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
-    
+
       delete this.user.value.passwordRepeat;
       console.log(this.user.value);
       this.UsersService.addUser(this.user.value);
 
-      this.router.navigate(['']);
+
+      try {
+        this.isCreate = true;
+        setTimeout(() => {
+          this.router.navigate(['']);
+
+        }, 1000);
+      } catch(error) {
+      }
+
+      // this.router.navigate(['']);
     }
   }
 
-    passwordRepeatValidator() {
+  passwordRepeatValidator() {
     if (this.user.value.password === this.user.value.passwordRepeat) {
       this.errorPassword = true;
     } else {
       this.errorPassword = false;
     }
     return this.errorPassword;
-  } 
+  }
 
 
-  
+
 
   changeRol(): void {
     this.isTeacher = !this.isTeacher;
@@ -92,9 +103,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  
 
 
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
 }
