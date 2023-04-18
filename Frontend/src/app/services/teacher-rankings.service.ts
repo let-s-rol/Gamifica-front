@@ -14,7 +14,7 @@ export class TeachersRankingListService {
 
   constructor(private _http: HttpClient) {}
 
-  userData: any;
+
 
 
   getUserRankings() {

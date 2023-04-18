@@ -77,4 +77,10 @@
       });
   }
     
+  logout() {
+    let w = window as any;
+    localStorage.removeItem('access_token');
+    // w.location.reload();
+  }
+
 }
