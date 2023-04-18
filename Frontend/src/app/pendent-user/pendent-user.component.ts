@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PendentList } from '../inferfaces/pendentList';
+import { WaitingForRankingStudentsService } from 'D:/Gamifica-front/Frontend/src/app/services/waiting-for-ranking-students.service' 
+
 
 @Component({
   selector: 'app-pendent-user',
@@ -9,7 +11,9 @@ import { PendentList } from '../inferfaces/pendentList';
 export class PendentUserComponent implements OnInit {
   pendentList!: PendentList[];
 
-  constructor() {
+  constructor(private WaitingForRankingStudentsService:WaitingForRankingStudentsService ) {
+  
+    /*
     const pendentListJSON: string = `{
       "users": [
         {
@@ -31,7 +35,14 @@ export class PendentUserComponent implements OnInit {
       }`;
 
     const pendentListDict: any = JSON.parse(pendentListJSON);
-    this.pendentList = pendentListDict['users'];
+    this.pendentList = pendentListDict['users']; */
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.WaitingForRankingStudentsService.getPendentUsers().subscribe((response: PendentList[]) => { 
+      this.pendentList = response;
+      console.log(response);
+    });
+
+
+  }
 }

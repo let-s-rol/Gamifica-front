@@ -1,6 +1,7 @@
 export interface PendentList {
-  name: string;
+  user_name: string;
   lastName: string;
   ranking: string;
+  id_ranking: number;
   img: String;
 }
