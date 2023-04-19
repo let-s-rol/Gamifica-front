@@ -19,7 +19,8 @@
           <th></th>
           <th></th>
           <td>
-            <a [routerLink]="'/edit'" class="btn btn-outline-dark">VER</a>
+            <a [routerLink]="'/edit'"  class="btn btn-outline-dark" (click)="takeObject(eq)">VER</a>
+
             <a class="btn ms-3 btn-danger" (click)="deleteRanking(eq)">Borrar</a>
             <!-- TODO Joel llamar función de delete -->
           </td>

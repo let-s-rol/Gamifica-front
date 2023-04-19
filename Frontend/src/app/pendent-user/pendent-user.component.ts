@@ -48,4 +48,18 @@ console.log(usuario)
     console.log("enviado");
 
   }
+
+  denyStudent(usuario: PendentList) {
+
+    console.log(usuario)
+        this.solicitud.denyUser(usuario.id_ranking, usuario.id_user).subscribe({
+          next: (value: any) => console.log(value),
+          error: (error: any) => console.log(error)
+    
+        });
+    
+        this.cd.detectChanges(); 
+        console.log("enviado");
+    
+      }
 }

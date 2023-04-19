@@ -13,18 +13,22 @@ export class ShowUsersService {
 
   constructor(private _http: HttpClient) { }
 
-  getRankingStudents(id_ranking: number) {
+  getRankingStudents(id_ranking: number, token:string, laravelFunction:string) {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     });
 
-      const body = {
-    id_ranking: id_ranking
-  };
 
-    return this._http.get<RankingUser[]>(this.Url + 'show_students/', { headers, withCredentials: true }).pipe(
+
+  const AllData:any = {
+    laravelFunction : 'show_students/',
+    token : localStorage.getItem('access_token'), 
+    id : id_ranking
+  }
+
+    return this._http.get<RankingUser[]>(this.Url, AllData).pipe(
       tap(response => console.log('Response from back-end:', response))
     );
   }

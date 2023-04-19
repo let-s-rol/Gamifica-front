@@ -20,8 +20,22 @@ export class SolicitudeManagementService {
     const bodyJSON = { id_ranking, id_user};
     console.log(bodyJSON)
 
-    return this._http.post<any>(environment.server_url + 'validate_student', bodyJSON, { headers });
+    return this._http.put<any>(environment.server_url + 'validate_student', bodyJSON, { headers });
+  }
+
+  denyUser(id_ranking: number, id_user: number) : Observable<any> {
+
+    
+    const token = localStorage.getItem('access_token');
+    const headers = { Authorization: `Bearer ${token}` };
+    const bodyJSON = { id_ranking, id_user};
+    console.log(bodyJSON)
+
+    return this._http.delete<any>(environment.server_url + 'kick_student', { headers, body: bodyJSON });
   }
 
 
-}
+  }
+
+
+

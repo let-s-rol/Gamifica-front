@@ -2,7 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { RankingUser } from 'src/app/inferfaces/Ranking';
 import { Router } from '@angular/router';
 import { Ranking } from 'src/app/inferfaces/RankingList';
-import {ShowUsersService} from '../../services/users/show-users.service';
+import { ShowUsersService } from '../../services/users/show-users.service';
+import { InputsService } from 'src/app/services/inputs.service';
 
 
 
@@ -14,69 +15,28 @@ import {ShowUsersService} from '../../services/users/show-users.service';
 })
 export class ShowRankingComponent implements OnInit {
   ranking!: RankingUser[];
-  rankingName:string= "Daw2";
+  rankingName: string = "Daw2";
+  laravelFunction: string = "";
+  objectRankingTeacher!: Ranking;
 
-  constructor(public router: Router, private ShowUsersService: ShowUsersService) {
-    
-    /*
-    const rankingListJSON: string = `{
-      "users": [
-        {
-
-      "lastName":"rosa",
-      "nick":"rosa",
-      "name":"sintesis",
-      "points":"14",
-      "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=220"
-    },
-        {
-
-      "lastName":"Miller ",
-      "nick":"asd",
-      "name":"casandra",
-      "points":"12",
-      "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=223"
-
-    },
-        {
-
-      "lastName":"John",
-      "nick":"pedro",
-      "name":"juan",
-      "points":"11",
-      "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=221"
-
-    },
-        {
-
-      "lastName":"ruano",
-      "nick":"lauru",
-      "name":"laura",
-      "points":"10",
-      "img":"https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=222"
-
-    }
-
-    ]
-      }`;
-
-    const rankingListDict: any = JSON.parse(rankingListJSON);
-    this.ranking = rankingListDict['users'];
-    */
+  constructor(private input: InputsService, public router: Router, private ShowUsersService: ShowUsersService) {
 
   }
-  
+
+
+
 
   ngOnInit(): void {
 
-    const id_ranking = 1;
+    this.objectRankingTeacher = this.input.object;
 
-    this.ShowUsersService.getRankingStudents(id_ranking).subscribe((response: RankingUser[]) => { 
-      this.ranking = response;
-      console.log(response);
-          
-    });
+    const token = localStorage.getItem('access_token');
+    this.laravelFunction = 'show_students/';
+
+
+    this.ShowUsersService.getRankingStudents(this.objectRankingTeacher.id , token!, this.laravelFunction).subscribe()
+
+
   }
 
-  
-  }
+}

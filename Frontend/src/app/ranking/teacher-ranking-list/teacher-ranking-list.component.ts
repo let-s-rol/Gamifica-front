@@ -3,6 +3,7 @@ import { User } from 'src/app/inferfaces/User';
 import { Ranking } from '../../inferfaces/RankingList';
 import { TeachersRankingListService } from 'src/app/services/teacher-rankings.service';
 import { Router } from '@angular/router';
+import { InputsService } from 'src/app/services/inputs.service';
 
 @Component({
   selector: 'app-teacher-ranking-list',
@@ -12,27 +13,32 @@ import { Router } from '@angular/router';
 export class TeacherRankingListComponent implements OnInit {
 
   rankingList!: Ranking[];
-  rankingEmptyList!:Ranking[];
+  rankingEmptyList!: Ranking[];
 
 
-  constructor(private TeachersRankingListService: TeachersRankingListService, public router: Router,
-      ) {
+  constructor(private input: InputsService, private TeachersRankingListService: TeachersRankingListService, public router: Router,
+  ) {
 
-   }
+  }
 
 
-   searchNewRanking() {
+  searchNewRanking() {
     //TODO hacer pedir un nuevo rankk al servidor dependiendo de la ip que le pasemos. y añadirlo al push o refrescar
 
-   }
+  }
 
   ngOnInit(): void {
-    this.TeachersRankingListService.getUserRankings().subscribe((response: Ranking[]) => { 
+    this.TeachersRankingListService.getUserRankings().subscribe((response: Ranking[]) => {
       this.rankingList = response;
       console.log(response);
-      
+
     });
   }
+
+  takeObject(eq: Ranking) {
+    this.input.sendMessage(eq);
+  }
+
 
   deleteRanking(ranking: Ranking) {
 
