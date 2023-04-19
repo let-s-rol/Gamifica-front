@@ -40,6 +40,7 @@ export class TeacherRankingListComponent implements OnInit {
   }
 
 
+
   deleteRanking(ranking: Ranking) {
 
     console.log(ranking.id)

@@ -29,16 +29,16 @@ export class TeachersRankingListService {
   }
 
   deleteUserRanking(id:Number) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-    });
 
-    const bodyJSON =  id;
+    const token = localStorage.getItem('access_token');
+    const headers = { Authorization: `Bearer ${token}` };
+
+    const body = {id:id};
+    console.log(body)
 
     
 
-    return this._http.delete<Ranking[]>(this.Url + 'delete_ranking/', { headers, withCredentials: true }).pipe(
+    return this._http.delete<Ranking[]>(this.Url + 'delete_ranking', { headers, body:body }).pipe(
       tap (rankings => console.log(rankings))
     );
   }
