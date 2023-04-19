@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/inferfaces/User';
 import { Ranking } from '../../inferfaces/RankingList';
-import { TeachersRankingListService } from 'src/app/services/teacher-rankings.service';
+import { TeachersRankingListService } from 'src/app/services/teacherRanking/teacher-rankings.service';
 import { Router } from '@angular/router';
 
 @Component({

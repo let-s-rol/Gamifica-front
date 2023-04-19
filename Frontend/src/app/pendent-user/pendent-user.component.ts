@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PendentList } from '../inferfaces/pendentList';
-import { WaitingForRankingStudentsService } from '../services/waiting-for-ranking-students.service';
-import { SolicitudeManagementService } from '../services/solicitude-management.service';
+import { WaitingForRankingStudentsService } from '../services/waiting-for-rankings/waiting-for-ranking-students.service';
+import { SolicitudeManagementService } from '../services/solicitude-managment/solicitude-management.service';
 
 @Component({
   selector: 'app-pendent-user',

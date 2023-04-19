@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Ranking } from '../inferfaces/RankingList';
+import { Ranking } from 'src/app/inferfaces/RankingList';
 
 @Injectable({
   providedIn: 'root'

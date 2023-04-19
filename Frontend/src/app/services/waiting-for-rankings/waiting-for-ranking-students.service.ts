@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PendentList } from '../../../src/app/inferfaces/pendentList';
+import { PendentList } from '../../inferfaces/pendentList';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
