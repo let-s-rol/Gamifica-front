@@ -27,4 +27,23 @@ export class TeachersRankingListService {
       tap (rankings => console.log(rankings))
     );
   }
+
+  deleteUserRanking(id:Number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    });
+
+    const bodyJSON =  id;
+
+    
+
+    return this._http.delete<Ranking[]>(this.Url + 'delete_ranking/', { headers, withCredentials: true }).pipe(
+      tap (rankings => console.log(rankings))
+    );
+  }
+
+
+
+
 }

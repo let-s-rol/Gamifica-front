@@ -37,8 +37,7 @@ export class PendentUserComponent implements OnInit {
 
   validarUsuario(usuario: PendentList) {
 
-    let w = window as any;
-
+console.log(usuario)
     this.solicitud.validateUser(usuario.id_ranking, usuario.id_user).subscribe({
       next: (value: any) => console.log(value),
       error: (error: any) => console.log(error)

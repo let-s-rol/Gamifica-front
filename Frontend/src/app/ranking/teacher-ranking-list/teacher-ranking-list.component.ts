@@ -34,4 +34,11 @@ export class TeacherRankingListComponent implements OnInit {
     });
   }
 
+  deleteRanking(ranking: Ranking) {
+
+    console.log(ranking.id)
+    this.TeachersRankingListService.deleteUserRanking(ranking.id).subscribe();
+
+  }
+
 }
