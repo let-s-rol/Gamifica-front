@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { RankingUser } from 'src/app/inferfaces/Ranking';
+import { Router } from '@angular/router';
+import { Ranking } from 'src/app/inferfaces/RankingList';
+import {ShowUsersService} from '../../services/users/show-users.service';
+
 
 
 
@@ -12,7 +16,9 @@ export class ShowRankingComponent implements OnInit {
   ranking!: RankingUser[];
   rankingName:string= "Daw2";
 
-  constructor() {
+  constructor(public router: Router, private ShowUsersService: ShowUsersService) {
+    
+    /*
     const rankingListJSON: string = `{
       "users": [
         {
@@ -56,7 +62,21 @@ export class ShowRankingComponent implements OnInit {
 
     const rankingListDict: any = JSON.parse(rankingListJSON);
     this.ranking = rankingListDict['users'];
+    */
+
+  }
+  
+
+  ngOnInit(): void {
+
+    const id_ranking = 1;
+
+    this.ShowUsersService.getRankingStudents(id_ranking).subscribe((response: RankingUser[]) => { 
+      this.ranking = response;
+      console.log(response);
+          
+    });
   }
 
-  ngOnInit(): void {}
-}
+  
+  }
