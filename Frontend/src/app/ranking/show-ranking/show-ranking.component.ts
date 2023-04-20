@@ -14,29 +14,28 @@ import { InputsService } from 'src/app/services/inputs.service';
   styleUrls: ['./show-ranking.component.css'],
 })
 export class ShowRankingComponent implements OnInit {
-  ranking!: RankingUser[];
-  rankingName: string = "Daw2";
-  laravelFunction: string = "";
-  objectRankingTeacher!: Ranking;
+  ranking!: Ranking[];
+  data: any[] = [];
+  rankingName! :string;
+
 
   constructor(private input: InputsService, public router: Router, private ShowUsersService: ShowUsersService) {
 
   }
 
 
-
+  
 
   ngOnInit(): void {
 
-    this.objectRankingTeacher = this.input.object;
-
-    const token = localStorage.getItem('access_token');
-    this.laravelFunction = 'show_students/';
-
-
-    this.ShowUsersService.getRankingStudents(this.objectRankingTeacher.id , token!, this.laravelFunction).subscribe()
-
-
+this.input.getRankingStudents().subscribe(
+  (response: Ranking[]) => {
+    this.ranking = response;
+    console.log(response);
   }
+);
 
+this.rankingName = this.input.getRankingName();
+
+}
 }

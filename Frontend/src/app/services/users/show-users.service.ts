@@ -22,13 +22,9 @@ export class ShowUsersService {
 
 
 
-  const AllData:any = {
-    laravelFunction : 'show_students/',
-    token : localStorage.getItem('access_token'), 
-    id : id_ranking
-  }
 
-    return this._http.get<RankingUser[]>(this.Url, AllData).pipe(
+
+    return this._http.get<RankingUser[]>(this.Url + 'show_students',  { headers, withCredentials: true, }).pipe(
       tap(response => console.log('Response from back-end:', response))
     );
   }

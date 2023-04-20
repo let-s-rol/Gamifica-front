@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../inferfaces/User';
 import { Ranking } from '../../inferfaces/RankingList';
-import { filter } from 'rxjs';
+import { filter, throwError } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -27,22 +27,19 @@ export class TeachersRankingListService {
       .pipe(tap((rankings) => console.log(rankings)));
   }
 
-  deleteUserRanking(id: Number) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-    });
 
-    const bodyJSON = id;
+  deleteUserRanking(id:Number) {
 
-    console.log('hola');
+    const token = localStorage.getItem('access_token');
+    const headers = { Authorization: `Bearer ${token}` };
 
-    return this._http
-      .delete<Ranking[]>(this.Url + 'delete_ranking/',  {
-        headers,
-        withCredentials: true,
-        body: bodyJSON
-      })
-      .pipe(tap((rankings) => console.log(rankings)));
+    const body = {id:id};
+    console.log(body)
+
+    
+
+    return this._http.delete<Ranking[]>(this.Url + 'delete_ranking', { headers, body:body }).pipe(
+      tap (rankings => console.log(rankings))
+    );
   }
 }
