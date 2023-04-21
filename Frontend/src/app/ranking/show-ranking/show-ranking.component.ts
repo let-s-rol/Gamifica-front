@@ -19,7 +19,7 @@ export class ShowRankingComponent implements OnInit {
   rankingName! :string;
 
 
-  constructor(private input: InputsService, public router: Router, private ShowUsersService: ShowUsersService) {
+  constructor(private input: InputsService, public router: Router) {
 
   }
 
@@ -35,7 +35,14 @@ this.input.getRankingStudents().subscribe(
   }
 );
 
+
+
+
+
+
 this.rankingName = this.input.getRankingName();
 
 }
+
+
 }

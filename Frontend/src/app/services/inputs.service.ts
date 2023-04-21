@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ranking } from '../inferfaces/RankingList';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { task } from '../inferfaces/task';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -44,4 +45,35 @@ export class InputsService {
     );
   }
 
-}
+
+
+  createTask( /*ranking_name: task, sentence: task*/ task: task ) {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    });
+
+
+   
+    const body = {
+    
+        id_ranking: this.object.id,
+        ranking_name: this.object.ranking_name,
+        name:task.name,
+        sentence:task.sentence
+        
+      }
+
+      console.log(body)
+
+    return this._http.post(this.Url + 'createTask', body, { headers })  
+  
+  };
+
+
+
+
+  }
+
+  
