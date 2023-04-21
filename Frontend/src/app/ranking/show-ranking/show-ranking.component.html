@@ -14,12 +14,12 @@
               <strong> {{ i + 1 }} </strong>
             </td>
             <td style="vertical-align: middle">{{ eq.user_name }}</td>
-            <td style="vertical-align: middle"> {{ eq.nick }}</td>
+            <td style="vertical-align: middle">{{ eq.nick }}</td>
             <!-- <td style="vertical-align: middle"> {{ eq.points }}</td> -->
             <td style="vertical-align: middle; font-size: 20px">
               <strong>{{ eq.points }}</strong>
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmet -->
-              <button class="btn ms-3 btn-outline-danger" >Borrar</button>
+              <button class="btn ms-3 btn-outline-danger">Borrar</button>
             </td>
             <td>
               <!-- TODO iago hacer ng if si es profesor -->
@@ -34,11 +34,11 @@
       </div>
       <!-- TODO Comprobar si es profesor o alumno -->
       <div>
-        <button [routerLink]="'/tarea'" class="btn mb-2 btn-primary"  >Nueva tarea</button>
-
-
+        <button [routerLink]="'/tarea'" class="btn  mb-2 btn-primary">
+          Nueva tarea
+        </button>
       </div>
-
+      <div class="btn me-2 btn-info">Cambiar código</div>
       <button [routerLink]="'/user'" class="btn btn-secondary">Volver</button>
     </div>
   </div>
