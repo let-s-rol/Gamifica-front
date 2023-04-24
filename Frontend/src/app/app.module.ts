@@ -13,7 +13,7 @@ import { LoginComponent } from './navbar/login/login.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 
-import { RankingListComponent } from './ranking/ranking-list/ranking-list.component';
+import { RankingListComponent } from './ranking/student-ranking-list/ranking-list.component';
 import { ShowRankingComponent } from './ranking/show-ranking/show-ranking.component';
 import { TeacherRankingListComponent } from './ranking/teacher-ranking-list/teacher-ranking-list.component';
 import { PendentUserComponent } from './pendent-user/pendent-user.component';
