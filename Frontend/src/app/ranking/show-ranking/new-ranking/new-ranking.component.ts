@@ -1,34 +1,35 @@
+// Importaciones de los módulos y servicios necesarios
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NewRankingServiceService } from 'src/app/services/new-ranking/new-ranking-service.service';
 
+// Decorador que define la estructura y funcionalidad del componente
 @Component({
   selector: 'app-new-ranking',
   templateUrl: './new-ranking.component.html',
-  styleUrls: ['./new-ranking.component.css']
+  styleUrls: ['./new-ranking.component.css'],
 })
+// Clase que implementa la lógica del componente
 export class NewRankingComponent implements OnInit {
-
-  user!: FormGroup;
-  constructor(public router: Router, private newRankingService: NewRankingServiceService) {
-    this.user = new FormGroup({
-      ranking_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-
+  newRanking!: FormGroup; // información del nuevo ranking
+  constructor(
+    public router: Router,
+    private newRankingService: NewRankingServiceService
+  ) {
+    this.newRanking = new FormGroup({
+      ranking_name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
     });
   }
 
+  //llama el services para enviar la información del ranking.
   send() {
-    // TODO Hacer enlace y que guarde el enunciado
-  
-    console.log(this.user.value);
-
-    const gameId = 1;
-    this.newRankingService.addNewRanking(this.user.value)
- 
-    
-
+    console.log(this.newRanking.value);
+    this.newRankingService.addNewRanking(this.newRanking.value);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

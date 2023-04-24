@@ -1,40 +1,36 @@
 <!-- Crear tarea -->
 
-<!-- TODO hacer nueva tarea cuando brayan me diga que pasa de informacion -->
-
 <div class="container bg-light mt-5 p-3 rounded">
-    <div class="container">
-      <div class="p-3 bg-dark rounded mb-4">
-        <h1 class="text-light text-center">Nuevo Ranking</h1>
-      </div>
-  
-      <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
-        <form novalidate [formGroup]="user" (submit)="send()">
-          <!--    Input nombre -->
-          <div class="mt-2 form-group">
-            <label for="ranking_name"> Nombre </label>
-            <input
-              type="text"
-              id="ranking_name"
-              class=".text-muted p-3 form-control"
-              formControlName="ranking_name"
-              placeholder=" Introduce el nombre"
-            />
-          </div>
-  
-  
-          <!--    botton de enviar-->
-          <div>
-            <br />
-            <button class="btn btn-success" [disabled]="user.invalid">
-              Enviar
-            </button>
-            <button [routerLink]="'/user'" class="btn ms-3 btn-secondary">
-              Volver
-            </button>
-          </div>
-        </form>
-      </div>
+  <div class="container">
+    <div class="p-3 bg-dark rounded mb-4">
+      <h1 class="text-light text-center">Nuevo Ranking</h1>
+    </div>
+
+    <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
+      <form novalidate [formGroup]="newRanking" (submit)="send()">
+        <!--    Input nombre -->
+        <div class="mt-2 form-group">
+          <label for="ranking_name"> Nombre </label>
+          <input
+            type="text"
+            id="ranking_name"
+            class=".text-muted p-3 form-control"
+            formControlName="ranking_name"
+            placeholder=" Introduce el nombre"
+          />
+        </div>
+
+        <!--    botón de enviar-->
+        <div>
+          <br />
+          <button class="btn btn-success" [disabled]="newRanking.invalid">
+            Enviar
+          </button>
+          <button [routerLink]="'/user'" class="btn ms-3 btn-secondary">
+            Volver
+          </button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

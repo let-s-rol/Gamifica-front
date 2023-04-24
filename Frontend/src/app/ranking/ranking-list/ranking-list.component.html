@@ -1,4 +1,5 @@
 <div>
+  <!-- Si hay una lista de rankings, muestra la tabla de rankings -->
   <div
     *ngIf="rankingList != null"
     style="height: 150px; margin: auto"
@@ -6,6 +7,7 @@
   >
     <table class="mt-3 table table-striped table-secondary">
       <tbody>
+        <!-- Encabezado de la tabla -->
         <tr>
           <th scope="row">Profesor:</th>
           <th scope="row">Imagen:</th>
@@ -13,9 +15,11 @@
           <th scope="row">Puntos:</th>
         </tr>
 
+        <!-- Cuerpo de la tabla: muestra cada ranking de la lista -->
         <tr *ngFor="let eq of rankingList">
           <td>{{ eq.teacher }}</td>
           <td>
+            <!-- Si hay una imagen del profesor, muestra la imagen. Si no, muestra una imagen por defecto -->
             <img
               *ngIf="eq.teacherImg != null"
               style="width: 40px; border-radius: 15px"
@@ -32,6 +36,7 @@
           <td>{{ eq.ranking_name }}</td>
           <td>{{ eq.points }}</td>
           <td>
+            <!-- Botón para ver detalles del ranking -->
             <a
               (click)="selectRanking(eq.id)"
               [routerLink]="'/edit'"
@@ -43,6 +48,8 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Si no hay lista de rankings, muestra un mensaje de error -->
   <div
     *ngIf="rankingList == null"
     style="
@@ -59,8 +66,10 @@
     No estás registrado en ningún ranking, ¡busca uno y compite ya!
   </div>
 
+  <!-- Formulario para buscar nuevos rankings -->
   <form class="mt-4" [formGroup]="sendCode" (submit)="searchNewRanking()">
     <div class="input-group mb-3">
+      <!-- Campo de texto para ingresar el código de búsqueda -->
       <input
         type="text"
         id="code"
@@ -68,9 +77,10 @@
         placeholder="Entra el Código"
         aria-label="Escribe algo aquí"
         aria-describedby="basic-addon2"
-        formControlName = "code"
+        formControlName="code"
       />
       <div class="input-group-append">
+        <!-- Botón para enviar el formulario de búsqueda -->
         <button type="submit" class="ms-3 me-3 p-3 btn btn-success">
           Buscar
         </button>

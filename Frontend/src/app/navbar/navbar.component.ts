@@ -1,3 +1,5 @@
+// Este archivo TypeScript define el componente Angular para la barra de navegación de la aplicación.
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users/users.service';
@@ -8,20 +10,19 @@ import { UsersService } from '../services/users/users.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  // Variable booleana para determinar si el usuario ha iniciado sesión o no.
   log: boolean;
+
+  // Variable para el servicio UsersService.
   servze: any;
 
-  // hace de flag en caso de haber algun usuario conectado muestra el boton "mi cuenta" en caso de no ser asi muestra los botones para registrarse y loguearse
-
-  // TODO hacer que esta flag cambie cuando hay alguien logueado.
-
-
-
+  // Constructor que inicializa la variable de autenticación y la variable del servicio.
   constructor(public router: Router, public service: UsersService) {
     this.log = service.isAuthenticated();
     this.servze = service;
   }
 
+  // Función para cerrar sesión.
   logout() {
     let w = window as any;
 

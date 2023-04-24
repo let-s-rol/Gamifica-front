@@ -1,62 +1,53 @@
+<!-- Contenedor principal con sombra, fondo claro y borde redondeado -->
 <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
+  <!-- Título del contenido centrado y oscuro -->
   <h1 class="text-dark text-center">Alumnos pendientes</h1>
+  <!-- Contenedor interno pequeño -->
   <div class="container-sm">
 
+    <!-- Contenedor de la tabla con scroll si hay demasiados elementos -->
+    <div *ngIf="pendentList != null" style="height: 80vh; margin: auto" class="overflow-y-scroll">
+      <!-- Tabla centrada con estilos de formato -->
+      <table class="text-center mt-3 table table-striped table-secondary">
+        <tbody>
+          <tr>
+            <!-- Cabeceras de las columnas -->
+            <th scope="row">Imagen:</th>
+            <th scope="row">Nombre:</th>
+            <th scope="row">ranking</th>
+            <th scope="row">acciones:</th>
+          </tr>
 
-<div>
-  <div
-    *ngIf="pendentList != null"
-    style="height: 80vh; margin: auto"
-    class="overflow-y-scroll"
-  >
-    <table class="text-center mt-3 table table-striped table-secondary">
-      <tbody>
-        <tr>
-          <th scope="row">Imagen:</th>
-          <th scope="row">Nombre:</th>
-          <th scope="row">ranking</th>
-          <th scope="row">acciones:</th>
-        </tr>
+          <!-- Cada elemento de la lista de pendientes en una fila de la tabla -->
+          <tr style="height: 40px;" *ngFor="let eq of pendentList">
+            <!-- Imagen del alumno si la tiene o imagen por defecto si no -->
+            <img *ngIf="eq.img != null" style="height: 60px; border-radius: 15px" src="{{ eq.img }}" alt="" />
+            <img
+              *ngIf="eq.img == 'def'"
+              style="width: 40px; border-radius: 15px"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
+              alt=""
+            />
+            <!-- Nombre y apellidos del alumno -->
+            <td>{{ eq.user_name }} {{eq.lastName}}</td>
+            <!-- Ranking del alumno -->
+            <td>{{ eq.ranking }}</td>
+            <td>
+              <!-- Botones para validar o denegar al alumno -->
+              <button type="button" class="btn p-2 btn-success" (click)="validarUsuario(eq)">
+                Aceptar
+              </button>
+              &nbsp;
+              <button type="button" class="btn p-2 btn-danger" (click)="denyStudent(eq)">Denegar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <tr style="height: 40px;" *ngFor="let eq of pendentList">
-          <img
-            *ngIf="eq.img != null"
-            style="height: 60px; border-radius: 15px"
-            src="{{ eq.img }}"
-            alt=""
-          />
-          <img
-            *ngIf="eq.img == 'def'"
-            style="width: 40px; border-radius: 15px"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
-            alt=""
-          />
-          <td>{{ eq.user_name }}  {{eq.lastName}}</td>
-          <td>{{ eq.ranking }}</td>
-          <td>
-            <!-- TODO Joel hacer funciones para llamar al laravel para aceptar o borrar usuario -->
-            <button type="button" class="btn p-2 btn-success" (click)="validarUsuario(eq)">
-              Aceptar
-            </button>
-            &nbsp;
-            <button type="button" class="btn p-2 btn-danger" (click)="denyStudent(eq)">Denegar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div
-      *ngIf="pendentList == null"
-      style="height: 150px; margin: auto"
-      class="overflow-y-scroll"
-    >
-  <!-- TODO hacer mensaje de que no se tiene ningún alumno pendiente -->
-
-  </div>
+      <!-- Mensaje que se muestra si no hay alumnos pendientes -->
+      <div *ngIf="pendentList == null" style="height: 150px; margin: auto" class="overflow-y-scroll">
+        <!-- TODO hacer mensaje de que no se tiene ningún alumno pendiente -->
+      </div>
+    </div>
   </div>
 </div>
-
-
-  </div>
-</div>
-
-
