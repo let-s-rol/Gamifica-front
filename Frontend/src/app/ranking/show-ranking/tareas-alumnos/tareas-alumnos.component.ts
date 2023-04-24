@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { task } from 'src/app/inferfaces/task';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 
-
 @Component({
   selector: 'app-tareas-alumnos',
   templateUrl: './tareas-alumnos.component.html',
@@ -10,8 +9,8 @@ import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 })
 export class TareasAlumnosComponent implements OnInit {
   task!: task[];
-  
-  constructor(user:UserPanelComponent) {
+
+  constructor(user: UserPanelComponent) {
     const taskListJSON: string = `{
       "task": [
         {
@@ -36,13 +35,9 @@ export class TareasAlumnosComponent implements OnInit {
 
     const taskListDict: any = JSON.parse(taskListJSON);
     this.task = taskListDict['task'];
-
   }
 
-  deleteTask(){
-    
-  
-  }
+  deleteTask() {}
 
   ngOnInit(): void {}
 }

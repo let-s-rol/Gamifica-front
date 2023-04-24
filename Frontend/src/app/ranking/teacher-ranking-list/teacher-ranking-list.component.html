@@ -1,26 +1,33 @@
+<!-- Este es un contenedor principal -->
 <div>
+
+  <!-- Esta sección se muestra si el rankingList no es nulo -->
   <div
     *ngIf="rankingList != null"
     style="height: 150px; margin: auto"
     class="overflow-y-scroll"
   >
+    <!-- Aquí se muestra una tabla con la información del ranking -->
     <table class="text-center mt-3 table table-striped table-secondary">
       <tbody>
         <tr>
+          <!-- Encabezados de la tabla -->
           <th scope="row">Nombre:</th>
           <th scope="row"></th>
           <th scope="row"></th>
-
           <th>Acción</th>
         </tr>
 
+        <!-- Ciclo para mostrar la información de cada ranking en la tabla -->
         <tr *ngFor="let eq of rankingList">
           <td>{{ eq.ranking_name }}</td>
           <th></th>
           <th></th>
           <td>
+            <!-- Botón para ver la información del ranking -->
             <a [routerLink]="'/edit'"  class="btn btn-outline-dark" (click)="takeObject(eq)">VER</a>
 
+            <!-- Botón para borrar el ranking -->
             <a class="btn ms-3 btn-danger" (click)="deleteRanking(eq)">Borrar</a>
             <!-- TODO Joel llamar función de delete -->
           </td>
@@ -28,6 +35,8 @@
       </tbody>
     </table>
   </div>
+
+  
   <div
     *ngIf="rankingList == null"
     style="

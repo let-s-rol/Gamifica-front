@@ -1,35 +1,37 @@
+<!-- Contenedor principal -->
 <div class="container">
+  <!-- Barra de navegación -->
   <nav class="rounded navbar navbar-dark bg-dark justify-content-between">
+    <!-- Título de la barra de navegación -->
     <a class="navbar-brand">
       <h1 class="m-3">Navbar</h1>
     </a>
- 
+
+    <!-- Sección de inicio de sesión y registro -->
     <div *ngIf="!log">
-      <!-- TODO hacer que el log revise si hay algún valor en usuario registrado -->
+      <!-- Formulario para inicio de sesión y registro -->
       <form class="form-inline">
+        <!-- Botón de inicio de sesión -->
         <button class="btn btn-outline-secondary my-2 my-sm-0">
           <a [routerLink]="['/login']" class="nav-link"> Login </a>
         </button>
 
-
+        <!-- Botón de registro -->
         <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
-          <a [routerLink]="['/register']" class="nav-link">
-            Register
-          </a>
+          <a [routerLink]="['/register']" class="nav-link"> Register </a>
         </button>
       </form>
     </div>
- 
- 
+
+    <!-- Sección de la cuenta del usuario -->
     <div *ngIf="log">
+      <!-- Formulario para mostrar la cuenta del usuario -->
       <form class="form-inline">
+        <!-- Botón para acceder a la cuenta del usuario -->
         <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
-          <a [routerLink]="['/user']" class="nav-link">
-            Tu Cuenta
-          </a>
+          <a [routerLink]="['/user']" class="nav-link"> Tu Cuenta </a>
         </button>
       </form>
-
     </div>
   </nav>
 </div>
