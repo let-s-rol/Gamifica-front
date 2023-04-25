@@ -21,6 +21,7 @@ export class ShowRankingComponent implements OnInit {
   data: any[] = [];
   rankingName!: string;
 
+
   constructor(private input: InputsService, public router: Router) {}
 
   ngOnInit(): void {
@@ -33,4 +34,10 @@ export class ShowRankingComponent implements OnInit {
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();
   }
+
+  // TODO hacer llamada al services que retorne la ruta de la imagen
+  skill(skill:string):string {
+    return "../../../assets/medals/Cooperacion1.png"
+  }
+
 }

@@ -15,11 +15,11 @@
             <th>nick</th>
             <th>puntos</th>
             <th>acciones</th>
-            <th>sifkil 1</th>
-            <th>sifkil 2</th>
-            <th>sifkil 3</th>
-            <th>sifkil 4</th>
-            <th>sifkil 5</th>
+            <th>skill 1</th>
+            <th>skill 2</th>
+            <th>skill 3</th>
+            <th>skill 4</th>
+            <th>skill 5</th>
           </tr>
           <!-- Ciclo a través de cada elemento en la tabla -->
           <tr *ngFor="let eq of ranking; let i = index">
@@ -38,23 +38,23 @@
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="../../../assets/medals/lvl(1).png" alt="" />
+              <img src="{{skill('response')}}" alt="" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="../../../assets/medals/lvl(1).png" alt="" />
+               <img src="{{skill('response')}}" alt="" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="../../../assets/medals/lvl(1).png" alt="" />
+               <img src="{{skill('response')}}" alt="" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="../../../assets/medals/lvl(1).png" alt="" />
+               <img src="{{skill('response')}}" alt="" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="../../../assets/medals/lvl(1).png" alt="" />
+               <img src="{{skill('response')}}" alt="" />
             </td>
           </tr>
         </tbody>

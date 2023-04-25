@@ -1,6 +1,5 @@
 <!-- Este es un contenedor principal -->
 <div>
-
   <!-- Esta sección se muestra si el rankingList no es nulo -->
   <div
     *ngIf="rankingList != null"
@@ -25,10 +24,17 @@
           <th></th>
           <td>
             <!-- Botón para ver la información del ranking -->
-            <a [routerLink]="'/edit'"  class="btn btn-outline-dark" (click)="takeObject(eq)">VER</a>
+            <a
+              [routerLink]="'/edit'"
+              class="btn btn-outline-dark"
+              (click)="takeObject(eq)"
+              >VER</a
+            >
 
             <!-- Botón para borrar el ranking -->
-            <a class="btn ms-3 btn-danger" (click)="deleteRanking(eq)">Borrar</a>
+            <a class="btn ms-3 btn-danger" (click)="deleteRanking(eq)"
+              >Borrar</a
+            >
             <!-- TODO Joel llamar función de delete -->
           </td>
         </tr>
@@ -36,7 +42,6 @@
     </table>
   </div>
 
-  
   <div
     *ngIf="rankingList == null"
     style="
@@ -54,6 +59,18 @@
   </div>
 
   <!-- TODO CRear ranking -->
-  <button [routerLink]="'/newRanking'" type="submit" class="btn p-2 m-4 btn-primary">Crear Ranking</button>
-  <button [routerLink]="'/pendentList'" type="submit" class="btn p-2 btn-warning">Alumnos pendientes</button>
+  <button
+    [routerLink]="'/newRanking'"
+    type="submit"
+    class="btn p-2 m-4 btn-primary"
+  >
+    Crear Ranking
+  </button>
+  <button
+    [routerLink]="'/pendentList'"
+    type="submit"
+    class="btn p-2 btn-warning"
+  >
+    Alumnos pendientes
+  </button>
 </div>
