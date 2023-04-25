@@ -9,39 +9,21 @@
       <tbody>
         <!-- Encabezado de la tabla -->
         <tr>
-          <th scope="row">Profesor:</th>
-          <th scope="row">Imagen:</th>
-          <th scope="row">Nombre:</th>
-          <th scope="row">Puntos:</th>
+          <th scope="row">Profesor</th>
+          <th scope="row">Nombre</th>
+          <th scope="row">Acciones</th>
         </tr>
 
         <!-- Cuerpo de la tabla: muestra cada ranking de la lista -->
         <tr *ngFor="let eq of rankingList">
-          <td>{{ eq.teacher }}</td>
-          <td>
-            <!-- Si hay una imagen del profesor, muestra la imagen. Si no, muestra una imagen por defecto -->
-            <img
-              *ngIf="eq.teacherImg != null"
-              style="width: 40px; border-radius: 15px"
-              src="{{ eq.teacherImg }}"
-              alt=""
-            />
-            <img
-              *ngIf="eq.teacherImg == 'def'"
-              style="width: 40px; border-radius: 15px"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Gvi_vsZKIBWMbuTLs8Qmm_zwJZNkpHZh5og2CySpUg8Nybo07HXYTUE-Zi5Xmcnh1b0&usqp=CAU"
-              alt=""
-            />
-          </td>
+          <td>{{ eq.owner }}</td>
+          
+
           <td>{{ eq.ranking_name }}</td>
-          <td>{{ eq.points }}</td>
+
           <td>
             <!-- Botón para ver detalles del ranking -->
-            <a
-              (click)="selectRanking(eq.id)"
-              [routerLink]="'/edit'"
-              class="btn btn-outline-dark"
-              >VER</a
+            <a (click)="takeObjectStudent(eq)" [routerLink]="'/edit'" class="btn btn-outline-dark"> VER</a
             >
           </td>
         </tr>

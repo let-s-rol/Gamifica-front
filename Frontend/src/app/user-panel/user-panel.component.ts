@@ -4,6 +4,8 @@
   import { User } from '../inferfaces/User';
   import { SharedService } from 'src/app/services/shared/shared.service';
   import { UsersService } from '../services/users/users.service';
+  import { RankingListComponent } from '../ranking/student-ranking-list/ranking-list.component';
+
 
   @Component({
     selector: 'app-user-panel',

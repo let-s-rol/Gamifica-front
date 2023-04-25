@@ -26,19 +26,15 @@ export class InputsService {
 
 }
 
+  //Esta función muestra el interior del ranking, específicamente, es la lista de Estudiantes que hay en él
   getRankingStudents() {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     });
-
-   
-
-     const params = new HttpParams().set('id', this.object.id);
-     
-
     
+     const params = new HttpParams().set('id', this.object.id);
 
     return this._http.get<Ranking[]>(this.Url + 'show_students',  { headers, withCredentials: true, params  }).pipe(
       tap(response => console.log('Response from back-end:', response))
@@ -46,8 +42,8 @@ export class InputsService {
   }
 
 
-
-  createTask( /*ranking_name: task, sentence: task*/ task: task ) {
+  //Esta función permite crearuna Tarea Nueva para el Ranking
+  createTask(task: task ) {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -70,6 +66,7 @@ export class InputsService {
     return this._http.post(this.Url + 'createTask', body, { headers })  
   }
 
+  //Esa función muestra la Lista de Tareas de ese Ranking
     getTask() {
 
       const headers = new HttpHeaders({
