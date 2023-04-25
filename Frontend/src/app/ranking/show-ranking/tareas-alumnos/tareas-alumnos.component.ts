@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { task } from 'src/app/inferfaces/task';
+import { InputsService } from 'src/app/services/inputs.service';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 
 @Component({
@@ -10,34 +12,20 @@ import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 export class TareasAlumnosComponent implements OnInit {
   task!: task[];
 
-  constructor(user: UserPanelComponent) {
-    const taskListJSON: string = `{
-      "task": [
-        {
-
-      "name":"practica 1",
-      "description":"rosa",
-      "idRanking":"001",
-      "id":"14"
-
-    },
-        {
-
-      "name":"practica 2",
-      "description":"rosa",
-      "idRanking":"001",
-      "id":"14"
-    }
-
-
-    ]
-      }`;
-
-    const taskListDict: any = JSON.parse(taskListJSON);
-    this.task = taskListDict['task'];
+  constructor(user: UserPanelComponent, private input: InputsService, public router: Router) {
+ 
   }
 
-  deleteTask() {}
+  deleteTask(task:task) {
+    this.input.deleteTask(task.id).subscribe();
 
-  ngOnInit(): void {}
+  }
+
+  ngOnInit(): void {
+    this.input.getTask().subscribe((response: task[]) => {
+      this.task = response;
+      console.log(response);
+    });
+
+  }
 }

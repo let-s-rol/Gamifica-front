@@ -68,12 +68,50 @@ export class InputsService {
       console.log(body)
 
     return this._http.post(this.Url + 'createTask', body, { headers })  
+  }
+
+    getTask() {
+
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      });
+  
+     const body = this.object.id;
+     const params = new HttpParams().set('id', this.object.id);
+   console.log('Get Task Id_Ranking' + params)
+  
+      return this._http.get<task[]>(this.Url + 'ShowTasks',  { headers, params}).pipe (
+        tap(response => console.log('Response from back-end TASK:', response))
+      );
+      
+  
+    }
+  
+    deleteTask(id:number) {
+  
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      });
+  
+      const body = {id:id};
+  
+     const params = new HttpParams().set('id', this.object.id);
+     console.log('Get Task Id_Ranking' + params)
+  
+      return this._http.delete<task[]>(this.Url + 'deleteRankingTask',  { headers, body}).pipe (
+        tap(response => console.log('Response from back-end TASK:', response))
+      );
+      
+  
+    }
   
   };
 
 
 
 
-  }
+  
 
   
