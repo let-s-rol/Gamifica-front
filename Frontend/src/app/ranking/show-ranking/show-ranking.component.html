@@ -20,7 +20,6 @@
             <th>Skill 3</th>
             <th>Skill 4</th>
             <th>Skill 5</th>
-
           </tr>
           <!-- Ciclo a través de cada elemento en la tabla -->
           <tr *ngFor="let eq of ranking; let i = index">
@@ -34,28 +33,31 @@
             <td style="vertical-align: middle; font-size: 20px">
               <!-- Mostrar los puntos del jugador en la tabla -->
               <strong>{{ eq.points }}</strong>
+            </td>
+            <td>
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmed -->
               <button class="btn ms-3 btn-outline-danger">Borrar</button>
             </td>
+
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{skill('response')}}" alt=""  style="height: 50px;"/>
+              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-               <img src="{{skill('response')}}" alt=""  style="height: 50px;"/>
+              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-               <img src="{{skill('response')}}" alt=""  style="height: 50px;"/>
+              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-               <img src="{{skill('response')}}" alt=""  style="height: 50px;"/>
+              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-               <img src="{{skill('response')}}" alt=""  style="height: 50px;"/>
+              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
             </td>
           </tr>
         </tbody>
