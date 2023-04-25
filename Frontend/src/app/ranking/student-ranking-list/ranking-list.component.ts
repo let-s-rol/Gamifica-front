@@ -6,6 +6,8 @@ import { User } from 'src/app/inferfaces/User';
 import { WantToEnterRankingService } from 'src/app/services/want-to-enter/want-to-enter-ranking.service';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { Router } from '@angular/router';
+import { StudentRankingManagamentService } from 'src/app/services/student-ranking-managament.service';
+import { InputsService } from 'src/app/services/inputs.service';
 
 // Decorador que define la estructura y funcionalidad del componente
 @Component({
@@ -25,7 +27,9 @@ export class RankingListComponent implements OnInit {
   constructor(
     @Inject(SharedService) private sharedService: SharedService, // Servicio compartido
     public router: Router, // Enrutador
-    private WantToEnterRankingService: WantToEnterRankingService // Servicio de entrada a un ranking
+    private WantToEnterRankingService: WantToEnterRankingService, // Servicio de entrada a un ranking
+    private StudentRankingManagament : StudentRankingManagamentService,
+    private input: InputsService
   ) {
     // Definición del formulario con sus respectivas validaciones
     this.sendCode = new FormGroup({
@@ -33,10 +37,11 @@ export class RankingListComponent implements OnInit {
     });
   }
 
-  // Método que guarda el identificador del ranking seleccionado
-  selectRanking(id: number) {
-    this.saveID = id;
-  }
+
+takeObjectStudent(eq: Ranking) {
+  this.input.sendMessage(eq);
+}
+  
 
   // Método que actualiza el servicio compartido con el identificador del ranking seleccionado
   updateSharedText() {
@@ -51,5 +56,13 @@ export class RankingListComponent implements OnInit {
   }
 
   // Método que se ejecuta al inicializar el componente
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.StudentRankingManagament.getThisStudentsRanking().subscribe((response: Ranking[]) => {
+      this.rankingList = response;
+      console.log(response);
+
+    });
+
+
+  }
 }
