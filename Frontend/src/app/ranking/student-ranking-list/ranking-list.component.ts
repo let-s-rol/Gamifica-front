@@ -37,11 +37,7 @@ export class RankingListComponent implements OnInit {
     });
   }
 
-  /* Método que guarda el identificador del ranking seleccionado
-  selectRanking(id: number) {
-    this.saveID = id;
-  }
-*/
+
 takeObjectStudent(eq: Ranking) {
   this.input.sendMessage(eq);
 }
