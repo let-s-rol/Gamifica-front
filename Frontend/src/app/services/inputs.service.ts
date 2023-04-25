@@ -132,20 +132,7 @@ export class InputsService {
   
     }
 
-    regenerateCode() {
 
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),  
-      });
-      console.log('Bearer ' + localStorage.getItem('access_token'))
-   
-      const body = {id: this.object.id}
-    
-      return this._http.post<task[]>(this.Url + 'regenerate_code', body, {headers})
-      
-
-    }
   
   };
 
