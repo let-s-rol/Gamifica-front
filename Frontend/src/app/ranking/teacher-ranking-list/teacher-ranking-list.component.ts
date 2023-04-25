@@ -36,7 +36,11 @@ export class TeacherRankingListComponent implements OnInit {
   }
 
   takeObject(eq: Ranking) {
+    localStorage.setItem('id', eq.id.toString());
+    localStorage.setItem('id', eq.ranking_name.toString());
     this.input.sendMessage(eq);
+
+    
   }
 
 

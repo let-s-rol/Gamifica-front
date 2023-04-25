@@ -28,7 +28,7 @@
               <strong> {{ i + 1 }} </strong>
             </td>
 
-            <td style="vertical-align: middle">{{ eq.nick }}</td>
+            <td style="vertical-align: middle">{{ eq.user_name }}</td>
             <!-- <td style="vertical-align: middle"> {{ eq.points }}</td> -->
             <td style="vertical-align: middle; font-size: 20px">
               <!-- Mostrar los puntos del jugador en la tabla -->
@@ -76,7 +76,7 @@
         </button>
       </div>
       <!-- Agregar un botón para cambiar el código del ranking -->
-      <div class="btn me-2 btn-info">Cambiar código</div>
+      <div class="btn me-2 btn-info" (click)="regenerateCode()">Cambiar código</div>
       <!-- Agregar un botón de volver -->
       <button [routerLink]="'/user'" class="btn btn-secondary">Volver</button>
     </div>

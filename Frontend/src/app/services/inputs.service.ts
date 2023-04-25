@@ -24,7 +24,8 @@ export class InputsService {
 
   return this.object.ranking_name;
 
-}
+
+  }
 
   //Esta función muestra el interior del ranking, específicamente, es la lista de Estudiantes que hay en él
   getRankingStudents() {
@@ -33,8 +34,22 @@ export class InputsService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     });
-    
-     const params = new HttpParams().set('id', this.object.id);
+    let params = null;
+    if (this.object == null || this.object == undefined) {
+      
+      
+      
+      var id: number = Number(localStorage.getItem('id'));
+      params = new HttpParams().set('id', id);
+
+    } else {
+      params = new HttpParams().set('id', this.object.id);
+
+    }
+
+     
+     
+     
 
     return this._http.get<Ranking[]>(this.Url + 'show_students',  { headers, withCredentials: true, params  }).pipe(
       tap(response => console.log('Response from back-end:', response))
@@ -73,9 +88,22 @@ export class InputsService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       });
+
+      let params = null;
+
+
+      if (this.object == null || this.object == undefined) {
+      
+        var id: number = Number(localStorage.getItem('id'));
+        params = new HttpParams().set('id', id);
+    
+      } else {
+        params = new HttpParams().set('id', this.object.id);
+    
+      }
+
+      
   
-     const body = this.object.id;
-     const params = new HttpParams().set('id', this.object.id);
    console.log('Get Task Id_Ranking' + params)
   
       return this._http.get<task[]>(this.Url + 'ShowTasks',  { headers, params}).pipe (
@@ -102,6 +130,21 @@ export class InputsService {
       );
       
   
+    }
+
+    regenerateCode() {
+
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),  
+      });
+      console.log('Bearer ' + localStorage.getItem('access_token'))
+   
+      const body = {id: this.object.id}
+    
+      return this._http.post<task[]>(this.Url + 'regenerate_code', body, {headers})
+      
+
     }
   
   };
