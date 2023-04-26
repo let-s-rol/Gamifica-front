@@ -1,0 +1,38 @@
+<!-- Registro -->
+<div class="container bg-light mt-5 p-3 rounded">
+  <div class="container">
+    <!-- Encabezado del formulario -->
+    <div class="p-3 bg-dark rounded mb-4">
+      <h1 class="text-light text-center">{{name}}</h1>
+    </div>
+
+    <!-- Formulario de login -->
+    <div>
+        <h2>
+            {{taskDescription}}
+        </h2>
+      <form novalidate [formGroup]="task" (submit)="login()">
+        <!-- Campo para enviar tarea -->
+
+        <div class="mt-2 form-group">
+          <label for="password">Contraseña </label>
+          <input
+            class=".text-muted p-3 form-control"
+            type="file"
+            id="password"
+            formControlName="password"
+            placeholder="Introduce tu contraseña"
+          />
+        </div>
+
+        <!-- Botón para enviar formulario -->
+        <div>
+          <br />
+          <button class="btn p-3 btn-success" [disabled]="task.invalid">
+            <a [routerLink]="['/user']" class="nav-link"> Enviar </a>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,7 @@ import { PendentUserComponent } from './pendent-user/pendent-user.component';
 import { TareasAlumnosComponent } from './ranking/show-ranking/tareas-alumnos/tareas-alumnos.component';
 import { TareasTeacherComponent } from './ranking/show-ranking/tareas-teacher/tareas-teacher.component';
 import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-ranking.component';
+import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-rank
     TareasAlumnosComponent,
     TareasTeacherComponent,
     NewRankingComponent,
+    SendTaskComponent,
   ],
   imports: [
     HttpClientModule,
