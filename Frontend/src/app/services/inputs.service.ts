@@ -42,7 +42,7 @@ export class InputsService {
       );
   }
 
-  //Esta función permite crearuna Tarea Nueva para el Ranking
+  //Esta función permite crear una Tarea Nueva para el Ranking
   createTask(task: task) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
