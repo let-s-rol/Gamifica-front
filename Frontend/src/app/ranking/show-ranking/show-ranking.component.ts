@@ -49,8 +49,8 @@ export class ShowRankingComponent implements OnInit {
     return "../../../assets/medals/Cooperacion1.png"
   }
 
-  regenerateCode() {
-    // this.input.regenerateCode().subscribe();
-  }
+ /* regenerateCode() {
+    this.input.regenerateCode().subscribe();
+  } */
 
 }
