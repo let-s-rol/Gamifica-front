@@ -3,19 +3,18 @@
   <div class="container">
     <!-- Encabezado del formulario -->
     <div class="p-3 bg-dark rounded mb-4">
-      <h1 class="text-light text-center">{{name}}</h1>
+      <h1 class="text-light text-center">{{ name }}</h1>
     </div>
 
     <!-- Formulario de login -->
     <div>
-        <h2>
-            {{taskDescription}}
-        </h2>
+      <h2>
+        {{ taskDescription }}
+      </h2>
       <form novalidate [formGroup]="task" (submit)="login()">
         <!-- Campo para enviar tarea -->
 
         <div class="mt-2 form-group">
-        
           <input
             class=".text-muted p-3 form-control"
             type="file"
@@ -28,9 +27,11 @@
         <!-- Botón para enviar formulario -->
         <div>
           <br />
-          <button class="btn p-3 btn-success" [disabled]="task.invalid">
-            <a [routerLink]="['/user']" class="nav-link"> Enviar </a>
-          </button>
+          <button
+            class="btn p-3 btn-success"
+            [routerLink]="['/user']"
+            [disabled]="task.invalid"
+          ></button>
         </div>
       </form>
     </div>
