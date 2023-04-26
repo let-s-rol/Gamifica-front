@@ -50,7 +50,7 @@ export class ShowRankingComponent implements OnInit {
   }
 
   regenerateCode() {
-    this.input.regenerateCode().subscribe();
+    // this.input.regenerateCode().subscribe();
   }
 
 }

@@ -38,9 +38,8 @@ export class UserPanelComponent implements OnInit {
 
       img: new FormControl('', [Validators.required]),
     });
-    // TODO hacer que coja los valores por defecto del json
 
-    // TODO recoger usuario desde el Laravel al logear
+// TODO arreglar foto
     const UserJSON: string = `{
         "users": [{
         "id":"1",

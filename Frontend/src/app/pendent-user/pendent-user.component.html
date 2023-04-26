@@ -4,9 +4,12 @@
   <h1 class="text-dark text-center">Alumnos pendientes</h1>
   <!-- Contenedor interno pequeño -->
   <div class="container-sm">
-
     <!-- Contenedor de la tabla con scroll si hay demasiados elementos -->
-    <div *ngIf="pendentList != null" style="height: 80vh; margin: auto" class="overflow-y-scroll">
+    <div
+      *ngIf="pendentList != null"
+      style="height: 80vh; margin: auto"
+      class="overflow-y-scroll"
+    >
       <!-- Tabla centrada con estilos de formato -->
       <table class="text-center mt-3 table table-striped table-secondary">
         <tbody>
@@ -19,9 +22,14 @@
           </tr>
 
           <!-- Cada elemento de la lista de pendientes en una fila de la tabla -->
-          <tr style="height: 40px;" *ngFor="let eq of pendentList">
+          <tr style="height: 40px" *ngFor="let eq of pendentList">
             <!-- Imagen del alumno si la tiene o imagen por defecto si no -->
-            <img *ngIf="eq.img != null" style="height: 60px; border-radius: 15px" src="{{ eq.img }}" alt="" />
+            <img
+              *ngIf="eq.img != null"
+              style="height: 60px; border-radius: 15px"
+              src="{{ eq.img }}"
+              alt=""
+            />
             <img
               *ngIf="eq.img == 'def'"
               style="width: 40px; border-radius: 15px"
@@ -29,24 +37,40 @@
               alt=""
             />
             <!-- Nombre y apellidos del alumno -->
-            <td>{{ eq.user_name }} {{eq.lastName}}</td>
+            <td>{{ eq.user_name }} {{ eq.lastName }}</td>
             <!-- Ranking del alumno -->
             <td>{{ eq.ranking }}</td>
             <td>
               <!-- Botones para validar o denegar al alumno -->
-              <button type="button" class="btn p-2 btn-success" (click)="validarUsuario(eq)">
+              <button
+                type="button"
+                class="btn p-2 btn-success"
+                (click)="validarUsuario(eq)"
+              >
                 Aceptar
               </button>
               &nbsp;
-              <button type="button" class="btn p-2 btn-danger" (click)="denyStudent(eq)">Denegar</button>
+              <button
+                type="button"
+                class="btn p-2 btn-danger"
+                (click)="denyStudent(eq)"
+              >
+                Denegar
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
 
       <!-- Mensaje que se muestra si no hay alumnos pendientes -->
-      <div *ngIf="pendentList == null" style="height: 150px; margin: auto" class="overflow-y-scroll">
-        <!-- TODO hacer mensaje de que no se tiene ningún alumno pendiente -->
+      <div
+        *ngIf="pendentList == null"
+        style="height: 150px; margin: auto"
+        class="overflow-y-scroll"
+      >
+        <div class="alert alert-primary" role="alert">
+          No hay alumnos pendientes
+        </div>
       </div>
     </div>
   </div>

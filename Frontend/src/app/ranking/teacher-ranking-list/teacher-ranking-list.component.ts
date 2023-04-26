@@ -22,10 +22,6 @@ export class TeacherRankingListComponent implements OnInit {
   }
 
 
-  searchNewRanking() {
-    //TODO hacer pedir un nuevo rankk al servidor dependiendo de la ip que le pasemos. y añadirlo al push o refrescar
-
-  }
 
   ngOnInit(): void {
     this.TeachersRankingListService.getUserRankings().subscribe((response: Ranking[]) => {

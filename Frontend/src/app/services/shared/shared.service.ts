@@ -8,5 +8,5 @@ import { User } from 'src/app/inferfaces/User';
 export class SharedService {
 
   constructor() { }
-  sharedRankingID: number= 0; //TODO borrar iniciación después
+  sharedRankingID: number= 0; 
 }

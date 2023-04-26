@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       this.user.addControl('school', new FormControl('', Validators.required));
       this.user.addControl('rol', new FormControl('teacher'));
     } else {
-      this.user.addControl('date', new FormControl('', Validators.required)); //TODO: mirar de hacer que comprueba una fecha razonable
+      this.user.addControl('date', new FormControl('', Validators.required));
       this.user.addControl('rol', new FormControl('student'));
     }
   }
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
 
   send(): any {
-    //TODO: Usar esta funcion para mandar los datos al back
+  
 
     //  return this.passwordRepeatValidator();
     if (this.passwordRepeatValidator()) {
@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit {
       this.user.addControl('school', new FormControl('Validators.required'));
     } else {
       this.user.removeControl('school');
-      this.user.addControl('date', new FormControl('Validators.required')); //TODO: mirar de hacer que comprueba una fecha razonable
+      this.user.addControl('date', new FormControl('Validators.required'));
     }
   }
 
