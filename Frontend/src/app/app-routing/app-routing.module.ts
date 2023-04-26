@@ -14,6 +14,7 @@ import { PendentUserComponent } from '../pendent-user/pendent-user.component';
 import { ShowRankingComponent } from '../ranking/show-ranking/show-ranking.component';
 import { TareasTeacherComponent } from '../ranking/show-ranking/tareas-teacher/tareas-teacher.component';
 import { NewRankingComponent } from '../ranking/show-ranking/new-ranking/new-ranking.component';
+import { SendTaskComponent } from '../ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
 
 // Se define un array de rutas, donde se asocia cada ruta con su respectivo componente
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
 { path: 'register', component: RegisterComponent},
 { path: 'pendentList', component: PendentUserComponent},
 { path: 'newRanking', component: NewRankingComponent},
+{ path: 'sendTask', component:SendTaskComponent},
 { path: '**', redirectTo: '/', pathMatch: 'full' }, // Redirecciona cualquier ruta no definida al componente HomeComponent
 ];
 
