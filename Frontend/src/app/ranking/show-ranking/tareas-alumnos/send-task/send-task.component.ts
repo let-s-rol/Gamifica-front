@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-send-task',
@@ -33,14 +34,17 @@ export class SendTaskComponent implements OnInit {
     reader.onload = () => {
       const base64 = reader.result!.toString().split(',')[1];
       console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
-      this.sendToBackend(base64);
+      this.sendToBackend(base64,1);
     };
   }
 
-  sendToBackend(base64: string) {
-    const url = 'http://tu-url-backend.com/api/pdf';
-    const data = { pdf: base64 };
-
+  sendToBackend(base64: string, id: number) {
+    const url = environment.server_url + 'pdf/upload';
+    const data = {
+      pdf: base64,
+      id_task: id // Agrega el ID de la tarea aquí
+    };
+  
     this.http.post(url, data).subscribe(
       (response: any) => {
         console.log(response);
@@ -49,6 +53,6 @@ export class SendTaskComponent implements OnInit {
         console.log(error);
       }
     );
-
   }
+  
 }
