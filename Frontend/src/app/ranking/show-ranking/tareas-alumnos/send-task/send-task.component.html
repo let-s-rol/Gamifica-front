@@ -11,29 +11,23 @@
       <h2>
         {{ taskDescription }}
       </h2>
-      <form novalidate [formGroup]="task" (submit)="login()">
-        <!-- Campo para enviar tarea -->
+      <!-- Campo para enviar tarea -->
 
-        <div class="mt-2 form-group">
-          <input
-            class=".text-muted p-3 form-control"
-            type="file"
-            id="password"
-            formControlName="password"
-            placeholder="Introduce tu contraseña"
-          />
-        </div>
+      <div class="mt-2 form-group">
 
-        <!-- Botón para enviar formulario -->
-        <div>
-          <br />
-          <button
-            class="btn p-3 btn-success"
-            [routerLink]="['/user']"
-            [disabled]="task.invalid"
-          ></button>
-        </div>
-      </form>
+        <!-- En la plantilla de Angular -->
+
+        <input placeholder="Introduce tu tarea" class=".text-muted p-3 form-control" type="file"
+          (change)="onFileSelected($event)">
+
+      </div>
+
+      <!-- Botón para enviar formulario -->
+      <div>
+        <br />
+        <button class="btn p-3 btn-success" [routerLink]="['/user']">Enviar</button>
+      </div>
+
     </div>
   </div>
 </div>
