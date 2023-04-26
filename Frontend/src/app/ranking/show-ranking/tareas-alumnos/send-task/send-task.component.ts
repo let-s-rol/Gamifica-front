@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class SendTaskComponent implements OnInit {
   task!: FormGroup;
   token: any = 'token';
-  name: string = 'name';
+  name: string = "hola que haces";
   taskDescription: string = 'información del enunciado';
 
   constructor(public router: Router, private UsersService: UsersService) {}
