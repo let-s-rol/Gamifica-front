@@ -22,7 +22,7 @@ export class ShowRankingComponent implements OnInit {
   ranking!: Ranking[];
   data: any[] = [];
   rankingName!: string;
-
+  code!: number; //TODO joel haz service que coje el codigo
 
   constructor(private input: InputsService, public router: Router, private StudentRankingManagament : StudentRankingManagamentService
     ) {}
@@ -35,10 +35,7 @@ export class ShowRankingComponent implements OnInit {
       console.log(response);
     });
 
- /*   this.StudentRankingManagament.getInsideRanking().subscribe((response: Ranking[]) => {
-      this.ranking = response;
-      console.log(response);
-    }); */
+
 
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();

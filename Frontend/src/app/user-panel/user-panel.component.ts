@@ -1,49 +1,47 @@
-  import { Component, Inject, Input, OnInit } from '@angular/core';
-  import { FormControl, FormGroup, Validators } from '@angular/forms';
-  import { Router } from '@angular/router';
-  import { User } from '../inferfaces/User';
-  import { SharedService } from 'src/app/services/shared/shared.service';
-  import { UsersService } from '../services/users/users.service';
-  import { RankingListComponent } from '../ranking/student-ranking-list/ranking-list.component';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../inferfaces/User';
+import { SharedService } from 'src/app/services/shared/shared.service';
+import { UsersService } from '../services/users/users.service';
+import { RankingListComponent } from '../ranking/student-ranking-list/ranking-list.component';
+
+@Component({
+  selector: 'app-user-panel',
+  templateUrl: './user-panel.component.html',
+  styleUrls: ['./user-panel.component.css'],
+})
+export class UserPanelComponent implements OnInit {
+  userId: number = 1;
+  user: FormGroup;
+  usersList: User[] = [];
+  usersListX: User[] = [];
+  isTeacher: boolean = false;
 
 
-  @Component({
-    selector: 'app-user-panel',
-    templateUrl: './user-panel.component.html',
-    styleUrls: ['./user-panel.component.css'],
-  })
-  export class UserPanelComponent implements OnInit {
-    userId: number = 1;
-    user: FormGroup;
-    usersList: User[] = [];
-    usersListX: User[] = [];
-    isTeacher: boolean = false;
-    // rol: string;
-  
+  constructor(
+    public router: Router,
+    @Inject(SharedService) private sharedService: SharedService,
+    private userService: UsersService
+  ) {
+    this.user = new FormGroup({
+      name: new FormControl('asd', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
 
+      img: new FormControl('', [Validators.required]),
+    });
+    // TODO hacer que coja los valores por defecto del json
 
-    constructor(
-      public router: Router,
-      @Inject(SharedService) private sharedService: SharedService,  private userService: UsersService
-    ) {
-      this.user = new FormGroup({
-        name: new FormControl('asd', [
-          Validators.required,
-          Validators.minLength(3),
-        ]),
-        lastName: new FormControl('', [
-          Validators.required,
-          Validators.minLength(3),
-        ]),
-        nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-
-        img: new FormControl('', [Validators.required]),
-      });
-      // TODO hacer que coja los valores por defecto del json
-
-      // TODO recoger usuario desde el Laravel al logear
-      const UserJSON: string = `{
+    // TODO recoger usuario desde el Laravel al logear
+    const UserJSON: string = `{
         "users": [{
         "id":"1",
         "name":"Manolo",
@@ -57,31 +55,31 @@
       ]
         }`;
 
-      const userDict: any = JSON.parse(UserJSON);
-      this.usersList = userDict['users'];
-      // this.rol = this.usersList[0].rol;
-    }
-
-    send(): any {
-      console.log(this.user.value);
-    }
-
-
-    ngOnInit(): void {
-      this.userService.getUser().subscribe({
-        next: (user: User) => {
-          this.usersListX.push(user);
-          
-          console.log(this.usersListX);
-        },
-        error: error => window.alert(error)
-      });
+    const userDict: any = JSON.parse(UserJSON);
+    this.usersList = userDict['users'];
+    // this.rol = this.usersList[0].rol;
   }
-    
+
+  send(): any {
+    console.log(this.user.value);
+  }
+
+  ngOnInit(): void {
+    this.userService.getUser().subscribe({
+      next: (user: User) => {
+        this.usersListX.push(user);
+
+        console.log(this.usersListX);
+      },
+      error: (error) => window.alert(error),
+    });
+
+    //TODO pasar rol a show ranking
+  }
+
   logout() {
     let w = window as any;
     localStorage.removeItem('access_token');
     // w.location.reload();
   }
-
 }
