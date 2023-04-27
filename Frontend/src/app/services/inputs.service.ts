@@ -29,17 +29,22 @@ export class InputsService {
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
 
-    const params = new HttpParams().set('id', this.object.id);
+   // const params = new HttpParams().set('id', this.object.id);
+
+    console.log(this.object.id);
 
     return this._http
-      .get<Ranking[]>(this.Url + 'show_students', {
+      .get<Ranking[]>(this.Url + 'show_students/' + this.object.id , {
         headers,
         withCredentials: true,
-        params,
+        
       })
       .pipe(
-        tap((response) => console.log('Response from back-end:', response))
+        tap((response) => console.log('Response from back-end:', response)
+        )
+        
       );
+      
   }
 
   //Esta función permite crear una Tarea Nueva para el Ranking
