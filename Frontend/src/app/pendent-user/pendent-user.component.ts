@@ -23,7 +23,6 @@ export class PendentUserComponent implements OnInit {
 
   // Método ngOnInit que se ejecuta al iniciar el componente
   ngOnInit(): void {
-    
     // Se suscribe al servicio WaitingForRankingStudentsService y obtiene la lista de usuarios pendientes
     this.WaitingForRankingStudentsService.getPendentUsers().subscribe(
       (response: PendentList[]) => {

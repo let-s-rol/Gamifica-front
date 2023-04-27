@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-send-task',
@@ -16,43 +14,29 @@ export class SendTaskComponent implements OnInit {
   name: string = "hola que haces";
   taskDescription: string = 'información del enunciado';
 
-  constructor(public router: Router, private UsersService: UsersService, private http: HttpClient) { }
+  constructor(public router: Router, private UsersService: UsersService) {}
 
   ngOnInit(): void {
     //TODO hacer service para pedir GET del nombre de la tarea y enunciado
-
+    throw new Error('Method not implemented.');
   }
 
+  login(): any {
+    console.log(JSON.stringify(this.task.value));
 
+    // TODO hacer service para el POST de  la tarea
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
+    /*// Llamada al servicio de usuarios para hacer login
+    this.UsersService.login(this.Login.value).subscribe((resp: any) => {
+      console.log(resp);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+      // Almacena el Access Token en el Local Storage
+      localStorage.setItem('access_token', resp.access_token);
+      this.token = resp.access_token;
+      console.log('access_token');
 
-    reader.onload = () => {
-      const base64 = reader.result!.toString().split(',')[1];
-      console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
-      this.sendToBackend(base64,1);
-    };
+      // Redirige al usuario a la página de usuario
+      this.router.navigate(['/user']);
+    });*/
   }
-
-  sendToBackend(base64: string, id: number) {
-    const url = environment.server_url + 'pdf/upload';
-    const data = {
-      pdf: base64,
-      id_task: id // Agrega el ID de la tarea aquí
-    };
-  
-    this.http.post(url, data).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
-  
 }

@@ -36,21 +36,15 @@
         <!-- Botón para enviar formulario -->
         <div>
           <br />
-          <button
-            class="btn p-3 btn-success"
-            [routerLink]="['/user']"
-            [disabled]="Login.invalid"
-          >
-            Enviar
+          <button class="btn p-3 btn-success" [disabled]="Login.invalid">
+            <a [routerLink]="['/user']" class="nav-link"> Enviar </a>
           </button>
 
           <!-- Botón para redirigir al formulario de registro -->
-          <button
-            [routerLink]="['/register']"
-            class="btn p-3 m-3 btn-secondary"
-            ng
-          >
-            ¿No estás registrado?
+          <button class="btn p-3 m-3 btn-secondary" ng>
+            <a [routerLink]="['/register']" class="nav-link">
+              ¿No estás registrado?
+            </a>
           </button>
         </div>
       </form>

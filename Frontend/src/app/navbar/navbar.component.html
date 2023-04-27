@@ -12,19 +12,14 @@
       <!-- Formulario para inicio de sesión y registro -->
       <form class="form-inline">
         <!-- Botón de inicio de sesión -->
-        <a
-          [routerLink]="['/login']"
-          class="btn btn-outline-secondary my-2 my-sm-0"
-        >
-          Login
-        </a>
+        <button class="btn btn-outline-secondary my-2 my-sm-0">
+          <a [routerLink]="['/login']" class="nav-link"> Login </a>
+        </button>
+
         <!-- Botón de registro -->
-        <a
-          [routerLink]="['/register']"
-          class="btn m-3 btn-outline-secondary my-2 my-sm-0"
-        >
-          Register
-        </a>
+        <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
+          <a [routerLink]="['/register']" class="nav-link"> Register </a>
+        </button>
       </form>
     </div>
 
@@ -33,13 +28,9 @@
       <!-- Formulario para mostrar la cuenta del usuario -->
       <form class="form-inline">
         <!-- Botón para acceder a la cuenta del usuario -->
-
-        <a
-          [routerLink]="['/user']"
-          class="btn m-3 btn-outline-secondary my-2 my-sm-0"
-        >
-          Tu Cuenta
-        </a>
+        <button class="btn m-3 btn-outline-secondary my-2 my-sm-0">
+          <a [routerLink]="['/user']" class="nav-link"> Tu Cuenta </a>
+        </button>
       </form>
     </div>
   </nav>
