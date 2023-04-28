@@ -23,7 +23,6 @@ export class SendTaskComponent implements OnInit {
 
   ngOnInit(): void {
     //TODO hacer service para pedir GET del nombre de la tarea y enunciado
-
   }
 
   onFileSelected(event: any) {
@@ -35,14 +34,28 @@ export class SendTaskComponent implements OnInit {
     reader.onload = () => {
       const base64 = reader.result!.toString().split(',')[1];
       console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
-      this.sendToBackend(base64);
+      // this.sendToBackend(base64, 1); //TODO pasar id verdadero
+      this.uploadPdf(base64, 1); //TODO pasar id verdadero
     };
   }
 
-  sendToBackend(base64: string) {
+
+  uploadPdf(pdf: string, id_task: number) {
+    const url = 'http://127.0.0.1:8000/api/pdf/upload'; // Reemplaza esto con la URL correcta de tu backend
+    const data = {
+      pdf,
+      id_task
+    };
+    return this.http.post(url, data);
+  }
+  
+
+  sendToBackend(base64: string, idUser: number) {
     const url = 'http://127.0.0.1:8000/api/pdf/upload';
 
-    const data = { pdf: base64 };
+    console.log(base64 + " " + idUser);
+    
+    const data = { pdf: base64, id_task: idUser };
     this.http.post(url, data).subscribe(
       (response: any) => {
         console.log(response);
