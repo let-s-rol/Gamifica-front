@@ -1,4 +1,6 @@
-// Importaciones de los módulos y servicios necesarios
+/**
+ * Componente que muestra una lista de rankings y permite la búsqueda de un ranking por código.
+ */
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ranking } from 'src/app/inferfaces/RankingList';
@@ -9,60 +11,84 @@ import { Router } from '@angular/router';
 import { StudentRankingManagamentService } from 'src/app/services/student-ranking-managament.service';
 import { InputsService } from 'src/app/services/inputs.service';
 
-// Decorador que define la estructura y funcionalidad del componente
 @Component({
   selector: 'app-ranking-list',
   templateUrl: './ranking-list.component.html',
-  styleUrls: ['./ranking-list.component.css'],
+  styleUrls: ['./ranking-list.component.css']
 })
-
-// Clase que implementa la lógica del componente
 export class RankingListComponent implements OnInit {
-  rankingList!: Ranking[]; // Lista de rankings
-  saveID: number = 0; // Identificador del ranking seleccionado
-  sendCode: FormGroup; // Formulario para enviar código
+  /**
+   * Lista de rankings disponibles.
+   */
+  rankingList!: Ranking[];
 
-  @Input() userInput!: User[]; // Datos de usuario
+  /**
+   * Identificador del ranking seleccionado.
+   */
+  saveID: number = 0;
 
+  /**
+   * Datos de usuario.
+   */
+  @Input() userInput!: User[];
+
+  /**
+   * Formulario para enviar código.
+   */
+  sendCode: FormGroup;
+
+  /**
+   * Crea una instancia del componente.
+   * @param sharedService Servicio compartido.
+   * @param router Enrutador.
+   * @param wantToEnterRankingService Servicio de entrada a un ranking.
+   * @param studentRankingManagament Servicio de gestión de ranking de estudiantes.
+   * @param input Servicio de entrada.
+   */
   constructor(
-    @Inject(SharedService) private sharedService: SharedService, // Servicio compartido
-    public router: Router, // Enrutador
-    private WantToEnterRankingService: WantToEnterRankingService, // Servicio de entrada a un ranking
-    private StudentRankingManagament : StudentRankingManagamentService,
+    @Inject(SharedService) private sharedService: SharedService,
+    public router: Router,
+    private wantToEnterRankingService: WantToEnterRankingService,
+    private studentRankingManagament: StudentRankingManagamentService,
     private input: InputsService
   ) {
     // Definición del formulario con sus respectivas validaciones
     this.sendCode = new FormGroup({
-      code: new FormControl('', []),
+      code: new FormControl('', [])
     });
   }
 
+  /**
+   * Guarda el objeto de ranking seleccionado en el servicio de entrada.
+   * @param eq Objeto de ranking seleccionado.
+   */
+  takeObjectStudent(eq: Ranking) {
+    this.input.sendMessage(eq);
+  }
 
-takeObjectStudent(eq: Ranking) {
-  this.input.sendMessage(eq);
-}
-  
-
-  // Método que actualiza el servicio compartido con el identificador del ranking seleccionado
+  /**
+   * Actualiza el identificador del ranking seleccionado en el servicio compartido.
+   */
   updateSharedText() {
     this.sharedService.sharedRankingID = this.saveID;
   }
 
-  // Método que busca un nuevo ranking a partir del código ingresado
+  /**
+   * Busca un nuevo ranking a partir del código ingresado.
+   */
   searchNewRanking() {
     console.log(this.sendCode.value);
     const code = this.sendCode.value;
-    this.WantToEnterRankingService.sendCode(this.sendCode.value);
+    this.wantToEnterRankingService.sendCode(this.sendCode.value);
   }
 
-  // Método que se ejecuta al inicializar el componente
+  /**
+   * Se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
-    this.StudentRankingManagament.getThisStudentsRanking().subscribe((response: Ranking[]) => {
+    this.studentRankingManagament.getThisStudentsRanking().subscribe((response: Ranking[]) => {
       this.rankingList = response;
       console.log(response);
-
     });
-
-
   }
 }
