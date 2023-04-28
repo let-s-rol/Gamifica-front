@@ -36,7 +36,8 @@ export class SendTaskComponent implements OnInit {
       const base64 = reader.result!.toString().split(',')[1];
       console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
       // this.sendToBackend(base64, 1); //TODO pasar id verdadero
-      this.uploadPdf(base64, 1); //TODO pasar id verdadero
+      const data = this.uploadPdf(base64, 1); //TODO pasar id verdadero
+      console.log(data);
     };
   }
 
@@ -49,34 +50,46 @@ export class SendTaskComponent implements OnInit {
       pdf,
       id_task,
     };
-    console.log(data, headers);
-  
+
+    console.log("antes return");
+    /*
+    console.log(this.http.post(url, data, { headers }).pipe(
+      catchError((error) => {
+        
+        console.error(error);
+        return throwError(error);
+      }
+      )));*/
+
+      /*
+      catchError((error) => {
+        
+        console.error(error);
+        return throwError(error);
+      }));*/
+
     return this.http.post(url, data, { headers }).pipe(
       catchError((error) => {
         console.error(error);
+        
         return throwError(error);
       })
     );
-
-    
-
-
-      
   }
 
-  sendToBackend(base64: string, idUser: number) {
-    const url = 'http://127.0.0.1:8000/api/pdf/upload';
+  // sendToBackend(base64: string, idUser: number) {
+  //   const url = 'http://127.0.0.1:8000/api/pdf/upload';
 
-    console.log(base64 + ' ' + idUser);
+  //   console.log(base64 + ' ' + idUser);
 
-    const data = { pdf: base64, id_task: idUser };
-    this.http.post(url, data).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
+  //   const data = { pdf: base64, id_task: idUser };
+  //   this.http.post(url, data).subscribe(
+  //     (response: any) => {
+  //       console.log(response);
+  //     },
+  //     (error: any) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 }
