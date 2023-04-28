@@ -1,3 +1,9 @@
+/**
+ * Componente que muestra las tareas asignadas a los alumnos.
+ *
+ * @class TareasAlumnosComponent
+ * @implements {OnInit}
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { task } from 'src/app/inferfaces/task';
@@ -10,22 +16,42 @@ import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
   styleUrls: ['./tareas-alumnos.component.css'],
 })
 export class TareasAlumnosComponent implements OnInit {
+  /**
+   * Arreglo de tareas
+   *
+   * @type {task[]}
+   */
   task!: task[];
 
-  constructor(user: UserPanelComponent, private input: InputsService, public router: Router) {
- 
-  }
+  /**
+   * Constructor de la clase.
+   *
+   * @param {UserPanelComponent} user Panel de usuario.
+   * @param {InputsService} input Servicio de entrada.
+   * @param {Router} router Enrutador de Angular.
+   */
+  constructor(
+    user: UserPanelComponent,
+    private input: InputsService,
+    public router: Router
+  ) {}
 
-  deleteTask(task:task) {
+  /**
+   * Método que elimina una tarea.
+   *
+   * @param {task} task Tarea a eliminar.
+   */
+  deleteTask(task: task) {
     this.input.deleteTask(task.id).subscribe();
-
   }
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     this.input.getTask().subscribe((response: task[]) => {
       this.task = response;
       console.log(response);
     });
-
   }
 }
