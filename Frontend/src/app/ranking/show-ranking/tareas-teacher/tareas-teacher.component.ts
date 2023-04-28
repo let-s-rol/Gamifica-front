@@ -1,3 +1,14 @@
+/**
+ * @typedef {Object} FormGroupValues
+ * @property {string} name - Nombre de la tarea
+ * @property {string} sentence - Descripción de la tarea
+ */
+
+/**
+ * Componente que muestra las tareas creadas por el profesor y permite crear nuevas tareas
+ * @class
+ * @implements {OnInit}
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ranking } from 'src/app/inferfaces/RankingList';
@@ -10,6 +21,10 @@ import { InputsService } from 'src/app/services/inputs.service';
   styleUrls: ['./tareas-teacher.component.css'],
 })
 export class TareasTeacherComponent implements OnInit {
+  /**
+   * FormGroup que contiene los controles para el nombre y descripción de la tarea
+   * @type {FormGroup}
+   */
   user!: FormGroup;
 
   constructor(private input: InputsService, public router: Router) {
@@ -20,6 +35,9 @@ export class TareasTeacherComponent implements OnInit {
     });
   }
 
+  /**
+   * Método que envía los valores del FormGroup "user" al servicio "InputsService" para crear una nueva tarea
+   */
   send() {
     // TODO: Hacer enlace y que guarde el enunciado de la tarea
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-send-task',
@@ -11,32 +13,70 @@ import { Router } from '@angular/router';
 export class SendTaskComponent implements OnInit {
   task!: FormGroup;
   token: any = 'token';
-  name: string = "hola que haces";
+  name: string = 'hola que haces';
   taskDescription: string = 'información del enunciado';
 
-  constructor(public router: Router, private UsersService: UsersService) {}
+  constructor(
+    public router: Router,
+    private UsersService: UsersService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     //TODO hacer service para pedir GET del nombre de la tarea y enunciado
-    throw new Error('Method not implemented.');
   }
 
-  login(): any {
-    console.log(JSON.stringify(this.task.value));
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
 
-    // TODO hacer service para el POST de  la tarea
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
 
-    /*// Llamada al servicio de usuarios para hacer login
-    this.UsersService.login(this.Login.value).subscribe((resp: any) => {
-      console.log(resp);
+    reader.onload = () => {
+      const base64 = reader.result!.toString().split(',')[1];
+      console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
+      // this.sendToBackend(base64, 1); //TODO pasar id verdadero
+      this.uploadPdf(base64, 1); //TODO pasar id verdadero
+    };
+  }
 
-      // Almacena el Access Token en el Local Storage
-      localStorage.setItem('access_token', resp.access_token);
-      this.token = resp.access_token;
-      console.log('access_token');
+  uploadPdf(pdf: string, id_task: number) {
+    const token = localStorage.getItem('access_token');
+    const headers = { Authorization: `Bearer ${token}` };
 
-      // Redirige al usuario a la página de usuario
-      this.router.navigate(['/user']);
-    });*/
+    const url = 'http://127.0.0.1:8000/api/pdf/upload'; // Reemplaza esto con la URL correcta de tu backend
+    const data = {
+      pdf,
+      id_task,
+    };
+    console.log(data, headers);
+  
+    return this.http.post(url, data, { headers }).pipe(
+      catchError((error) => {
+        console.error(error);
+        return throwError(error);
+      })
+    );
+
+    
+
+
+      
+  }
+
+  sendToBackend(base64: string, idUser: number) {
+    const url = 'http://127.0.0.1:8000/api/pdf/upload';
+
+    console.log(base64 + ' ' + idUser);
+
+    const data = { pdf: base64, id_task: idUser };
+    this.http.post(url, data).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 }

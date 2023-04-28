@@ -1,0 +1,17 @@
+{
+    "source": {
+      "include": ["src"],
+      "exclude": ["src/test.ts"],
+      "includePattern": ".+\\.ts(doc)?$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/markdown"],
+    "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": false,
+      "default": {
+        "outputSourceFiles": false
+      }
+    }
+  }
+  

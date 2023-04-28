@@ -1,9 +1,9 @@
 export interface task {
-  id: number; //ESTE ES BACK, EL EL ID DE LA TAREA
-  name: string; //ESTE ES BACK
-  sentence: string; //ESTE ES BACK
-  id_ranking: number; //ESTE ES BACK
-  ranking_name: string; //ESTE ES BACK
+  id: number;
+  name: string;
+  sentence: string;
+  id_ranking: number;
+  ranking_name: string;
   idUser: number;
   task: File;
 }

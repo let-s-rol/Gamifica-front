@@ -2,6 +2,34 @@
  * Este componente muestra el ranking de los usuarios.
  * El ranking se recibe desde el servidor a través del servicio ShowUsersService.
  * Además, se recibe el nombre del ranking a través del servicio InputsService.
+ *
+ * @typedef {Object} Ranking
+ * @property {string} id - El id del ranking.
+ * @property {string} name - El nombre del ranking.
+ * @property {Array<RankingUser>} users - Los usuarios que pertenecen al ranking.
+ *
+ * @typedef {Object} RankingUser
+ * @property {string} id - El id del usuario.
+ * @property {string} name - El nombre del usuario.
+ * @property {number} score - El puntaje del usuario en el ranking.
+ * 
+ * @typedef {Object} RankingList
+ * @property {Array<Ranking>} rankings - Una lista de rankings.
+ *
+ * @typedef {Object} ShowUsersService
+ * @property {function(): Observable<RankingList>} getRankings - Retorna una lista de rankings.
+ *
+ * @typedef {Object} InputsService
+ * @property {function(): Observable<RankingList>} getRankingStudents - Retorna una lista de rankings de estudiantes.
+ * @property {function(): string} getRankingName - Retorna el nombre del ranking.
+ * @property {function(): Observable<any>} regenerateCode - Regenera el código del usuario actual.
+ *
+ * @typedef {Object} StudentRankingManagamentService
+ * @property {function(): string} getRankingName - Retorna el nombre del ranking.
+ *
+ * @class
+ * @classdesc Este componente se encarga de mostrar el ranking de los usuarios y el nombre del ranking. También maneja la regeneración de código de usuario.
+ * @implements {OnInit}
  */
 
 import { Component, Inject, OnInit } from '@angular/core';
@@ -19,16 +47,36 @@ import { StudentRankingManagamentService } from 'src/app/services/student-rankin
   styleUrls: ['./show-ranking.component.css'],
 })
 export class ShowRankingComponent implements OnInit {
+
+  /**
+   * Listado de rankings de estudiantes.
+   */
   ranking!: Ranking[];
+
+  /**
+   * Datos a mostrar en la tabla.
+   */
   data: any[] = [];
+
+  /**
+   * Nombre del ranking actual.
+   */
   rankingName!: string;
-  code!: number; //TODO joel haz service que coje el codigo
 
-  constructor(private input: InputsService, public router: Router, private StudentRankingManagament : StudentRankingManagamentService
-    ) {}
+  /**
+   * Código de identificación del ranking.
+   * TODO: crear un servicio que obtenga el código.
+   */
+  code!: number;
 
+  constructor(
+    private input: InputsService,
+    public router: Router,
+    private StudentRankingManagament: StudentRankingManagamentService
+  ) {}
 
   ngOnInit(): void {
+
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
     
    let id =  this.input.object.id;
@@ -37,23 +85,32 @@ export class ShowRankingComponent implements OnInit {
       
     });
 
-    
 
 
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();
 
-  /*  // Obtiene el nombre del ranking del servicio StudentRankingName
-    this.rankingName = this.StudentRankingManagament.getRankingName();   */
+    /*
+    // Obtiene el nombre del ranking del servicio StudentRankingName
+    this.rankingName = this.StudentRankingManagament.getRankingName();
+    */
+
   }
 
-  // TODO hacer llamada al services que retorne la ruta de la imagen
-  skill(skill:string):string {
-    return "../../../assets/medals/Cooperacion1.png"
+  /**
+   * Obtiene la ruta de la imagen de una habilidad.
+   * TODO: hacer llamada al servicio que retorna la ruta de la imagen.
+   * @param skill - Habilidad a buscar.
+   * @returns La ruta de la imagen correspondiente a la habilidad.
+   */
+  skill(skill: string): string {
+    return '../../../assets/medals/Cooperacion1.png';
   }
 
- /* regenerateCode() {
+  /*
+  regenerateCode() {
     this.input.regenerateCode().subscribe();
-  } */
+  }
+  */
 
 }
