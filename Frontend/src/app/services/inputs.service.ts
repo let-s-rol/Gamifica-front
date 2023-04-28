@@ -23,23 +23,27 @@ export class InputsService {
   }
 
   //Esta función muestra el interior del ranking, específicamente, es la lista de Estudiantes que hay en él
-  getRankingStudents() {
+  getRankingStudents(id:number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
 
-    const params = new HttpParams().set('id', this.object.id);
+   // const params = new HttpParams().set('id', this.object.id);
+    id = this.object.id;
+    
 
     return this._http
-      .get<Ranking[]>(this.Url + 'show_students', {
+      .get<Ranking[]>(`${this.Url}show_students/${id}`, {
         headers,
         withCredentials: true,
-        params,
-      })
-      .pipe(
-        tap((response) => console.log('Response from back-end:', response))
+        
+      }).pipe (
+        tap((response) => console.log('Response from back-end:', response)
+        )
       );
+      
+      
   }
 
   //Esta función permite crear una Tarea Nueva para el Ranking
