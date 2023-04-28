@@ -31,11 +31,13 @@ export class ShowRankingComponent implements OnInit {
   ngOnInit(): void {
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
     
-    this.input.getRankingStudents().subscribe((response: Ranking[]) => {
+   let id =  this.input.object.id;
+    this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
       this.ranking = response;
-      console.log("Estudiantes" + response);
+      
     });
 
+    
 
 
     // Obtiene el nombre del ranking del servicio InputService
