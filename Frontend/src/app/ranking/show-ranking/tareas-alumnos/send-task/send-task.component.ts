@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-send-task',
@@ -26,70 +27,31 @@ export class SendTaskComponent implements OnInit {
     //TODO hacer service para pedir GET del nombre de la tarea y enunciado
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      const base64 = reader.result!.toString().split(',')[1];
-      console.log(base64); // Aquí se muestra el archivo en formato base64 en la consola
-      // this.sendToBackend(base64, 1); //TODO pasar id verdadero
-      const data = this.uploadPdf(base64, 1); //TODO pasar id verdadero
-      console.log(data);
-    };
-  }
-
-  uploadPdf(pdf: string, id_task: number) {
+  uploadPdf(pdf: File, id_task: number): Observable<any> {
     const token = localStorage.getItem('access_token');
-    const headers = { Authorization: `Bearer ${token}` };
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const formData = new FormData();
+    formData.append('pdf', pdf, pdf.name);
+    formData.append('id_task', id_task.toString());
 
     const url = 'http://127.0.0.1:8000/api/pdf/upload'; // Reemplaza esto con la URL correcta de tu backend
-    const data = {
-      pdf,
-      id_task,
-    };
 
-    console.log("antes return");
-    /*
-    console.log(this.http.post(url, data, { headers }).pipe(
-      catchError((error) => {
-        
-        console.error(error);
-        return throwError(error);
-      }
-      )));*/
-
-      /*
-      catchError((error) => {
-        
-        console.error(error);
-        return throwError(error);
-      }));*/
-
-    return this.http.post(url, data, { headers }).pipe(
+    return this.http.post(url, formData, { headers }).pipe(
       catchError((error) => {
         console.error(error);
-        
         return throwError(error);
       })
     );
   }
 
-  // sendToBackend(base64: string, idUser: number) {
-  //   const url = 'http://127.0.0.1:8000/api/pdf/upload';
-
-  //   console.log(base64 + ' ' + idUser);
-
-  //   const data = { pdf: base64, id_task: idUser };
-  //   this.http.post(url, data).subscribe(
-  //     (response: any) => {
-  //       console.log(response);
-  //     },
-  //     (error: any) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.uploadPdf(file, 1).subscribe(
+      (response) => console.log(response),
+      (error) => console.error(error)
+    );
+  }
 }
