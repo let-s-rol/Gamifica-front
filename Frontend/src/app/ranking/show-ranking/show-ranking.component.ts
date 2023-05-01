@@ -12,7 +12,7 @@
  * @property {string} id - El id del usuario.
  * @property {string} name - El nombre del usuario.
  * @property {number} score - El puntaje del usuario en el ranking.
- * 
+ *
  * @typedef {Object} RankingList
  * @property {Array<Ranking>} rankings - Una lista de rankings.
  *
@@ -40,18 +40,18 @@ import { ShowUsersService } from '../../services/users/show-users.service';
 import { InputsService } from 'src/app/services/inputs.service';
 import { StudentRankingManagamentService } from 'src/app/services/student-ranking-managament.service';
 
-
 @Component({
   selector: 'app-show-ranking',
   templateUrl: './show-ranking.component.html',
   styleUrls: ['./show-ranking.component.css'],
 })
 export class ShowRankingComponent implements OnInit {
-
   /**
    * Listado de rankings de estudiantes.
    */
   ranking!: Ranking[];
+
+  points: number = 1000;
 
   /**
    * Datos a mostrar en la tabla.
@@ -76,16 +76,12 @@ export class ShowRankingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
-    
-   let id =  this.input.object.id;
+
+    let id = this.input.object.id;
     this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
       this.ranking = response;
-      
     });
-
-
 
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();
@@ -94,7 +90,6 @@ export class ShowRankingComponent implements OnInit {
     // Obtiene el nombre del ranking del servicio StudentRankingName
     this.rankingName = this.StudentRankingManagament.getRankingName();
     */
-
   }
 
   /**
@@ -107,10 +102,27 @@ export class ShowRankingComponent implements OnInit {
     return '../../../assets/medals/Cooperacion1.png';
   }
 
+  totalPoints() {
+    this.points = this.points - this.obtenerSumaInputs()
+  }
+
+  obtenerSumaInputs(): number {
+    const numInput: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      "input[type='number']"
+    );
+    let sumaInputs: number = 0;
+    const arrayInputs: Array<HTMLInputElement> = Array.from(numInput); // Convierte la lista de nodos en un array
+    for (const input of arrayInputs) {
+      sumaInputs += parseInt(input.value);
+    }
+    console.log(`La suma de los inputs es: ${sumaInputs}`);
+
+    return sumaInputs;
+  }
+
   /*
   regenerateCode() {
     this.input.regenerateCode().subscribe();
   }
   */
-
 }
