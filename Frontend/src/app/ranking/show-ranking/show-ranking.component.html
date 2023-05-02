@@ -42,11 +42,11 @@
 
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img src="{{ skill('responsabilidad') }}" alt="" style="height: 50px" />
               <div style="width: 75px">
                 <div class="form-group">
                   <div class="input-group">
-                    <input
+                    <input #puntos
                       type="number"
                       class="form-control form-control-sm"
                       id="input-contador"
@@ -54,7 +54,7 @@
                       max="1000"
                       value="0"
                       step="10"
-                      oninput="patata()"
+                      (input)="onInputChange(eq.id_user, eq.id_ranking, 'Responsabilidad', puntos.value)"
                     />
                   </div>
                 </div>
@@ -170,6 +170,13 @@
       <div class="btn me-2 btn-info">Cambiar código</div>
       <!-- Agregar un botón de volver -->
       <button [routerLink]="'/user'" class="btn btn-secondary">Volver</button>
+
+      <pre>{{ inputValues | json }}</pre>
+
+
     </div>
   </div>
 </div>
+
+
+

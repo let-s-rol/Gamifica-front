@@ -53,6 +53,8 @@ export class ShowRankingComponent implements OnInit {
 
   points: number = 1000;
 
+  inputValues: Record<string, any> = {};
+
   /**
    * Datos a mostrar en la tabla.
    */
@@ -103,9 +105,14 @@ export class ShowRankingComponent implements OnInit {
   }
 
   totalPoints() {
-    this.points = this.points - this.obtenerSumaInputs()
+    this.points = this.points - this.obtenerSumaInputs();
   }
 
+  /**
+   * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
+   *
+   * @returns La suma de los valores numéricos de los inputs.
+   */
   obtenerSumaInputs(): number {
     const numInput: NodeListOf<HTMLInputElement> = document.querySelectorAll(
       "input[type='number']"
@@ -120,9 +127,29 @@ export class ShowRankingComponent implements OnInit {
     return sumaInputs;
   }
 
-  /*
-  regenerateCode() {
-    this.input.regenerateCode().subscribe();
+  /**
+   * Actualiza el valor de un campo de un usuario en el ranking.
+   *
+   * @param {number} ranking_id - El ID del ranking.
+   * @param {number} user_id - El ID del usuario.
+   * @param {string} key - La clave del campo a actualizar.
+   * @param {number} value - El nuevo valor del campo.
+   * @returns {void}
+   */
+  onInputChange(
+    ranking_id: number,
+    user_id: number,
+    key: string,
+    value: string
+  ) {
+    if (!this.inputValues[ranking_id]) {
+      this.inputValues[ranking_id] = {};
+    }
+
+    if (!this.inputValues[ranking_id][user_id]) {
+      this.inputValues[ranking_id][user_id] = {};
+    }
+
+    this.inputValues[ranking_id][user_id][key] = value;
   }
-  */
 }
