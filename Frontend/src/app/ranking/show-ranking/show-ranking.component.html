@@ -3,7 +3,7 @@
   <div class="container">
     <div class="p-3 bg-dark rounded mb-4">
       <!-- poner el nombre del ranking -->
-      <h1 class="text-light text-center">{{ rankingName }} --> {{code}}</h1>
+      <h1 class="text-light text-center">{{ rankingName }} --> {{ code }}</h1>
     </div>
 
     <!-- Tabla de clasificación -->
@@ -15,11 +15,12 @@
             <th>Nick</th>
             <th>Puntos</th>
             <th>Acciones</th>
-            <th>Skill 1</th>
-            <th>Skill 2</th>
-            <th>Skill 3</th>
-            <th>Skill 4</th>
-            <th>Skill 5</th>
+            <th>Responsabilidad</th>
+            <th>cooperación</th>
+            <th>Iniciativa</th>
+            <th>G.Emocional</th>
+            <th>Pensamiento</th>
+
           </tr>
           <!-- Ciclo a través de cada elemento en la tabla -->
           <tr *ngFor="let eq of ranking; let i = index">
@@ -35,30 +36,110 @@
               <strong>{{ eq.points }}</strong>
             </td>
             <td>
-
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmed -->
               <button class="btn btn-outline-danger">Borrar</button>
             </td>
 
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img src="{{ skill('responsabilidad') }}" alt="" style="height: 50px" />
+              <div style="width: 75px">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input #puntos
+                      type="number"
+                      class="form-control form-control-sm"
+                      id="input-contador"
+                      min="0"
+                      max="1000"
+                      value="0"
+                      step="10"
+                      (input)="onInputChange(eq.id_user, eq.id_ranking, 'Responsabilidad', puntos.value)"
+                    />
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
               <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <div style="width: 75px">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      id="input-contador"
+                      min="0"
+                      max="1000"
+                      value="0"
+                      step="10"
+                      oninput="patata()"
+                    />
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
               <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <div style="width: 75px">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      id="input-contador"
+                      min="0"
+                      max="1000"
+                      value="0"
+                      step="10"
+                      oninput="patata()"
+                    />
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
               <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <div style="width: 75px">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      id="input-contador"
+                      min="0"
+                      max="1000"
+                      value="0"
+                      step="10"
+                      oninput="patata()"
+                    />
+                  </div>
+                </div>
+              </div>
             </td>
+
             <td>
               <!-- Mostrar la medalla del jugador -->
               <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <div style="width: 75px">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control form-control-sm"
+                      id="input-contador"
+                      min="0"
+                      max="1000"
+                      value="0"
+                      step="10"
+                      oninput="patata()"
+                    />
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -70,16 +151,32 @@
         <app-tareas-alumnos></app-tareas-alumnos>
       </div>
       <!-- TODO Comprobar si es profesor o alumno -->
+
+      <div>
+        <!-- TOdo hacer que se actualicen los putntos que tenemos -->
+        {{ points }}
+      </div>
+
       <!-- Agregar un botón para crear una nueva tarea -->
       <div>
         <button [routerLink]="'/tarea'" class="btn mb-2 btn-primary">
           Nueva tarea
         </button>
+        <button onclick="" class="btn ms-2 mb-2 btn-outline-info">
+        enviar puntos
+        </button>
       </div>
       <!-- Agregar un botón para cambiar el código del ranking -->
-      <div class="btn me-2 btn-info" >Cambiar código</div>
+      <div class="btn me-2 btn-info">Cambiar código</div>
       <!-- Agregar un botón de volver -->
       <button [routerLink]="'/user'" class="btn btn-secondary">Volver</button>
+
+      <pre>{{ inputValues | json }}</pre>
+
+
     </div>
   </div>
 </div>
+
+
+
