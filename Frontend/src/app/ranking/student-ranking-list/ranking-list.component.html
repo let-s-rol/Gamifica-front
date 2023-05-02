@@ -23,7 +23,7 @@
 
           <td>
             <!-- Botón para ver detalles del ranking -->
-            <a (click)="takeObjectStudent(eq)" [routerLink]="'/edit'" class="btn btn-outline-dark"> VER</a
+            <a (click)="takeObjectStudent(eq)" [routerLink]="['/edit',eq.id]" class="btn btn-outline-dark"> VER</a
             >
           </td>
         </tr>

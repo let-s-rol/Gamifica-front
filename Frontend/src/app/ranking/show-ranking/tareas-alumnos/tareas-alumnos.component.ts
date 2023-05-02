@@ -5,7 +5,7 @@
  * @implements {OnInit}
  */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { task } from 'src/app/inferfaces/task';
 import { InputsService } from 'src/app/services/inputs.service';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
@@ -23,6 +23,8 @@ export class TareasAlumnosComponent implements OnInit {
    */
   task!: task[];
 
+  id!: number;
+
   /**
    * Constructor de la clase.
    *
@@ -33,7 +35,8 @@ export class TareasAlumnosComponent implements OnInit {
   constructor(
     user: UserPanelComponent,
     private input: InputsService,
-    public router: Router
+    public router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   /**
@@ -49,9 +52,18 @@ export class TareasAlumnosComponent implements OnInit {
    * Método que se ejecuta al inicializar el componente.
    */
   ngOnInit(): void {
-    this.input.getTask().subscribe((response: task[]) => {
-      this.task = response;
-      console.log(response);
+    this.route.params.subscribe(params => {
+      let id = Number.parseInt(params['id']);
+      if (Number.isNaN(id)) {
+        console.error('Invalid id:', params['id']);
+        return;
+      }
+      console.log('ID from route params:', id);
+      this.input.getTask(id).subscribe((response: task[]) => {
+        this.task = response;
+        console.log(response);
+      });
     });
   }
+  
 }
