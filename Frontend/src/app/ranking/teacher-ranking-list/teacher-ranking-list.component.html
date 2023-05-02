@@ -25,8 +25,7 @@
           <td>
             <!-- Botón para ver la información del ranking -->
             <a
-              [routerLink]="'/edit'"
-              class="btn btn-outline-dark"
+              [routerLink]="['/detodo', this.eq.id]" class="btn btn-outline-dark"
               (click)="takeObject(eq)"
               >VER</a
             >

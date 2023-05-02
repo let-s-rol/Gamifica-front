@@ -23,14 +23,14 @@ import { SendTaskComponent } from '../ranking/show-ranking/tareas-alumnos/send-t
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'tarea', component: TareasTeacherComponent },
-  { path: 'edit', component: ShowRankingComponent },
+  { path: 'edit/:id', component: ShowRankingComponent },
   { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'pendentList', component: PendentUserComponent},
   { path: 'newRanking', component: NewRankingComponent},
   { path: 'sendTask', component:SendTaskComponent},
-  { path: '**', redirectTo: '/', pathMatch: 'full' }, // Redirecciona cualquier ruta no definida al componente HomeComponent
+  //{ path: '**', redirectTo: '/', pathMatch: 'full' }, // Redirecciona cualquier ruta no definida al componente HomeComponent
 ];
 
 /**
