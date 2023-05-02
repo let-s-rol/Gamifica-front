@@ -23,29 +23,25 @@ export class InputsService {
   }
 
   //Esta función muestra el interior del ranking, específicamente, es la lista de Estudiantes que hay en él
-  getRankingStudents(id:number) {
+  getRankingStudents(id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
-
-   // const params = new HttpParams().set('id', this.object.id);
-    id = this.object.id;
-    
-
+  
+    const options = {
+      headers,
+      withCredentials: true
+    };
+    console.log('ID:', id);
+  
     return this._http
-      .get<Ranking[]>(`${this.Url}show_students/${id}`, {
-        headers,
-        withCredentials: true,
-        
-      }).pipe (
-        tap((response) => console.log('Response from back-end:', response)
-        )
-      );
-      
-      
+    .get<Ranking[]>(`${this.Url}show_students/${id}`, options)
+    .pipe (
+      tap((response) => console.log('Response from back-end:', response))
+    );
   }
-
+  
   //Esta función permite crear una Tarea Nueva para el Ranking
   createTask(task: task) {
     const headers = new HttpHeaders({
@@ -65,23 +61,22 @@ export class InputsService {
     return this._http.post(this.Url + 'createTask', body, { headers });
   }
 
-  //Esa función muestra la Lista de Tareas de ese Ranking
-  getTask() {
+  getTask(id: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
-
-    const body = this.object.id;
-    const params = new HttpParams().set('id', this.object.id);
-    console.log('Get Task Id_Ranking' + params);
-
+  
+    const params = new HttpParams().set('id', id.toString());
+    console.log('Get Task Id_Ranking: ' + id);
+  
     return this._http
       .get<task[]>(this.Url + 'ShowTasks', { headers, params })
       .pipe(
         tap((response) => console.log('Response from back-end TASK:', response))
       );
   }
+  
 
 
   deleteTask(id: number) {

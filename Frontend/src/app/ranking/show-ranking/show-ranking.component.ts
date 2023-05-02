@@ -34,7 +34,7 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { RankingUser } from 'src/app/inferfaces/Ranking';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ranking } from 'src/app/inferfaces/RankingList';
 import { ShowUsersService } from '../../services/users/show-users.service';
 import { InputsService } from 'src/app/services/imput/inputs.service';
@@ -71,19 +71,35 @@ export class ShowRankingComponent implements OnInit {
    */
   code!: number;
 
+  id!: number;
+
   constructor(
     private input: InputsService,
     public router: Router,
-    private StudentRankingManagament: StudentRankingManagamentService
+    private StudentRankingManagament: StudentRankingManagamentService,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
-
-    let id = this.input.object.id;
-    this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
-      this.ranking = response;
+    this.route.params.subscribe(params => {
+      let id = Number.parseInt(params['id']);
+      if (Number.isNaN(id)) {
+        console.error('Invalid id:', params['id']);
+        return;
+      }
+      console.log('ID from route params:', id);
+      this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
+        this.ranking = response;
+      });
     });
+    
+  
+  
+  
+  
+  
+  
 
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();
