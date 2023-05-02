@@ -25,7 +25,8 @@
           <td>
             <!-- Botón para ver la información del ranking -->
             <a
-              [routerLink]="['edit', this.eq.id]" class="btn btn-outline-dark"
+              [routerLink]="['edit', this.eq.id]"
+              class="btn btn-outline-dark"
               (click)="takeObject(eq)"
               >VER</a
             >
@@ -34,7 +35,6 @@
             <a class="btn ms-3 btn-danger" (click)="deleteRanking(eq)"
               >Borrar</a
             >
-           
           </td>
         </tr>
       </tbody>
