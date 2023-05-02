@@ -39,6 +39,7 @@ import { Ranking } from 'src/app/inferfaces/RankingList';
 import { ShowUsersService } from '../../services/users/show-users.service';
 import { InputsService } from 'src/app/services/imput/inputs.service';
 import { StudentRankingManagamentService } from 'src/app/services/studend-ranking/student-ranking-managament.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-show-ranking',
@@ -72,17 +73,19 @@ export class ShowRankingComponent implements OnInit {
   code!: number;
 
   id!: number;
+  http: any;
+  apiUrl: any;
 
   constructor(
     private input: InputsService,
     public router: Router,
     private StudentRankingManagament: StudentRankingManagamentService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       let id = Number.parseInt(params['id']);
       if (Number.isNaN(id)) {
         console.error('Invalid id:', params['id']);
@@ -93,13 +96,6 @@ export class ShowRankingComponent implements OnInit {
         this.ranking = response;
       });
     });
-    
-  
-  
-  
-  
-  
-  
 
     // Obtiene el nombre del ranking del servicio InputService
     this.rankingName = this.input.getRankingName();
@@ -167,5 +163,23 @@ export class ShowRankingComponent implements OnInit {
     }
 
     this.inputValues[ranking_id][user_id][key] = value;
+  }
+
+  sendJsonToBackend(json: any) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const groupedJson = Object.entries(json).reduce(
+      (acc: { [key: string]: any }, [key, value]) => {
+        const [userId, attribute] = key.split('_');
+        if (!acc[userId]) {
+          acc[userId] = {};
+        }
+        acc[userId][attribute] = value;
+        return acc;
+      },
+      {}
+    );
+    // TODO llamar a la funcion correcta
+
+    return this.http.post(`${this.apiUrl}/users`, groupedJson, { headers });
   }
 }
