@@ -7,7 +7,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { task } from 'src/app/inferfaces/task';
-import { InputsService } from 'src/app/services/inputs.service';
+import { InputsService } from 'src/app/services/imput/inputs.service';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Ranking } from '../inferfaces/RankingList';
+import { Ranking } from 'src/app/inferfaces/RankingList';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { task } from '../inferfaces/task';
+import { task } from 'src/app/inferfaces/task';
 import { tap } from 'rxjs/operators';
 
 @Injectable({

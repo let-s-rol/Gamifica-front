@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ranking } from 'src/app/inferfaces/RankingList';
 import { Router } from '@angular/router';
-import { InputsService } from 'src/app/services/inputs.service';
+import { InputsService } from 'src/app/services/imput/inputs.service';
 
 @Component({
   selector: 'app-tareas-teacher',

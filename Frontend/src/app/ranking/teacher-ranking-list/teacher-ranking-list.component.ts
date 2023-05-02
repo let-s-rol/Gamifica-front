@@ -18,7 +18,7 @@ import { User } from 'src/app/inferfaces/User';
 import { Ranking } from '../../inferfaces/RankingList';
 import { TeachersRankingListService } from 'src/app/services/teacherRanking/teacher-rankings.service';
 import { Router } from '@angular/router';
-import { InputsService } from 'src/app/services/inputs.service';
+import { InputsService } from 'src/app/services/imput/inputs.service';
 
 /**
  * Componente que muestra la lista de rankings creados por un profesor

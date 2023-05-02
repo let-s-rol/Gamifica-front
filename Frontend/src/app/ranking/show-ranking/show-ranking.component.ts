@@ -37,8 +37,8 @@ import { RankingUser } from 'src/app/inferfaces/Ranking';
 import { Router } from '@angular/router';
 import { Ranking } from 'src/app/inferfaces/RankingList';
 import { ShowUsersService } from '../../services/users/show-users.service';
-import { InputsService } from 'src/app/services/inputs.service';
-import { StudentRankingManagamentService } from 'src/app/services/student-ranking-managament.service';
+import { InputsService } from 'src/app/services/imput/inputs.service';
+import { StudentRankingManagamentService } from 'src/app/services/studend-ranking/student-ranking-managament.service';
 
 @Component({
   selector: 'app-show-ranking',

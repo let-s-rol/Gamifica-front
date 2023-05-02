@@ -8,8 +8,8 @@ import { User } from 'src/app/inferfaces/User';
 import { WantToEnterRankingService } from 'src/app/services/want-to-enter/want-to-enter-ranking.service';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { Router } from '@angular/router';
-import { StudentRankingManagamentService } from 'src/app/services/student-ranking-managament.service';
-import { InputsService } from 'src/app/services/inputs.service';
+import { StudentRankingManagamentService } from 'src/app/services/studend-ranking/student-ranking-managament.service';
+import { InputsService } from 'src/app/services/imput/inputs.service';
 
 @Component({
   selector: 'app-ranking-list',
