@@ -16,7 +16,7 @@ import { ShowRankingComponent } from '../ranking/show-ranking/show-ranking.compo
 import { TareasTeacherComponent } from '../ranking/show-ranking/tareas-teacher/tareas-teacher.component';
 import { NewRankingComponent } from '../ranking/show-ranking/new-ranking/new-ranking.component';
 import { SendTaskComponent } from '../ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
-
+import { HistoryComponent } from '../history/history.component';
 /**
  * Se define un array de rutas, donde se asocia cada ruta con su respectivo componente
  */
@@ -26,11 +26,12 @@ const routes: Routes = [
   { path: 'edit/:id', component: ShowRankingComponent },
   { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
-  { path: 'pendentList', component: PendentUserComponent},
-  { path: 'newRanking', component: NewRankingComponent},
-  { path: 'sendTask', component:SendTaskComponent},
-  //{ path: '**', redirectTo: '/', pathMatch: 'full' }, // Redirecciona cualquier ruta no definida al componente HomeComponent
+  { path: 'historial', component: HistoryComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'pendentList', component: PendentUserComponent },
+  { path: 'newRanking', component: NewRankingComponent },
+  { path: 'sendTask', component: SendTaskComponent },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }, // Redirecciona cualquier ruta no definida al componente HomeComponent
 ];
 
 /**
@@ -50,6 +51,4 @@ const routes: Routes = [
    */
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}

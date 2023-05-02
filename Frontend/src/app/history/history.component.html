@@ -1,0 +1,42 @@
+<div class="container bg-light mt-5 p-3 rounded">
+  <div class="container">
+    <div class="p-3 bg-dark rounded mb-4">
+      <!-- poner el nombre del ranking -->
+      <h1 class="text-light text-center">Historial</h1>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Historial de notas</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">fecha</th>
+                  <th class="text-center">Nombre</th>
+                  <th class="text-center">Responsabilidad</th>
+                  <th class="text-center">cooperación</th>
+                  <th class="text-center">Iniciativa</th>
+                  <th class="text-center">G.Emocional</th>
+                  <th class="text-center">Pensamiento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let nota of historialNotas">
+                  <td class="text-center">{{ nota.fecha }}</td>
+                  <td class="text-center">{{ nota.nombre }}</td>
+                  <td class="text-center">{{ nota.nota1.Responsabilidad }}</td>
+                  <td class="text-center">{{ nota.nota1.Cooperacion }}</td>
+                  <td class="text-center">{{ nota.nota1.Iniciativa }}</td>
+                  <td class="text-center">{{ nota.nota1.Emocional }}</td>
+                  <td class="text-center">{{ nota.nota1.Pensamiento }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

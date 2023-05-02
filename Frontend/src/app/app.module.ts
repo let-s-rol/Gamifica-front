@@ -21,6 +21,7 @@ import { TareasAlumnosComponent } from './ranking/show-ranking/tareas-alumnos/ta
 import { TareasTeacherComponent } from './ranking/show-ranking/tareas-teacher/tareas-teacher.component';
 import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-ranking.component';
 import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-ta
     TareasTeacherComponent,
     NewRankingComponent,
     SendTaskComponent,
+    HistoryComponent,
   ],
   imports: [
     HttpClientModule,
