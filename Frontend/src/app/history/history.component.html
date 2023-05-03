@@ -20,20 +20,42 @@
                   <th class="text-center">Iniciativa</th>
                   <th class="text-center">G.Emocional</th>
                   <th class="text-center">Pensamiento</th>
+                  <th class="text-center">Puntuador</th>
+                  <th class="text-center">Accion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let nota of historialNotas">
-                  <td class="text-center">{{ nota.fecha }}</td>
-                  <td class="text-center">{{ nota.nombre }}</td>
-                  <td class="text-center">{{ nota.nota1.Responsabilidad }}</td>
-                  <td class="text-center">{{ nota.nota1.Cooperacion }}</td>
-                  <td class="text-center">{{ nota.nota1.Iniciativa }}</td>
-                  <td class="text-center">{{ nota.nota1.Emocional }}</td>
-                  <td class="text-center">{{ nota.nota1.Pensamiento }}</td>
+                  <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
+                  <td class="text-center">{{ nota.userName }}</td>
+                  <td class="text-center">
+                    {{ nota.pentabilities.Responsabilidad }}
+                  </td>
+                  <td class="text-center">
+                    {{ nota.pentabilities.Cooperacion }}
+                  </td>
+                  <td class="text-center">
+                    {{ nota.pentabilities.Iniciativa }}
+                  </td>
+                  <td class="text-center">
+                    {{ nota.pentabilities.Emocional }}
+                  </td>
+                  <td class="text-center">
+                    {{ nota.pentabilities.Pensamiento }}
+                  </td>
+                  <td class="text-center">{{ nota.namePuntuador }}</td>
+                  <td class="text-center">
+                    <button class="btn ms-2 mb-2 btn-outline-danger">
+                      <!-- TODO poner función que llame al service para Borrar puntos -->
+                      Borrar
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
+            <button [routerLink]="'/user'" class="btn btn-secondary">
+              Volver
+            </button>
           </div>
         </div>
       </div>
