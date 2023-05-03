@@ -40,6 +40,7 @@ import { ShowUsersService } from '../../services/users/show-users.service';
 import { InputsService } from 'src/app/services/imput/inputs.service';
 import { StudentRankingManagamentService } from 'src/app/services/studend-ranking/student-ranking-managament.service';
 import { HttpHeaders } from '@angular/common/http';
+import { SkillsService } from 'src/app/skills.service';
 
 @Component({
   selector: 'app-show-ranking',
@@ -77,6 +78,7 @@ export class ShowRankingComponent implements OnInit {
   apiUrl: any;
 
   constructor(
+    private skillsService: SkillsService,
     private input: InputsService,
     public router: Router,
     private StudentRankingManagament: StudentRankingManagamentService,
@@ -154,15 +156,26 @@ export class ShowRankingComponent implements OnInit {
     key: string,
     value: string
   ) {
+    // Crear un objeto que mapea los ids a nombres
+    const idNames: { [key: string]: string } = {
+      id_ranking: 'ranking',
+      id_user: 'user',
+    };
+
+    // Crear la entrada del objeto inputValues correspondiente al ranking y usuario actual
     if (!this.inputValues[ranking_id]) {
       this.inputValues[ranking_id] = {};
     }
-
     if (!this.inputValues[ranking_id][user_id]) {
       this.inputValues[ranking_id][user_id] = {};
     }
 
-    this.inputValues[ranking_id][user_id][key] = value;
+    // Agregar la entrada correspondiente al valor actual
+    this.inputValues[ranking_id][user_id][idNames[key] || key] = value;
+
+    // Enviar el JSON al backend
+    const json = JSON.stringify(this.inputValues);
+    this.sendJsonToBackend(json);
   }
 
   sendJsonToBackend(json: any) {
@@ -178,8 +191,9 @@ export class ShowRankingComponent implements OnInit {
       },
       {}
     );
-    // TODO llamar a la funcion correcta
-
-    return this.http.post(`${this.apiUrl}/users`, groupedJson, { headers });
+    // Llamar a la función correspondiente para enviar el JSON al backend
+    this.skillsService.sendJsonToBackend(groupedJson).subscribe((response) => {
+      console.log(response);
+    });
   }
 }
