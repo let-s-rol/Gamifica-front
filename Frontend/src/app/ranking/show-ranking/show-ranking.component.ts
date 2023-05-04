@@ -175,7 +175,7 @@ export class ShowRankingComponent implements OnInit {
 
     // Enviar el JSON al backend
     const json = JSON.stringify(this.inputValues);
-    this.sendJsonToBackend(json);
+    // this.sendJsonToBackend(json);
   }
 
   sendJsonToBackend(json: any) {
@@ -191,6 +191,8 @@ export class ShowRankingComponent implements OnInit {
       },
       {}
     );
+    console.log(json);
+
     // Llamar a la función correspondiente para enviar el JSON al backend
     this.skillsService.sendJsonToBackend(groupedJson).subscribe((response) => {
       console.log(response);

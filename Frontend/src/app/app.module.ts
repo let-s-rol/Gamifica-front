@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +12,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './navbar/login/login.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
-
 import { RankingListComponent } from './ranking/student-ranking-list/ranking-list.component';
 import { ShowRankingComponent } from './ranking/show-ranking/show-ranking.component';
 import { TeacherRankingListComponent } from './ranking/teacher-ranking-list/teacher-ranking-list.component';
@@ -22,6 +21,7 @@ import { TareasTeacherComponent } from './ranking/show-ranking/tareas-teacher/ta
 import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-ranking.component';
 import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
 import { HistoryComponent } from './history/history.component';
+import { FilterPipe } from './history/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,8 +40,10 @@ import { HistoryComponent } from './history/history.component';
     NewRankingComponent,
     SendTaskComponent,
     HistoryComponent,
+    FilterPipe,
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,

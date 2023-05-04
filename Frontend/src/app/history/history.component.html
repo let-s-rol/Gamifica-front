@@ -8,11 +8,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Historial de notas</h2>
+          <h2>Historial de puntos</h2>
 
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
+                <input
+                  class="form-control mb-2"
+                  placeholder="Buscar Filtro"
+                  [(ngModel)]="filtro"
+                />
                 <tr>
                   <th class="text-center">fecha</th>
                   <th class="text-center">Nombre</th>
@@ -26,13 +31,7 @@
                 </tr>
               </thead>
               <tbody>
-                <input
-                  class="form-control mb-2"
-                  placeholder="Buscar notas"
-                  [(ngModel)]="filtro"
-                />
-
-                <tr *ngFor="let nota of historialNotas  | filter:filtro">
+                <tr *ngFor="let nota of historialNotas | filter : filtro">
                   <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
                   <td class="text-center">{{ nota.userName }}</td>
                   <td class="text-center">

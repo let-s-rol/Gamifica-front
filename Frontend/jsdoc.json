@@ -1,16 +1,17 @@
 {
-    "source": {
-      "include": ["src"],
-      "exclude": ["src/test.ts"],
-      "includePattern": ".+\\.ts(doc)?$",
-      "excludePattern": "(^|\\/|\\\\)_"
-    },
-    "plugins": ["plugins/markdown"],
-    "templates": {
-      "cleverLinks": false,
-      "monospaceLinks": false,
-      "default": {
-        "outputSourceFiles": false
-      }
+  "source": {
+    "include": ["src"],
+    "exclude": ["src/test.ts"],
+    "includePattern": ".+\\.ts(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["plugins/markdown", "node_modules/angular-jsdoc/default"],
+
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": false
     }
   }
+}
