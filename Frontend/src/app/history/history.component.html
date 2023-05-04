@@ -9,6 +9,7 @@
       <div class="row">
         <div class="col-md-12">
           <h2>Historial de notas</h2>
+
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -25,7 +26,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let nota of historialNotas">
+                <input
+                  class="form-control mb-2"
+                  placeholder="Buscar notas"
+                  [(ngModel)]="filtro"
+                />
+
+                <tr *ngFor="let nota of historialNotas  | filter:filtro">
                   <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
                   <td class="text-center">{{ nota.userName }}</td>
                   <td class="text-center">

@@ -1,16 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
+
+
+
+@NgModule({
+  declarations: [FilterPipe], // Agrega HistoryComponent y FilterPipe a las declaraciones
+  imports: [BrowserModule, FormsModule],
+  providers: [],
+  bootstrap: []
+})
+
+export class AppModule {}
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css'],
+  styleUrls: ['./history.component.css']
 })
 
+export class HistoryComponent {
+  public filtro!: any;
 
-
-export class HistoryComponent implements OnInit {
   historialNotas: any[] = [];
-  constructor() {}
+  transform(items: any[], filtro: string): any[] {
+    if (!items) {
+      return [];
+    }
+    if (!filtro) {
+      return items;
+    }
+    filtro = filtro.toLocaleLowerCase();
+    return items.filter(nota => {
+      return nota.nombre.toLocaleLowerCase().includes(filtro);
+    });
+  }
+
 
   ngOnInit() {
 
@@ -99,4 +125,12 @@ export class HistoryComponent implements OnInit {
     }
     ;
   }
+
+function Pipe(arg0: { name: string; }): (target: typeof HistoryComponent) => void | typeof HistoryComponent {
+  throw new Error('Function not implemented.');
+}
+
+function Component(arg0: { selector: string; templateUrl: string; styleUrls: string[]; }): (target: typeof HistoryComponent) => void | typeof HistoryComponent {
+  throw new Error('Function not implemented.');
+}
 
