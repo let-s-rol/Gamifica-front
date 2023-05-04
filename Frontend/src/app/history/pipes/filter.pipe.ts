@@ -32,7 +32,7 @@ export class FilterPipe implements PipeTransform {
     // Filtra la lista de objetos en base al valor de filtro proporcionado.
 
     return items.filter(
-      (item) => item.nombre && item.nombre.toLowerCase().includes(filtro)
+      (item) => item.userName && item.userName.toLowerCase().includes(filtro)
     );
   }
 }
