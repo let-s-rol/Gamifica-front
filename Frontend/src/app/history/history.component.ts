@@ -12,6 +12,7 @@ import { FilterPipe } from './pipes/filter.pipe';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
 })
+
 export class HistoryComponent implements OnInit {
   /** Variable que almacena el filtro de búsqueda */
   public filtro!: any;
@@ -19,24 +20,6 @@ export class HistoryComponent implements OnInit {
   /** Array que almacena las notas del historial */
   historialNotas: any[] = [];
 
-  /**
-   * Función que realiza la transformación del array de notas según el filtro ingresado
-   * @param items - Array de notas a filtrar
-   * @param filtro - Cadena de texto a utilizar como filtro
-   * @returns Array de notas filtradas
-   */
-  transform(items: any[], filtro: string): any[] {
-    if (!items) {
-      return [];
-    }
-    if (!filtro) {
-      return items;
-    }
-    filtro = filtro.toLocaleLowerCase();
-    return items.filter((nota) => {
-      return nota.nombre.toLocaleLowerCase().includes(filtro);
-    });
-  }
 
   /** Función que se ejecuta al inicializar el componente */
   ngOnInit() {
@@ -66,8 +49,6 @@ export class HistoryComponent implements OnInit {
         pentabilities: {
           Responsabilidad: 9,
           Cooperacion: 8,
-          Iniciativa: 7,
-          Emocional: 9,
           Pensamiento: 9,
         },
         fecha: '2023-05-11',

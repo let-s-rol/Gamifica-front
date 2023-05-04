@@ -7,6 +7,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'filter' })
+
 export class FilterPipe implements PipeTransform {
   /**
    * Esta función se encarga de transformar la lista de objetos utilizando el valor de filtro proporcionado.
@@ -15,7 +16,7 @@ export class FilterPipe implements PipeTransform {
    * @returns Una nueva lista de objetos filtrados.
    */
   transform(items: any[], filtro: string): any[] {
-    debugger
+
     // Si la lista de objetos es null o undefined, retorna una lista vacía.
 
     if (!items) {
