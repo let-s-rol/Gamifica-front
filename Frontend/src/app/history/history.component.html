@@ -27,13 +27,17 @@
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
                   <td>
-                    <input
-                      class="form-control mb-2"
-                      placeholder="Filtrar por nombre"
-                      [(ngModel)]="filtro"
-                    />
+
+                    <input class="form-control" type="date" id="fechaInicio" name="fechaInicio"
+                      [(ngModel)]="fechaInicio">
+
+
+                    <input class="form-control" type="date" id="fechaFin" name="fechaFin" [(ngModel)]="fechaFin">
+
+                  </td>
+                  <td>
+                    <input class="form-control mb-2" placeholder="Filtrar por nombre" [(ngModel)]="filtro" />
                   </td>
                   <td>
                     <select class="form-control" id="opciones" name="opciones" [(ngModel)]="filtroSkill">
@@ -51,20 +55,14 @@
                   <td></td>
                   <td>
                     <!-- TODO separar esto y que pille por separado que el nombre -->
-                    <input
-                      class="form-control mb-2"
-                      placeholder="Filtrar por apellido"
-                      [(ngModel)]="filtroApellido"
-                    />
+                    <input class="form-control mb-2" placeholder="Filtrar por apellido" [(ngModel)]="filtroApellido" />
                   </td>
                   <td></td>
                 </tr>
-                <tr
-                  *ngFor="
+                <tr *ngFor="
                     let nota of historialNotas
-                      | filterName : filtro | filterPuntuador : filtroApellido | filtroSkill : filtroSkill
-                  "
-                >
+                      | filterName : filtro | filterPuntuador : filtroApellido | filtroSkill : filtroSkill |  filterDate:fechaInicio:fechaFin
+                  ">
                   <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
                   <td class="text-center">{{ nota.userName }}</td>
                   <td class="text-center">

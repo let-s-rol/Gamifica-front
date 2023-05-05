@@ -21,9 +21,11 @@ import { TareasTeacherComponent } from './ranking/show-ranking/tareas-teacher/ta
 import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-ranking.component';
 import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
 import { HistoryComponent } from './history/history.component';
+
 import { FilterPipe } from './history/pipes/filter.pipe';
 import { FilterPipePuntuador } from './history/pipes/filter.piperpuntuador';
 import { FilterPipeSkill } from './history/pipes/filter.pipeskill';
+import { FilterPipeDate } from './history/pipes/filter.pipeDate';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { FilterPipeSkill } from './history/pipes/filter.pipeskill';
     HistoryComponent,
     FilterPipe,
     FilterPipePuntuador,
-    FilterPipeSkill
+    FilterPipeSkill,
+    FilterPipeDate
   ],
   imports: [
     FormsModule,

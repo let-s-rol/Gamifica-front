@@ -19,9 +19,13 @@ import { FilterPipeSkill } from './pipes/filter.pipeskill';
 
 export class HistoryComponent implements OnInit {
   /** Variable que almacena el filtro de búsqueda */
+
   public filtro!: any;
   public filtroApellido!: any;
   public filtroSkill!: any;
+  public fechaInicio!: any;
+  public fechaFin!: any;
+  public filterDate!: any;
 
   /** Array que almacena las notas del historial */
   historialNotas: any[] = [];
