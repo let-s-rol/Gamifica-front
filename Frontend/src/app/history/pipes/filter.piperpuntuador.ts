@@ -6,10 +6,8 @@
  */
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'filterName',
-})
-export class FilterPipe implements PipeTransform {
+@Pipe({ name: 'filterPuntuador' })
+export class FilterPipePuntuador implements PipeTransform {
   /**
    * Esta función se encarga de transformar la lista de objetos utilizando el valor de filtro proporcionado.
    * @param items - La lista de objetos a filtrar.
@@ -29,16 +27,18 @@ export class FilterPipe implements PipeTransform {
       return items;
     }
     // Convierte el valor de filtro a minúsculas para una búsqueda insensible a mayúsculas.
+
     filtro = filtro
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '');
+
     // Filtra la lista de objetos en base al valor de filtro proporcionado.
 
     return items.filter(
       (item) =>
-        item.userName &&
-        item.userName
+        item.namePuntuador &&
+        item.namePuntuador
           .toLowerCase()
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')

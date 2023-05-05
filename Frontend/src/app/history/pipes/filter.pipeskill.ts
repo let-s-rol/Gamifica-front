@@ -7,9 +7,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterName',
+  name: 'filtroSkill',
 })
-export class FilterPipe implements PipeTransform {
+export class FilterPipeSkill implements PipeTransform {
   /**
    * Esta función se encarga de transformar la lista de objetos utilizando el valor de filtro proporcionado.
    * @param items - La lista de objetos a filtrar.
@@ -17,7 +17,7 @@ export class FilterPipe implements PipeTransform {
    * @returns Una nueva lista de objetos filtrados.
    */
 
-  transform(items: any[], filtro: string): any[] {
+  transform(items: any[], filtroSeleccionado: string): any[] {
     // Si la lista de objetos es null o undefined, retorna una lista vacía.
 
     if (!items) {
@@ -25,24 +25,18 @@ export class FilterPipe implements PipeTransform {
     }
     // Si no hay valor de filtro, retorna la lista completa sin filtrar.
 
-    if (!filtro) {
+    if (!filtroSeleccionado) {
       return items;
     }
     // Convierte el valor de filtro a minúsculas para una búsqueda insensible a mayúsculas.
-    filtro = filtro
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+
+    filtroSeleccionado = filtroSeleccionado.toLowerCase();
     // Filtra la lista de objetos en base al valor de filtro proporcionado.
 
     return items.filter(
       (item) =>
-        item.userName &&
-        item.userName
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .includes(filtro)
+        item.pentabilities &&
+        item.pentabilities.toLowerCase().includes(filtroSeleccionado)
     );
   }
 }

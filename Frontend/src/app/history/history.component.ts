@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
+import { FilterPipePuntuador } from './pipes/filter.piperpuntuador';
+import { FilterPipeSkill } from './pipes/filter.pipeskill';
+
+
 
 @Component({
   selector: 'app-history',
@@ -16,6 +20,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 export class HistoryComponent implements OnInit {
   /** Variable que almacena el filtro de búsqueda */
   public filtro!: any;
+  public filtroApellido!: any;
 
   /** Array que almacena las notas del historial */
   historialNotas: any[] = [];

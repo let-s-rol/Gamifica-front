@@ -22,6 +22,8 @@ import { NewRankingComponent } from './ranking/show-ranking/new-ranking/new-rank
 import { SendTaskComponent } from './ranking/show-ranking/tareas-alumnos/send-task/send-task.component';
 import { HistoryComponent } from './history/history.component';
 import { FilterPipe } from './history/pipes/filter.pipe';
+import { FilterPipePuntuador } from './history/pipes/filter.piperpuntuador';
+import { FilterPipeSkill } from './history/pipes/filter.pipeskill';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { FilterPipe } from './history/pipes/filter.pipe';
     SendTaskComponent,
     HistoryComponent,
     FilterPipe,
+    FilterPipePuntuador,
+    FilterPipeSkill
   ],
   imports: [
     FormsModule,

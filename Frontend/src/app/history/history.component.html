@@ -36,14 +36,15 @@
                     />
                   </td>
                   <td>
-                    <!-- <select class="form-control" id="opciones" name="opciones">
-                      <option value=""></option>
+                    <select class="form-control" id="opciones" name="opciones">
+                      <option value="">-</option>
                       <option value="Responsabilidad">Responsabilidad</option>
-                      <option value="cooperación">cooperación</option>
+                      <option value="cooperación">Cooperacion</option>
                       <option value="Iniciativa">Iniciativa</option>
-                      <option value="Emocional">G.Emocional</option>
+                      <option value="Emocional">Emocional</option>
                       <option value="Pensamiento">Pensamiento</option>
-                    </select> -->
+                      [(ngModel)]="filtroSkill"
+                    </select>
                   </td>
                   <td></td>
                   <td></td>
@@ -53,13 +54,18 @@
                     <!-- TODO separar esto y que pille por separado que el nombre -->
                     <input
                       class="form-control mb-2"
-                      placeholder="Buscar Filtro"
-                      [(ngModel)]="filtro"
+                      placeholder="Filtrar por apellido"
+                      [(ngModel)]="filtroApellido"
                     />
                   </td>
                   <td></td>
                 </tr>
-                <tr *ngFor="let nota of historialNotas | filter : filtro">
+                <tr
+                  *ngFor="
+                    let nota of historialNotas
+                      | filterName : filtro | filterPuntuador : filtroApellido | filtroSkill : filtroSkill
+                  "
+                >
                   <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
                   <td class="text-center">{{ nota.userName }}</td>
                   <td class="text-center">
