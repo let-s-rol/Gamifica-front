@@ -21,6 +21,7 @@ export class HistoryComponent implements OnInit {
   /** Variable que almacena el filtro de búsqueda */
   public filtro!: any;
   public filtroApellido!: any;
+  public filtroSkill!: any;
 
   /** Array que almacena las notas del historial */
   historialNotas: any[] = [];
@@ -29,22 +30,6 @@ export class HistoryComponent implements OnInit {
   /** Función que se ejecuta al inicializar el componente */
   ngOnInit() {
     this.historialNotas = [
-      {
-        notaId: 1,
-        userId: 1234,
-        userName: 'Juan',
-        userPuntuadorId: 5678,
-        namePuntuador: 'Ana',
-        pentabilities: {
-          Responsabilidad: 8,
-          Cooperacion: 7,
-          Iniciativa: 9,
-          Emocional: 10,
-          Pensamiento: 8,
-        },
-        fecha: '2023-05-10',
-        hora: '15:30:00',
-      },
       {
         notaId: 2,
         userId: 5678,

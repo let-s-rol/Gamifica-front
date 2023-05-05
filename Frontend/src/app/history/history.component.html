@@ -36,14 +36,13 @@
                     />
                   </td>
                   <td>
-                    <select class="form-control" id="opciones" name="opciones">
+                    <select class="form-control" id="opciones" name="opciones" [(ngModel)]="filtroSkill">
                       <option value="">-</option>
                       <option value="Responsabilidad">Responsabilidad</option>
-                      <option value="cooperación">Cooperacion</option>
+                      <option value="Cooperacion">Cooperacion</option>
                       <option value="Iniciativa">Iniciativa</option>
                       <option value="Emocional">Emocional</option>
                       <option value="Pensamiento">Pensamiento</option>
-                      [(ngModel)]="filtroSkill"
                     </select>
                   </td>
                   <td></td>

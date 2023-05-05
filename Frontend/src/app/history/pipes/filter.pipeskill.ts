@@ -17,26 +17,16 @@ export class FilterPipeSkill implements PipeTransform {
    * @returns Una nueva lista de objetos filtrados.
    */
 
-  transform(items: any[], filtroSeleccionado: string): any[] {
-    // Si la lista de objetos es null o undefined, retorna una lista vacía.
-
-    if (!items) {
-      return [];
+  transform(historialNotas: any[], filtroSkill: string): any[] {
+    if (!filtroSkill) {
+      return historialNotas; // Devuelve el arreglo sin modificar
     }
-    // Si no hay valor de filtro, retorna la lista completa sin filtrar.
-
-    if (!filtroSeleccionado) {
-      return items;
-    }
-    // Convierte el valor de filtro a minúsculas para una búsqueda insensible a mayúsculas.
-
-    filtroSeleccionado = filtroSeleccionado.toLowerCase();
-    // Filtra la lista de objetos en base al valor de filtro proporcionado.
-
-    return items.filter(
-      (item) =>
-        item.pentabilities &&
-        item.pentabilities.toLowerCase().includes(filtroSeleccionado)
-    );
+  
+    // Aplica el filtro en el arreglo
+    return historialNotas.filter(item => {
+      return Object.keys(item.pentabilities).includes(filtroSkill);
+    });
   }
+  
+
 }
