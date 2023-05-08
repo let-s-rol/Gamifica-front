@@ -24,12 +24,13 @@ export class FilterPipeDate implements PipeTransform {
       return items;
     }
 
-    return items.filter(item => {
-        console.log(item.fecha, fechaInicio);
-        
-      const fechaItem = new Date(item.fecha);
-      return (!fechaInicio || fechaItem >= fechaInicio) &&
-             (!fechaFin || fechaItem <= fechaFin);
+    return items.filter((item) => {
+      console.log(item.fecha, fechaInicio);
+      console.log(fechaFin, fechaInicio, item.fecha);
+      return (
+        (!fechaInicio || item.fecha >= fechaInicio) &&
+        (!fechaFin || item.fecha <= fechaFin)
+      );
     });
   }
 }

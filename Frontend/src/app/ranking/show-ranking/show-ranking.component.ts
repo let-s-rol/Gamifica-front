@@ -41,6 +41,8 @@ import { InputsService } from 'src/app/services/imput/inputs.service';
 import { StudentRankingManagamentService } from 'src/app/services/studend-ranking/student-ranking-managament.service';
 import { HttpHeaders } from '@angular/common/http';
 import { SkillsService } from 'src/app/skills.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-show-ranking',
@@ -77,9 +79,6 @@ export class ShowRankingComponent implements OnInit {
    */
   code!: number;
 
-  id!: number;
-  http: any;
-  apiUrl: any;
 
   constructor(
     private skillsService: SkillsService,
@@ -87,7 +86,8 @@ export class ShowRankingComponent implements OnInit {
     public router: Router,
     private StudentRankingManagament: StudentRankingManagamentService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -122,7 +122,6 @@ export class ShowRankingComponent implements OnInit {
   skill(skill: string): string {
     return '../../../assets/medals/Cooperacion1.png';
   }
-
 
   /**
    * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
@@ -179,49 +178,57 @@ export class ShowRankingComponent implements OnInit {
 
     // Enviar el JSON al backend
     const json = JSON.stringify(this.inputValues);
-    // this.sendJsonToBackend(json);
-    this.actualizarMaximos()
+    // this.sendJsonToBackend(json).subscribe();
+
+    //this.actualizarMaximos();
   }
 
   sendJsonToBackend(json: any) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const groupedJson = Object.entries(json).reduce(
-      (acc: { [key: string]: any }, [key, value]) => {
-        const [userId, attribute] = key.split('_');
-        if (!acc[userId]) {
-          acc[userId] = {};
-        }
-        acc[userId][attribute] = value;
-        return acc;
-      },
-      {}
-    );
-    console.log(json);
-
-    // Llamar a la función correspondiente para enviar el JSON al backend
-    this.skillsService.sendJsonToBackend(groupedJson).subscribe((response) => {
-      console.log(response);
-    });
+    console.log(json)
+    return this.http.put(`http://127.0.0.1:8000/api/insertSkillsPoints`, json);
   }
 
   actualizarMaximos(): void {
-    const puntosResponsabilidad = document.getElementById('puntosResponsabilidad') as HTMLInputElement;
-    const puntosCooperacion = document.getElementById('puntosCooperacion') as HTMLInputElement;
-    const puntosIniciativa = document.getElementById('puntosIniciativa') as HTMLInputElement;
-    const puntosEmocional = document.getElementById('puntosEmocional') as HTMLInputElement;
-    const puntosPensamiento = document.getElementById('puntosPensamiento') as HTMLInputElement;
+    const puntosResponsabilidad = document.getElementById(
+      'puntosResponsabilidad'
+    ) as HTMLInputElement;
+    const puntosCooperacion = document.getElementById(
+      'puntosCooperacion'
+    ) as HTMLInputElement;
+    const puntosIniciativa = document.getElementById(
+      'puntosIniciativa'
+    ) as HTMLInputElement;
+    const puntosEmocional = document.getElementById(
+      'puntosEmocional'
+    ) as HTMLInputElement;
+    const puntosPensamiento = document.getElementById(
+      'puntosPensamiento'
+    ) as HTMLInputElement;
 
     const total: number =
-      parseInt(puntosResponsabilidad.value) + parseInt(puntosCooperacion.value) + parseInt(puntosIniciativa.value) + parseInt(puntosEmocional.value) + parseInt(puntosPensamiento.value);
+      parseInt(puntosResponsabilidad.value) +
+      parseInt(puntosCooperacion.value) +
+      parseInt(puntosIniciativa.value) +
+      parseInt(puntosEmocional.value) +
+      parseInt(puntosPensamiento.value);
     const max: number = this.points - total;
 
-    puntosResponsabilidad.max = (max + parseInt(puntosResponsabilidad.value)).toString();
-    puntosCooperacion.max = (max + parseInt(puntosCooperacion.value)).toString();
+    puntosResponsabilidad.max = (
+      max + parseInt(puntosResponsabilidad.value)
+    ).toString();
+    puntosCooperacion.max = (
+      max + parseInt(puntosCooperacion.value)
+    ).toString();
     puntosIniciativa.max = (max + parseInt(puntosIniciativa.value)).toString();
     puntosEmocional.max = (max + parseInt(puntosEmocional.value)).toString();
-    puntosPensamiento.max = (max + parseInt(puntosPensamiento.value)).toString();
+    puntosPensamiento.max = (
+      max + parseInt(puntosPensamiento.value)
+    ).toString();
 
-    if (parseInt(puntosResponsabilidad.value) > parseInt(puntosResponsabilidad.max)) {
+    if (
+      parseInt(puntosResponsabilidad.value) >
+      parseInt(puntosResponsabilidad.max)
+    ) {
       puntosResponsabilidad.value = puntosResponsabilidad.max;
     }
     if (parseInt(puntosCooperacion.value) > parseInt(puntosCooperacion.max)) {
