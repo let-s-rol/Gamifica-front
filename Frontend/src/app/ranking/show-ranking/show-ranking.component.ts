@@ -43,7 +43,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { SkillsService } from 'src/app/skills.service';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-show-ranking',
   templateUrl: './show-ranking.component.html',
@@ -78,7 +77,6 @@ export class ShowRankingComponent implements OnInit {
    * TODO: crear un servicio que obtenga el código.
    */
   code!: number;
-
 
   constructor(
     private skillsService: SkillsService,
@@ -151,41 +149,52 @@ export class ShowRankingComponent implements OnInit {
    * @param {number} value - El nuevo valor del campo.
    * @returns {void}
    */
-  onInputChange(
-    ranking_id: number,
-    user_id: number,
-    key: string,
-    value: string
-  ) {
-    this.puntosDisponibles = this.maxPuntos - this.valorInput; // Actualizar puntos disponibles
-    this.cdr.detectChanges(); // Forzar detección de cambios
-    // Crear un objeto que mapea los ids a nombres
-    const idNames: { [key: string]: string } = {
-      id_ranking: 'ranking',
-      id_user: 'user',
+  onInputChange(id_ranking: number, id_user: number, key: string, value: string) {
+    // Create the input value object if it doesn't exist
+    if (!this.inputValues[id_ranking]) {
+      this.inputValues[id_ranking] = {};
+    }
+    if (!this.inputValues[id_ranking][id_user]) {
+      this.inputValues[id_ranking][id_user] = {};
+    }
+  
+    // Create the key-value pair object and add it to the input value object
+    const keyValueObject = {
+      id_user: id_user,
+      id_ranking: id_ranking,
+      [key]: value,
     };
-
-    // Crear la entrada del objeto inputValues correspondiente al ranking y usuario actual
-    if (!this.inputValues[ranking_id]) {
-      this.inputValues[ranking_id] = {};
-    }
-    if (!this.inputValues[ranking_id][user_id]) {
-      this.inputValues[ranking_id][user_id] = {};
-    }
-
-    // Agregar la entrada correspondiente al valor actual
-    this.inputValues[ranking_id][user_id][idNames[key] || key] = value;
-
-    // Enviar el JSON al backend
-    const json = JSON.stringify(this.inputValues);
+    this.inputValues[id_ranking][id_user] = Object.assign(
+      {},
+      this.inputValues[id_ranking][id_user],
+      { [key]: value }
+    );
+  
+    // Send the JSON to the backend
+    const json = JSON.stringify(keyValueObject);
     // this.sendJsonToBackend(json).subscribe();
-
+  
     //this.actualizarMaximos();
-  }
+}
 
+  
+  
+  
   sendJsonToBackend(json: any) {
-    console.log(json)
-    return this.http.put(`http://127.0.0.1:8000/api/insertSkillsPoints`, json);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+    });
+
+    console.log(json);
+    this.http
+      .put(`http://127.0.0.1:8000/api/insertSkillsPoints`, json, { headers })
+      .subscribe({
+        next: (resp: any) => {
+          console.log('funciona');
+        },
+        error: (error) => window.alert(error.toString()),
+      });
   }
 
   actualizarMaximos(): void {

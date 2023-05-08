@@ -46,7 +46,7 @@
                 alt=""
                 style="height: 50px"
                 data-toggle="modal"
-                data-target="#myModal"
+                data-target="#myModal1"
               />
               <div style="width: 75px">
                 <div class="form-group">
@@ -80,7 +80,7 @@
             <!-- Modal -->
             <div
               class="modal fade"
-              id="myModal"
+              id="myModal1"
               tabindex="-1"
               role="dialog"
               aria-labelledby="myModalLabel"
@@ -88,7 +88,9 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Buenos días</h4>
+                    <h4 class="modal-title" id="myModalLabel">
+                      Responsabilidad
+                    </h4>
                     <button
                       type="button"
                       class="close"
@@ -99,7 +101,19 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    ¡Buenos días! Esperamos que tengas un excelente día.
+                    - Trabaja de forma constante.
+                    <br />
+                    - Se mantiene conectado/a a la actividad del grupo.
+                    <br />
+                    - Hace comentarios relacionados con la tarea a realizar.
+                    <br />
+                    - Realiza las tareas de forma eficiente.
+                    <br />
+                    - Realiza las tareas con cuidado.
+                    <br />
+                    - Persevera ante las dificultades.
+                    <br />
+                    - Respeta las normas.
                   </div>
                   <div class="modal-footer">
                     <button
@@ -116,7 +130,13 @@
 
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img
+                src="{{ skill('puntosCooperacion') }}"
+                alt=""
+                style="height: 50px"
+                data-toggle="modal"
+                data-target="#myModal2"
+              />
               <div style="width: 75px">
                 <div class="form-group">
                   <div class="input-group">
@@ -144,10 +164,65 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="myModal2"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Cooperación</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Cerrar"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      - Escucha a los demás.
+                      <br />
+                      - Incorpora lo que dicen los demás.
+                      <br />
+                      - Fomenta la participación de los miembros del grupo.
+                      <br />
+                      - Participa en la toma de decisiones consensuadas.
+                      <br />
+                      - Facilita la resolución de conflictos.
+                      <br />
+                      - Reconoce sus responsabilidades y las de los demás.
+                      <br />
+                      - Ayuda a los demás de forma desinteresada.
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img
+                src="{{ skill('response') }}"
+                alt=""
+                style="height: 50px"
+                data-toggle="modal"
+                data-target="#myModal3"
+              />
               <div style="width: 75px">
                 <div class="form-group">
                   <div class="input-group">
@@ -175,10 +250,65 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="myModal3"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Iniciativa</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Cerrar"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      - Aporta ideas.
+                      <br />
+                      - Hace preguntas cuando se encalla.
+                      <br />
+                      - Toma decisiones para que el proyecto avance.
+                      <br />
+                      - Sabe convencer al grupo de sus propuestas.
+                      <br />
+                      - Realiza las tareas con cuidado.
+                      <br />
+                      - Trabaja con determinación.
+                      <br />
+                      - Cree que puede iniciar cambios.
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img
+                src="{{ skill('response') }}"
+                alt=""
+                style="height: 50px"
+                data-toggle="modal"
+                data-target="#myModal4"
+              />
               <div style="width: 75px">
                 <div class="form-group">
                   <div class="input-group">
@@ -206,11 +336,70 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="myModal4"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">
+                        Gestión Emocional
+                      </h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Cerrar"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      - Transmite alegría.
+                      <br />
+                      - Se muestra tranquilo/a en situaciones de presión.
+                      <br />
+                      - Controla las emociones en situaciones de conflicto.
+
+                      <br />
+                      - Asume la posibilidad de equivocarse.
+
+                      <br />
+                      - Acepta que los cambios que propone no salgan adelante.
+                      <br />
+                      - Persevera ante las dificultades.
+                      <br />
+                      - Adecúa el comportamiento a las circunstancias.
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
 
             <td>
               <!-- Mostrar la medalla del jugador -->
-              <img src="{{ skill('response') }}" alt="" style="height: 50px" />
+              <img
+                src="{{ skill('response') }}"
+                alt=""
+                style="height: 50px"
+                data-toggle="modal"
+                data-target="#myModal5"
+              />
               <div style="width: 75px">
                 <div class="form-group">
                   <div class="input-group">
@@ -235,6 +424,55 @@
                         )
                       "
                     />
+                  </div>
+                </div>
+              </div>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="myModal5"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Pensamiento</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Cerrar"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <br />
+                      - Relaciona contenidos nuevos con conocimientos previos.
+                      <br />
+                      - Hace buenas reflexiones sobre los contenidos trabajados.
+                      <br />
+                      - Hace buenas reflexiones sobre sus procesos personales
+                      internos.
+                      <br />
+                      - Hace buenas preguntas (para entender o para permitir
+                      avanzar).
+                      <br />
+                      - Tiene ideas creativas (explora caminos alternativos).
+                      <br />
+                      - Plantea buenas estrategias de resolución de problemas.
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
