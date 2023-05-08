@@ -21,12 +21,10 @@ export class FilterPipeSkill implements PipeTransform {
     if (!filtroSkill) {
       return historialNotas; // Devuelve el arreglo sin modificar
     }
-  
+
     // Aplica el filtro en el arreglo
-    return historialNotas.filter(item => {
+    return historialNotas.filter((item) => {
       return Object.keys(item.pentabilities).includes(filtroSkill);
     });
   }
-  
-
 }

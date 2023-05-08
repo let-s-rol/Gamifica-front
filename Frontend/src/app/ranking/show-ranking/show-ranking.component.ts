@@ -32,7 +32,7 @@
  * @implements {OnInit}
  */
 
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, Inject, OnInit } from '@angular/core';
 import { RankingUser } from 'src/app/inferfaces/Ranking';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ranking } from 'src/app/inferfaces/RankingList';
@@ -48,6 +48,10 @@ import { SkillsService } from 'src/app/skills.service';
   styleUrls: ['./show-ranking.component.css'],
 })
 export class ShowRankingComponent implements OnInit {
+  maxPuntos: number = 1000; // Puntos máximos permitidos
+  valorInput: number = 0; // Valor inicial del input
+  puntosDisponibles: number = 1000; // Puntos disponibles para asignar
+
   /**
    * Listado de rankings de estudiantes.
    */
@@ -82,7 +86,8 @@ export class ShowRankingComponent implements OnInit {
     private input: InputsService,
     public router: Router,
     private StudentRankingManagament: StudentRankingManagamentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -118,9 +123,6 @@ export class ShowRankingComponent implements OnInit {
     return '../../../assets/medals/Cooperacion1.png';
   }
 
-  totalPoints() {
-    this.points = this.points - this.obtenerSumaInputs();
-  }
 
   /**
    * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
@@ -156,6 +158,8 @@ export class ShowRankingComponent implements OnInit {
     key: string,
     value: string
   ) {
+    this.puntosDisponibles = this.maxPuntos - this.valorInput; // Actualizar puntos disponibles
+    this.cdr.detectChanges(); // Forzar detección de cambios
     // Crear un objeto que mapea los ids a nombres
     const idNames: { [key: string]: string } = {
       id_ranking: 'ranking',
@@ -176,6 +180,7 @@ export class ShowRankingComponent implements OnInit {
     // Enviar el JSON al backend
     const json = JSON.stringify(this.inputValues);
     // this.sendJsonToBackend(json);
+    this.actualizarMaximos()
   }
 
   sendJsonToBackend(json: any) {
@@ -197,5 +202,39 @@ export class ShowRankingComponent implements OnInit {
     this.skillsService.sendJsonToBackend(groupedJson).subscribe((response) => {
       console.log(response);
     });
+  }
+
+  actualizarMaximos(): void {
+    const puntosResponsabilidad = document.getElementById('puntosResponsabilidad') as HTMLInputElement;
+    const puntosCooperacion = document.getElementById('puntosCooperacion') as HTMLInputElement;
+    const puntosIniciativa = document.getElementById('puntosIniciativa') as HTMLInputElement;
+    const puntosEmocional = document.getElementById('puntosEmocional') as HTMLInputElement;
+    const puntosPensamiento = document.getElementById('puntosPensamiento') as HTMLInputElement;
+
+    const total: number =
+      parseInt(puntosResponsabilidad.value) + parseInt(puntosCooperacion.value) + parseInt(puntosIniciativa.value) + parseInt(puntosEmocional.value) + parseInt(puntosPensamiento.value);
+    const max: number = this.points - total;
+
+    puntosResponsabilidad.max = (max + parseInt(puntosResponsabilidad.value)).toString();
+    puntosCooperacion.max = (max + parseInt(puntosCooperacion.value)).toString();
+    puntosIniciativa.max = (max + parseInt(puntosIniciativa.value)).toString();
+    puntosEmocional.max = (max + parseInt(puntosEmocional.value)).toString();
+    puntosPensamiento.max = (max + parseInt(puntosPensamiento.value)).toString();
+
+    if (parseInt(puntosResponsabilidad.value) > parseInt(puntosResponsabilidad.max)) {
+      puntosResponsabilidad.value = puntosResponsabilidad.max;
+    }
+    if (parseInt(puntosCooperacion.value) > parseInt(puntosCooperacion.max)) {
+      puntosCooperacion.value = puntosCooperacion.max;
+    }
+    if (parseInt(puntosIniciativa.value) > parseInt(puntosIniciativa.max)) {
+      puntosIniciativa.value = puntosEmocional.max;
+    }
+    if (parseInt(puntosEmocional.value) > parseInt(puntosEmocional.max)) {
+      puntosIniciativa.value = puntosIniciativa.max;
+    }
+    if (parseInt(puntosPensamiento.value) > parseInt(puntosPensamiento.max)) {
+      puntosPensamiento.value = puntosPensamiento.max;
+    }
   }
 }
