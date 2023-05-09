@@ -42,6 +42,7 @@ import { StudentRankingManagamentService } from 'src/app/services/studend-rankin
 import { HttpHeaders } from '@angular/common/http';
 import { SkillsService } from 'src/app/skills.service';
 import { HttpClient } from '@angular/common/http';
+import { integratePoints } from 'src/app/inferfaces/integratePoints';
 
 @Component({
   selector: 'app-show-ranking',
@@ -60,7 +61,10 @@ export class ShowRankingComponent implements OnInit {
 
   points: number = 1000;
 
-  inputValues: Record<string, any> = {};
+  elIdRanking! :number;
+
+  inputValues: any = {};
+  jsonValor: string = '';
 
   /**
    * Datos a mostrar en la tabla.
@@ -121,6 +125,13 @@ export class ShowRankingComponent implements OnInit {
     return '../../../assets/medals/Cooperacion1.png';
   }
 
+  getIdRank(eq:any){
+   this.elIdRanking= eq.id_ranking;
+   console.log( "El Id: " + this.elIdRanking);
+   
+   
+  }
+
   /**
    * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
    *
@@ -149,7 +160,13 @@ export class ShowRankingComponent implements OnInit {
    * @param {number} value - El nuevo valor del campo.
    * @returns {void}
    */
-  onInputChange(id_ranking: number, id_user: number, key: string, value: string) {
+  onInputChange(
+    id_user: number,
+    id_ranking: number,
+  
+    key: string,
+    value: string
+  ) {
     // Create the input value object if it doesn't exist
     if (!this.inputValues[id_ranking]) {
       this.inputValues[id_ranking] = {};
@@ -157,43 +174,52 @@ export class ShowRankingComponent implements OnInit {
     if (!this.inputValues[id_ranking][id_user]) {
       this.inputValues[id_ranking][id_user] = {};
     }
-  
-    // Create the key-value pair object and add it to the input value object
-    const keyValueObject = {
+
+    // Create the integratePointsObject and add it to the input value object
+    const integratePointsObject: integratePoints = {
       id_user: id_user,
       id_ranking: id_ranking,
-      [key]: value,
+      Responsabilidad: parseInt(
+        this.inputValues[id_ranking][id_user]['Responsabilidad']
+      ),
+      Emocional: parseInt(this.inputValues[id_ranking][id_user]['Emocional']),
+      Cooperacion: parseInt(
+        this.inputValues[id_ranking][id_user]['Cooperacion']
+      ),
+      Iniciativa: parseInt(this.inputValues[id_ranking][id_user]['Iniciativa']),
+      Pensamiento: parseInt(
+        this.inputValues[id_ranking][id_user]['Pensamiento']
+      ),
     };
+
     this.inputValues[id_ranking][id_user] = Object.assign(
       {},
       this.inputValues[id_ranking][id_user],
       { [key]: value }
     );
-  
-    // Send the JSON to the backend
-    const json = JSON.stringify(keyValueObject);
-    // this.sendJsonToBackend(json).subscribe();
-  
-    //this.actualizarMaximos();
-}
 
-  
-  
-  
+    // Send the JSON to the backend
+
+    this.jsonValor = JSON.stringify(integratePointsObject);
+    console.log(this.jsonValor);
+
+    //this.actualizarMaximos();
+  }
+
   sendJsonToBackend(json: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
 
-    console.log(json);
+    console.log(this.jsonValor);
     this.http
-      .put(`http://127.0.0.1:8000/api/insertSkillsPoints`, json, { headers })
+      .put(`http://127.0.0.1:8000/api/insertSkillsPoints`, this.jsonValor, { headers })
       .subscribe({
         next: (resp: any) => {
-          console.log('funciona');
+          console.log(resp);
         },
-        error: (error) => window.alert(error.toString()),
+        error: (error) => window.alert('' + error.toString()),
       });
   }
 

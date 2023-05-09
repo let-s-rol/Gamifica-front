@@ -97,6 +97,25 @@ export class InputsService {
       );
   }
 
+
+  getHistory (id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+    });
+  
+    const options = {
+      headers,
+      withCredentials: true
+    };
+    console.log('ID:', id);
+  
+    return this._http
+    .get<any[]>(`${this.Url}showHistorial/${id}`, options)
+    .pipe (
+      tap((response) => console.log('Response from back-end:', response))
+    );
+  }
   
 
 

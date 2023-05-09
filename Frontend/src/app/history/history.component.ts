@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterPipePuntuador } from './pipes/filter.piperpuntuador';
 import { FilterPipeSkill } from './pipes/filter.pipeskill';
-
+import { InputsService } from 'src/app/services/imput/inputs.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,6 @@ import { FilterPipeSkill } from './pipes/filter.pipeskill';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
 })
-
 export class HistoryComponent implements OnInit {
   /** Variable que almacena el filtro de búsqueda */
 
@@ -28,76 +28,36 @@ export class HistoryComponent implements OnInit {
   public filterDate!: any;
 
   /** Array que almacena las notas del historial */
-  historialNotas: any[] = [];
-
+  historialNotas!: any[];
 
   /** Función que se ejecuta al inicializar el componente */
+
+  constructor(
+    private input: InputsService,    
+    public router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
   ngOnInit() {
-    this.historialNotas = [
-      {
-        notaId: 2,
-        userId: 5678,
-        userName: 'María',
-        userPuntuadorId: 9012,
-        namePuntuador: 'Luis',
-        pentabilities: {
-          Responsabilidad: 9,
-          Cooperacion: 8,
-          Pensamiento: 9,
-        },
-        fecha: '2023-05-11',
-        hora: '11:45:00',
-      },
-      {
-        notaId: 3,
-        userId: 9101,
-        userName: 'Pedro',
-        userPuntuadorId: 5678,
-        namePuntuador: 'Ana',
-        pentabilities: {
-          Responsabilidad: 10,
-          Cooperacion: 9,
-          Iniciativa: 8,
-          Emocional: 7,
-          Pensamiento: 9,
-        },
-        fecha: '2023-05-12',
-        hora: '09:15:00',
-      },
-      {
-        notaId: 4,
-        userId: 7891,
-        userName: 'Luis',
-        userPuntuadorId: 1234,
-        namePuntuador: 'Juan',
-        pentabilities: {
-          Responsabilidad: 7,
-          Cooperacion: 9,
-          Iniciativa: 10,
-          Emocional: 8,
-          Pensamiento: 6,
-        },
-        fecha: '2023-05-13',
-        hora: '14:00:00',
-      },
-      {
-        notaId: 5,
-        userId: 6789,
-        userName: 'Ana',
-        userPuntuadorId: 9012,
-        namePuntuador: 'Luis',
-        pentabilities: {
-          Responsabilidad: 8,
-          Cooperacion: 10,
-          Iniciativa: 9,
-          Emocional: 9,
-          Pensamiento: 7,
-        },
-        fecha: '2023-05-14',
-        hora: '17:20:00',
-      },
-    ];
-  }
+
+
+        // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
+        this.route.params.subscribe((params) => {
+          let id = Number.parseInt(params['id']);
+          if (Number.isNaN(id)) {
+            console.error('Invalid id:', params['id']);
+            return;
+          }
+          console.log('ID from route params:', id);
+          this.input.getHistory(id).subscribe((response: any[]) => {
+            this.historialNotas = response[0];
+          });
+  });
+
+  console.log("Array Historial: ", this.historialNotas);
+  
+
+}
 
   /**
    * Decorador que define el componente HistoryComponent

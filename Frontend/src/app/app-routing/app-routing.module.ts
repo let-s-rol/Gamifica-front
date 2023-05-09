@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: ShowRankingComponent },
   { path: 'user', component: UserPanelComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'historial', component: HistoryComponent },
+  { path: 'historial/:id', component: HistoryComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pendentList', component: PendentUserComponent },
   { path: 'newRanking', component: NewRankingComponent },

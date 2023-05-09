@@ -63,24 +63,25 @@
                     let nota of historialNotas
                       | filterName : filtro | filterPuntuador : filtroApellido | filtroSkill : filtroSkill |  filterDate:fechaInicio:fechaFin
                   ">
-                  <td class="text-center">{{ nota.fecha }} {{ nota.hora }}</td>
-                  <td class="text-center">{{ nota.userName }}</td>
+                  <td class="text-center">{{ nota.created_at
+                  }} {{ nota.hora }}</td>
+                  <td class="text-center">{{ nota.receiver_name }}</td>
                   <td class="text-center">
-                    {{ nota.pentabilities.Responsabilidad }}
+                    {{ nota.Responsabilidad }}
                   </td>
                   <td class="text-center">
-                    {{ nota.pentabilities.Cooperacion }}
+                    {{ nota.Cooperacion }}
                   </td>
                   <td class="text-center">
-                    {{ nota.pentabilities.Iniciativa }}
+                    {{ nota.Iniciativa }}
                   </td>
                   <td class="text-center">
-                    {{ nota.pentabilities.Emocional }}
+                    {{ nota.Emocional }}
                   </td>
                   <td class="text-center">
-                    {{ nota.pentabilities.Pensamiento }}
+                    {{ nota.Pensamiento }}
                   </td>
-                  <td class="text-center">{{ nota.namePuntuador }}</td>
+                  <td class="text-center">{{ nota.giver_name }}</td>
                   <td class="text-center">
                     <button class="btn ms-2 mb-2 btn-outline-danger">
                       <!-- TODO poner función que llame al service para Borrar puntos -->

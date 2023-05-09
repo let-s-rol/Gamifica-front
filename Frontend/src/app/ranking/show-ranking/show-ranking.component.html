@@ -23,6 +23,9 @@
           </tr>
           <!-- Ciclo a través de cada elemento en la tabla -->
           <tr class="text-center" *ngFor="let eq of ranking; let i = index">
+
+            {{getIdRank(eq)}}
+
             <td style="vertical-align: middle">
               <!-- Mostrar el índice + 1, que corresponde a la posición actual en la tabla -->
               <strong> {{ i + 1 }} </strong>
@@ -500,17 +503,17 @@
         <button [routerLink]="'/tarea'" class="btn mb-2 btn-primary">
           Nueva tarea
         </button>
-        <pre>{{ inputValues | json }}</pre>
+        <pre>{{ jsonValor }}</pre>
         <!-- TODO poner ngif que diferencia si es profesor o alumno y que valide deje enviar puntos siendo alumno o historial de puntos siendo profesor -->
         <button
-          (click)="sendJsonToBackend({inputValues})"
+          (click)="sendJsonToBackend({jsonValor})"
           class="btn ms-2 mb-2 btn-outline-info"
         >
           <!-- TODO poner función que llame al service para guardar puntos -->
-          enviar puntos
+          Enviar puntos
         </button>
         <button
-          [routerLink]="'/historial'"
+         [routerLink]="['/historial', this.elIdRanking ]"
           class="btn ms-2 mb-2 btn-outline-info"
         >
           Historial de puntos
