@@ -37,8 +37,8 @@ export class FilterPipe implements PipeTransform {
 
     return items.filter(
       (item) =>
-        item.userName &&
-        item.userName
+        item.receiver_name &&
+        item.receiver_name 
           .toLowerCase()
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')

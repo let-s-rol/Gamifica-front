@@ -16,7 +16,6 @@ export class FilterPipeDate implements PipeTransform {
    */
 
   transform(items: any[], fechaInicio: Date, fechaFin: Date): any[] {
-    debugger;
     if (!items) {
       return [];
     }
@@ -26,7 +25,12 @@ export class FilterPipeDate implements PipeTransform {
 
     return items.filter((item) => {
       console.log(item.fecha, fechaInicio);
-      console.log(fechaFin, fechaInicio, item.fecha);
+      console.log(fechaFin, fechaInicio, item.created_at);
+
+      item.fecha = new Date(item.created_at);
+      fechaFin = new Date(fechaFin);
+      fechaInicio = new Date(fechaInicio);
+      console.log(items, fechaFin, fechaInicio, 'post');
       return (
         (!fechaInicio || item.fecha >= fechaInicio) &&
         (!fechaFin || item.fecha <= fechaFin)

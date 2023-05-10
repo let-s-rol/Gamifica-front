@@ -37,8 +37,8 @@ export class FilterPipePuntuador implements PipeTransform {
 
     return items.filter(
       (item) =>
-        item.namePuntuador &&
-        item.namePuntuador
+        item.giver_name &&
+        item.giver_name
           .toLowerCase()
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
