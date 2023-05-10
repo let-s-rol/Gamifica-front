@@ -59,6 +59,8 @@ export class ShowRankingComponent implements OnInit {
    */
   ranking!: Ranking[];
 
+  skillArray! : any[];
+
   points: number = 1000;
 
   elIdRanking! :number;
@@ -104,6 +106,21 @@ export class ShowRankingComponent implements OnInit {
       this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
         this.ranking = response;
       });
+
+      //ESTE ES EL GET DE LAS MEDALLAS
+      this.route.params.subscribe((params) => {
+        let id = Number.parseInt(params['id']);
+        if (Number.isNaN(id)) {
+          console.error('Invalid id:', params['id']);
+          return;
+        }
+        console.log('ID from route params:', id);
+        this.input.getSkills(id).subscribe((response: any[]) => {
+          this.skillArray = response;
+        });
+        console.log(this.skillArray);
+      });
+
     });
 
     // Obtiene el nombre del ranking del servicio InputService
@@ -121,9 +138,19 @@ export class ShowRankingComponent implements OnInit {
    * @param skill - Habilidad a buscar.
    * @returns La ruta de la imagen correspondiente a la habilidad.
    */
-  skill(skill: string): string {
-    return '../../../assets/medals/Cooperacion1.png';
-  }
+  skill(skill: string) {
+
+
+return '../../../assets/medals/Cooperacion1.png'   
+
+
+}
+
+getSkills() {
+
+}
+  
+
 
   getIdRank(eq:any){
    this.elIdRanking= eq.id_ranking;

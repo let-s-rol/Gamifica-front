@@ -116,6 +116,26 @@ export class InputsService {
       tap((response) => console.log('Response from back-end:', response))
     );
   }
+
+  getSkills(id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+    });
+
+    const id_ranking = id;
+  
+    const params = new HttpParams().set('id_ranking', id_ranking.toString());
+    console.log('Get ID_RANKING: ' + id_ranking);
+  
+    return this._http
+      .get<task[]>(this.Url + 'showSkills', { headers, params })
+      .pipe(
+        tap((response) => console.log('Response from back-end TASK:', response))
+      );
+  }
+
+
   
 
 
