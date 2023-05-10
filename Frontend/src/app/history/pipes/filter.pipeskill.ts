@@ -24,7 +24,7 @@ export class FilterPipeSkill implements PipeTransform {
 
     // Aplica el filtro en el arreglo
     return historialNotas.filter((item) => {
-      return Object.keys(item).includes(filtroSkill);
+      return Object.keys(item).includes(filtroSkill) && item[filtroSkill] !== 0;
     });
   }
 }
