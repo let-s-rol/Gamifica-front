@@ -6,8 +6,10 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/inferfaces/User';
 import { task } from 'src/app/inferfaces/task';
 import { InputsService } from 'src/app/services/imput/inputs.service';
+import { UsersService } from 'src/app/services/users/users.service';
 import { UserPanelComponent } from 'src/app/user-panel/user-panel.component';
 
 @Component({
@@ -24,6 +26,8 @@ export class TareasAlumnosComponent implements OnInit {
   task!: task[];
 
   id!: number;
+  usersListX: any;
+  isTeacher!: boolean;
 
   /**
    * Constructor de la clase.
@@ -37,6 +41,8 @@ export class TareasAlumnosComponent implements OnInit {
     private input: InputsService,
     public router: Router,
     private route: ActivatedRoute,
+    private userService: UsersService,
+
   ) {}
 
   /**
@@ -63,6 +69,28 @@ export class TareasAlumnosComponent implements OnInit {
         this.task = response;
         console.log(response);
       });
+    });
+
+    this.usersListX = []; // Initialize the usersListX array
+
+
+    this.userService.getUser().subscribe({
+      next: (user: User) => {
+        this.usersListX.push(user);
+        console.log(this.usersListX);
+    
+        if (this.usersListX[0].rol === "teacher") {
+          this.isTeacher = true;
+          console.log(this.isTeacher);
+          
+        } else {
+          this.isTeacher = false;
+        }
+      },
+      error: (error) => {
+        window.alert(error);
+        this.isTeacher = false; // Set isTeacher to false in case of error
+      }
     });
   }
   

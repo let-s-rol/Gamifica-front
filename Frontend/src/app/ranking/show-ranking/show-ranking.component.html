@@ -495,11 +495,13 @@
       
       <!-- Agregar un botón para crear una nueva tarea -->
       <div>
-        <button [routerLink]="'/tarea'" class="btn mb-2 btn-primary">
+        <button *ngIf="isTeacher"   [routerLink]="'/tarea'" class="btn mb-2 btn-primary">
           Nueva tarea
         </button>
+        
         <!-- TODO poner ngif que diferencia si es profesor o alumno y que valide deje enviar puntos siendo alumno o historial de puntos siendo profesor -->
         <button
+        *ngIf="!isTeacher"
           (click)="sendJsonToBackend({jsonValor})"
           class="btn ms-2 mb-2 btn-outline-info"
         >
@@ -507,6 +509,7 @@
           Enviar puntos
         </button>
         <button
+        *ngIf="isTeacher"
          [routerLink]="['/historial', this.elIdRanking ]"
           class="btn ms-2 mb-2 btn-outline-info"
         >
@@ -514,7 +517,7 @@
         </button>
       </div>
       <!-- Agregar un botón para cambiar el código del ranking -->
-      <div *ngIf="ranking"  class="btn me-2 btn-info"  (click)="cambiarCodigo()">
+      <div   *ngIf="isTeacher && ranking"   class="btn me-2 btn-info"  (click)="cambiarCodigo()">
         
         Cambiar código</div>
       <!-- Agregar un botón de volver -->

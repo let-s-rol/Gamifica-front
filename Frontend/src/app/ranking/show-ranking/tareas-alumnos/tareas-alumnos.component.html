@@ -10,7 +10,7 @@
           <a [routerLink]="'/sendTask'" class="btn btn-outline-dark">Ver</a>
 
           <!-- Botón para borrar tarea, solo visible para profesores -->
-          <a id="borrar" class="btn ms-3 btn-danger" (click)="deleteTask(eq)">Borrar</a>
+          <a id="borrar"   *ngIf="isTeacher"   class="btn ms-3 btn-danger" (click)="deleteTask(eq)">Borrar</a>
 
           <!-- TODO el borrar solo tiene que salir si es profesor ejecutar funcion de borrado -->
         </td>

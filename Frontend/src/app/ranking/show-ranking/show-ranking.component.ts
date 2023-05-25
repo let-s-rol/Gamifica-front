@@ -44,6 +44,8 @@ import { SkillsService } from 'src/app/skills.service';
 import { HttpClient } from '@angular/common/http';
 import { integratePoints } from 'src/app/inferfaces/integratePoints';
 import { task } from 'src/app/inferfaces/task';
+import { UsersService } from 'src/app/services/users/users.service';
+import { User } from 'src/app/inferfaces/User';
 
 @Component({
   selector: 'app-show-ranking',
@@ -87,6 +89,9 @@ export class ShowRankingComponent implements OnInit {
    * TODO: crear un servicio que obtenga el código.
    */
   code!: number;
+  usersListX: any;
+
+  isTeacher!: boolean;
 
   constructor(
     private skillsService: SkillsService,
@@ -95,7 +100,9 @@ export class ShowRankingComponent implements OnInit {
     private StudentRankingManagament: StudentRankingManagamentService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    private http: HttpClient
+    private http: HttpClient,
+    private userService: UsersService,
+
   ) {}
 
   ngOnInit(): void {
@@ -127,7 +134,27 @@ export class ShowRankingComponent implements OnInit {
             
           }
         );
+        this.usersListX = []; // Initialize the usersListX array
 
+
+        this.userService.getUser().subscribe({
+          next: (user: User) => {
+            this.usersListX.push(user);
+            console.log(this.usersListX);
+        
+            if (this.usersListX[0].rol === "teacher") {
+              this.isTeacher = true;
+              console.log(this.isTeacher);
+              
+            } else {
+              this.isTeacher = false;
+            }
+          },
+          error: (error) => {
+            window.alert(error);
+            this.isTeacher = false; // Set isTeacher to false in case of error
+          }
+        });
       });
 
       //PILLAR RANKING
@@ -361,4 +388,11 @@ export class ShowRankingComponent implements OnInit {
       );
     });
   }
+
+
+
+
+
+ 
+  
 }
