@@ -12,7 +12,8 @@
         <tr>
           <!-- Encabezados de la tabla -->
           <th scope="row">Nombre:</th>
-          <th scope="row"></th>
+         
+          <th scope="row"> Código</th>
           <th scope="row"></th>
           <th>Acción</th>
         </tr>
@@ -20,7 +21,7 @@
         <!-- Ciclo para mostrar la información de cada ranking en la tabla -->
         <tr *ngFor="let eq of rankingList">
           <td>{{ eq.ranking_name }}</td>
-          <th></th>
+          <th>{{eq.code}}</th>
           <th></th>
           <td>
             <!-- Botón para ver la información del ranking -->
