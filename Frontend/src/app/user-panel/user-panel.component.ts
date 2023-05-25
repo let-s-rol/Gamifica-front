@@ -17,29 +17,32 @@ export class UserPanelComponent implements OnInit {
   usersList: User[] = [];
   usersListX: User[] = [];
   isTeacher: boolean = false;
-
-
+  editMode: boolean = false;
   constructor(
     public router: Router,
     @Inject(SharedService) private sharedService: SharedService,
-    private userService: UsersService
+    private userService: UsersService,
+    
   ) {
     this.user = new FormGroup({
-      name: new FormControl('asd', [
+      name: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      lastName: new FormControl('', [
+      lastname: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      nick: new FormControl('', [Validators.required, Validators.minLength(3)]),
+
       email: new FormControl('', [Validators.required, Validators.email]),
 
-      img: new FormControl('', [Validators.required]),
+      school: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
     });
 
-// TODO arreglar foto
+    // TODO arreglar foto
     const UserJSON: string = `{
         "users": [{
         "id":"1",
@@ -49,7 +52,7 @@ export class UserPanelComponent implements OnInit {
         "date":"14/12/1999",
         "school":"escuela de sepso",
         "rol":"teacher",
-        "img":"https://imgs.search.brave.com/Wt2sdEpSRr9rzDciZmT6BA3C5PkUg2sQSuAdemfr350/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL2Jp/Zy81NjctNTY3NzAy/MV9raW5nZG9tLWhl/YXJ0cy0xLWFydHdv/cmstY2xpcGFydC5w/bmc"
+        "img":"../../assets/default.png"
         }
       ]
         }`;
@@ -61,6 +64,11 @@ export class UserPanelComponent implements OnInit {
 
   send(): any {
     console.log(this.user.value);
+    this.userService.editUser(this.user.value);
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
   }
 
   ngOnInit(): void {

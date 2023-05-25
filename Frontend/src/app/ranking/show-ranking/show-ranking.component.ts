@@ -43,6 +43,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { SkillsService } from 'src/app/skills.service';
 import { HttpClient } from '@angular/common/http';
 import { integratePoints } from 'src/app/inferfaces/integratePoints';
+import { task } from 'src/app/inferfaces/task';
 
 @Component({
   selector: 'app-show-ranking',
@@ -59,11 +60,14 @@ export class ShowRankingComponent implements OnInit {
    */
   ranking!: Ranking[];
 
-  skillArray! : any[];
+  rankingListName!: Ranking[];
+  skillArray!: any[];
 
   points: number = 1000;
 
-  elIdRanking! :number;
+  elIdRanking!: number;
+
+  idRankingForName!:number;
 
   inputValues: any = {};
   jsonValor: string = '';
@@ -76,7 +80,7 @@ export class ShowRankingComponent implements OnInit {
   /**
    * Nombre del ranking actual.
    */
-  rankingName!: string;
+  rankingName: string = "" ;
 
   /**
    * Código de identificación del ranking.
@@ -102,29 +106,41 @@ export class ShowRankingComponent implements OnInit {
         console.error('Invalid id:', params['id']);
         return;
       }
-      console.log('ID from route params:', id);
+      
+
       this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
         this.ranking = response;
+        console.log("Ranking: ", this.ranking);
+
+        this.StudentRankingManagament.getThisStudentsRanking().subscribe(
+          (response: Ranking[]) => {
+            this.rankingListName = response;
+            console.log("RankingListName: ", this.rankingListName);
+           
+            this.idRankingForName = id;
+            console.log("ID_RANKING_FOR_NAME: ", this.idRankingForName);
+           
+            this.rankingName = this.rankingListName[this.idRankingForName-1].ranking_name
+            console.log("Ranking Name; ", this.rankingName)
+            
+            
+            
+          }
+        );
+
       });
 
+      //PILLAR RANKING
+
+      
+
       //ESTE ES EL GET DE LAS MEDALLAS
-      this.route.params.subscribe((params) => {
-        let id = Number.parseInt(params['id']);
-        if (Number.isNaN(id)) {
-          console.error('Invalid id:', params['id']);
-          return;
-        }
-        console.log('ID from route params:', id);
-        this.input.getSkills(id).subscribe((response: any[]) => {
-          this.skillArray = response;
-        });
-        console.log(this.skillArray);
-      });
+
 
     });
 
     // Obtiene el nombre del ranking del servicio InputService
-    this.rankingName = this.input.getRankingName();
+   // this.rankingName = this.input.getRankingName();
 
     /*
     // Obtiene el nombre del ranking del servicio StudentRankingName
@@ -139,25 +155,39 @@ export class ShowRankingComponent implements OnInit {
    * @returns La ruta de la imagen correspondiente a la habilidad.
    */
   skill(skill: string) {
-
-
-return '../../../assets/medals/Cooperacion1.png'   
-
-
-}
-
-getSkills() {
-
-}
-  
-
-
-  getIdRank(eq:any){
-   this.elIdRanking= eq.id_ranking;
-   console.log( "El Id: " + this.elIdRanking);
-   
-   
+    return '../../../assets/medals/Cooperacion1.png';
   }
+
+  
+  getSkills(id_user: number) {
+
+    this.route.params.subscribe((params) => {
+      let id = Number.parseInt(params['id']);
+      if (Number.isNaN(id)) {
+        console.error('Invalid id:', params['id']);
+        return;
+      }
+       //ESTE ES EL GET DE LAS MEDALLAS
+
+       this.input.getSkills(id, id_user).subscribe((response: task[]) => {
+        this.skillArray = response;
+        console.log('LOG SKILL', this.skillArray);
+      });
+    });
+
+  }
+
+  getIdRank(eq: any) {
+    this.elIdRanking = eq.id_ranking;
+  }
+
+
+
+    
+
+
+
+
 
   /**
    * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
@@ -190,7 +220,7 @@ getSkills() {
   onInputChange(
     id_user: number,
     id_ranking: number,
-  
+
     key: string,
     value: string
   ) {
@@ -241,7 +271,9 @@ getSkills() {
 
     console.log(this.jsonValor);
     this.http
-      .put(`http://127.0.0.1:8000/api/insertSkillsPoints`, this.jsonValor, { headers })
+      .put(`http://127.0.0.1:8000/api/insertSkillsPoints`, this.jsonValor, {
+        headers,
+      })
       .subscribe({
         next: (resp: any) => {
           console.log(resp);
@@ -305,5 +337,28 @@ getSkills() {
     if (parseInt(puntosPensamiento.value) > parseInt(puntosPensamiento.max)) {
       puntosPensamiento.value = puntosPensamiento.max;
     }
+  }
+
+  cambiarCodigo() {
+    // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
+    this.route.params.subscribe((params) => {
+      let id = Number.parseInt(params['id']);
+      if (Number.isNaN(id)) {
+        console.error('Invalid id:', params['id']);
+        return;
+      }
+
+      this.input.regenerateCode(id).subscribe(
+        (response) => {
+          // Handle the response from the backend
+          console.log('Response from backend:', response);
+          // You can perform additional operations or update the component based on the response if needed
+        },
+        (error) => {
+          // Handle errors if any
+          console.error('Error from backend:', error);
+        }
+      );
+    });
   }
 }

@@ -52,6 +52,28 @@ export class UsersService {
       });
   }
 
+  editUser(user: User) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+  };
+    console.log('Payload:', user);
+   
+    
+
+    return this._http
+    .post(this.Url + 'editUser', user,{ headers, withCredentials: true })
+    .subscribe ((response) => {
+        let found = false;
+        if (response != null) {
+          found = true;
+        }
+        this.userData = response;
+        return found;
+      });
+  }
+
   login(login: User) {
 
     return this._http.post(this.Url + 'login', login).pipe(

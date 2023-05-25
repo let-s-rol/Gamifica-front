@@ -9,4 +9,7 @@ export class SharedService {
 
   constructor() { }
   sharedRankingID: number= 0; 
+
+  
+
 }

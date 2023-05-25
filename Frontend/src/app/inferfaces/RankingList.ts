@@ -20,6 +20,7 @@ export interface Ranking {
   id_user: number;
   user_name: string;
   points: number;
+  puntosSemanales: number;
   validar: number;
   nick: string;
   id_ranking: number;

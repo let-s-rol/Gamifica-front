@@ -117,22 +117,44 @@ export class InputsService {
     );
   }
 
-  getSkills(id: number) {
+  getSkills(id: number, el_id_user: number) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
     });
 
     const id_ranking = id;
-  
-    const params = new HttpParams().set('id_ranking', id_ranking.toString());
-    console.log('Get ID_RANKING: ' + id_ranking);
+    const id_user = el_id_user;
+
+    const params = new HttpParams()
+    .set('id_ranking', id_ranking.toString())
+    .set('id_user', id_user.toString());
+
   
     return this._http
       .get<task[]>(this.Url + 'showSkills', { headers, params })
       .pipe(
         tap((response) => console.log('Response from back-end TASK:', response))
       );
+  }
+
+  regenerateCode(id: number) {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+    });
+
+    const body = {
+      id: id,
+    };
+
+    console.log(body);
+
+    return this._http.post(this.Url + 'regenerate_code', body, { headers });
+
+
+
   }
 
 

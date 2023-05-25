@@ -125,12 +125,12 @@
             Enviar
           </button>
 
-          <button (click)="changeRol()" class="btn p-3 m-3 btn-secondary">
+          <div  (click)="changeRol()" class="btn p-3 m-3 btn-secondary">
             ¿Eres
             <span *ngIf="!isTeacher">Profesor </span>
             <span *ngIf="isTeacher">Alumno </span>
             ?
-          </button>
+          </div >
 
           <a
             class="m-3"

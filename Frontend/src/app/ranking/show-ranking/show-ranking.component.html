@@ -3,7 +3,7 @@
   <div class="container">
     <div class="p-3 bg-dark rounded mb-4">
       <!-- poner el nombre del ranking -->
-      <h1 class="text-light text-center">{{ rankingName }} --> {{ code }}</h1>
+      <h1 class="text-light text-center">{{rankingName }} {{ code }}</h1>
     </div>
 
     <!-- Tabla de clasificación -->
@@ -35,7 +35,7 @@
             <!-- <td style="vertical-align: middle"> {{ eq.points }}</td> -->
             <td style="vertical-align: middle; font-size: 20px">
               <!-- Mostrar los puntos del jugador en la tabla -->
-              <strong>{{ eq.points }}</strong>
+              <strong>{{ eq.puntosSemanales }}</strong>
             </td>
             <td>
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmed -->
@@ -43,6 +43,8 @@
             </td>
 
             <td>
+              
+             
               <!-- Mostrar la medalla del jugador -->
               <img
                 src="{{ skill('responsabilidad') }}"
@@ -489,21 +491,13 @@
       <div>
         <app-tareas-alumnos></app-tareas-alumnos>
       </div>
-      <!-- TODO Comprobar si es profesor o alumno -->
 
-      <div>
-        <!-- TODO hacer que se actualicen los puntos que tenemos -->
-        {{ maxPuntos }}
-        {{ valorInput }}
-        {{ puntosDisponibles }}
-      </div>
-
+      
       <!-- Agregar un botón para crear una nueva tarea -->
       <div>
         <button [routerLink]="'/tarea'" class="btn mb-2 btn-primary">
           Nueva tarea
         </button>
-        <pre>{{ jsonValor }}</pre>
         <!-- TODO poner ngif que diferencia si es profesor o alumno y que valide deje enviar puntos siendo alumno o historial de puntos siendo profesor -->
         <button
           (click)="sendJsonToBackend({jsonValor})"
@@ -520,7 +514,9 @@
         </button>
       </div>
       <!-- Agregar un botón para cambiar el código del ranking -->
-      <div class="btn me-2 btn-info">Cambiar código</div>
+      <div *ngIf="ranking"  class="btn me-2 btn-info"  (click)="cambiarCodigo()">
+        
+        Cambiar código</div>
       <!-- Agregar un botón de volver -->
       <button [routerLink]="'/user'" class="btn btn-secondary">Volver</button>
     </div>

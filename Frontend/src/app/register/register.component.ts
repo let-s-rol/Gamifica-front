@@ -111,10 +111,10 @@ export class RegisterComponent implements OnInit {
   selectTypeUser(): void {
     if (this.isTeacher) {
       this.user.removeControl('date');
-      this.user.addControl('school', new FormControl('Validators.required'));
+      this.user.addControl('school', new FormControl('', Validators.required));
     } else {
       this.user.removeControl('school');
-      this.user.addControl('date', new FormControl('Validators.required'));
+      this.user.addControl('date', new FormControl('', Validators.required));
     }
   }
 

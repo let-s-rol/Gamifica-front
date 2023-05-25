@@ -1,14 +1,19 @@
 <div class="shadow-sm container bg-light-subtle mt-5 p-3 rounded">
-  <h1 class="text-dark text-center">Tu cuenta
-
-
-  </h1>
+  <h1 class="text-dark text-center">Tu cuenta</h1>
   <div class="container-sm">
     <form class="flex" novalidate [formGroup]="user" (submit)="send()">
-      <div style="width: 100ch" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+      <div
+        style="width: 100ch"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
         <div class="" *ngFor="let eq of usersList">
           <div class="d-flex justify-content-center">
-            <img class="" style="width: 200px; height: 200px" src="{{ eq.img }}" alt="user Photo" />
+            <img
+              class=""
+              style="width: 200px; height: 200px"
+              src="{{ eq.img }}"
+              alt="user Photo"
+            />
           </div>
 
           <div class="">
@@ -26,33 +31,101 @@
         </div>
       </div>
 
-      <div style="width: 100ch" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+      <div
+        style="width: 100ch"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
         <div *ngFor="let eq of usersListX">
-          <div >
+          <div>
             <table class="mt-3 table table-striped table-secondary">
               <tbody>
                 <tr>
                   <th scope="row">Nombre :</th>
-                  <td>{{ eq.name }}</td>
+                  <td>
+                    <ng-container *ngIf="!editMode">{{ eq.name }}</ng-container>
+                    <ng-container *ngIf="editMode">
+                      <input
+                        type="text"
+                        name="name"
+                        [(ngModel)]="eq.name"
+                        class="form-control"
+                        formControlName="name"
+                      />
+                    </ng-container>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Apellido :</th>
-                  <td>{{ eq.lastname }}</td>
+                  <td>
+                    <ng-container *ngIf="!editMode">{{
+                      eq.lastname
+                    }}</ng-container>
+                    <ng-container *ngIf="editMode">
+                      <input
+                        type="text"
+                        name="lastname"
+                        [(ngModel)]="eq.lastname"
+                        class="form-control"
+                        formControlName="lastname"
+                      />
+                    </ng-container>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Correo :</th>
-                  <td>{{ eq.email }}</td>
+                  <td>
+                    <ng-container *ngIf="!editMode">{{
+                      eq.email
+                    }}</ng-container>
+                    <ng-container *ngIf="editMode">
+                      <input
+                        type="text"
+                        name="email"
+                        [(ngModel)]="eq.email"
+                        class="form-control"
+                        formControlName="email"
+                      />
+                    </ng-container>
+                  </td>
                 </tr>
                 <tr class="user" *ngIf="eq.rol == 'teacher'">
                   <th scope="row">Centro :</th>
-                  <td>{{ eq.school }}</td>
+                  <td>
+                    <ng-container *ngIf="!editMode">{{
+                      eq.school
+                    }}</ng-container>
+                    <ng-container *ngIf="editMode">
+                      <input
+                        type="text"
+                        name="school"
+                        [(ngModel)]="eq.school"
+                        class="form-control"
+                        formControlName="school"
+
+                      />
+                    </ng-container>
+                  </td>
                 </tr>
                 <tr class="user" *ngIf="eq.rol == 'student'">
                   <th scope="row">Fecha de nacimiento :</th>
-                  <td>{{ eq.date }}</td>
+                  <td>
+                    <ng-container *ngIf="!editMode">{{ eq.date }}</ng-container>
+                    <ng-container *ngIf="editMode">
+                      <input
+                        type="text"
+                        name="date"
+                        [(ngModel)]="eq.date"
+                        class="form-control"
+                      />
+                    </ng-container>
+                  </td>
                 </tr>
               </tbody>
             </table>
+
+            <button (click)="toggleEditMode()" class="btn btn-primary mt-3">
+              {{ editMode ? "Guardar" : "Editar" }}
+            </button>
           </div>
         </div>
       </div>
@@ -60,7 +133,10 @@
 
     <!-- Alumnos -->
     <div *ngFor="let eq of usersListX">
-      <div *ngIf="eq.rol == 'student'" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+      <div
+        *ngIf="eq.rol == 'student'"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
         <div style="height: 250px; margin: auto">
           <app-ranking-list [userInput]="usersList"></app-ranking-list>
         </div>
@@ -68,7 +144,10 @@
     </div>
 
     <div *ngFor="let eq of usersListX">
-      <div *ngIf="eq.rol == 'teacher'" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+      <div
+        *ngIf="eq.rol == 'teacher'"
+        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
+      >
         <div style="height: 250px; margin: auto">
           <app-teacher-ranking-list></app-teacher-ranking-list>
         </div>
