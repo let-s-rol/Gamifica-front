@@ -14,7 +14,7 @@
             <th>Posición</th>
             <th>Nick</th>
             <th>Puntos</th>
-            <th>Acciones</th>
+            <th *ngIf="isTeacher" >Acciones</th>
             <th>Responsabilidad</th>
             <th>cooperación</th>
             <th>Iniciativa</th>
@@ -38,9 +38,9 @@
               <!-- Mostrar los puntos del jugador en la tabla -->
               <strong>{{ eq.puntosSemanales }}</strong>
             </td>
-            <td>
+            <td *ngIf="isTeacher">
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmed -->
-              <button class="btn text-center btn-outline-danger">Borrar</button>
+              <button *ngIf="isTeacher" class="btn text-center btn-outline-danger"  (click)="eliminateStudent(eq.id_ranking, eq.id_user )"  >Borrar</button>
             </td>
 
             <td>

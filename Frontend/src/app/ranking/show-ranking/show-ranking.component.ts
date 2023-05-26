@@ -46,6 +46,7 @@ import { integratePoints } from 'src/app/inferfaces/integratePoints';
 import { task } from 'src/app/inferfaces/task';
 import { UsersService } from 'src/app/services/users/users.service';
 import { User } from 'src/app/inferfaces/User';
+import { SolicitudeManagementService } from 'src/app/services/solicitude-managment/solicitude-management.service';
 
 @Component({
   selector: 'app-show-ranking',
@@ -103,7 +104,8 @@ export class ShowRankingComponent implements OnInit {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
-    private userService: UsersService
+    private userService: UsersService,
+
   ) {}
 
   ngOnInit(): void {
@@ -176,6 +178,7 @@ export class ShowRankingComponent implements OnInit {
   skill(skill: string) {
     return '../../../assets/medals/Cooperacion1.png';
   }
+
 
   getSkills(id_user: number) {
     this.route.params.subscribe((params) => {
@@ -372,4 +375,11 @@ export class ShowRankingComponent implements OnInit {
       );
     });
   }
+
+
+
+
+
+ 
+  
 }
