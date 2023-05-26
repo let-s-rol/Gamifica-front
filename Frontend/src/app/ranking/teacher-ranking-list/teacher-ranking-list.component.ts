@@ -33,7 +33,7 @@ export class TeacherRankingListComponent implements OnInit {
    * Lista de rankings
    */
   rankingList!: Ranking[];
-
+  isCreate: boolean = false;
   /**
    * Lista vacía de rankings
    */
@@ -84,6 +84,7 @@ export class TeacherRankingListComponent implements OnInit {
    */
   deleteRanking(ranking: Ranking) {
     console.log(ranking.id);
+    this,this.isCreate = true
     this.TeachersRankingListService.deleteUserRanking(ranking.id).subscribe();
   }
 }

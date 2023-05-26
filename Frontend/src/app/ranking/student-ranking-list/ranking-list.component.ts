@@ -21,7 +21,7 @@ export class RankingListComponent implements OnInit {
    * Lista de rankings disponibles.
    */
   rankingList!: Ranking[];
-
+  isCreate: boolean = false;
   /**
    * Identificador del ranking seleccionado.
    */
@@ -79,6 +79,7 @@ export class RankingListComponent implements OnInit {
   searchNewRanking() {
     console.log(this.sendCode.value);
     const code = this.sendCode.value;
+    this.isCreate = true
     this.wantToEnterRankingService.sendCode(this.sendCode.value);
   }
 
