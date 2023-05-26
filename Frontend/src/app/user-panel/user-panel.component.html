@@ -2,34 +2,31 @@
   <h1 class="text-dark text-center">Tu cuenta</h1>
   <div class="container-sm">
     <form class="flex" novalidate [formGroup]="user" (submit)="send()">
-      <div
-        style="width: 100ch"
-        class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded"
-      >
-        <div class="" *ngFor="let eq of usersList">
+      <div style="width: 100ch" class="shadow-sm p-3 m-1 mb-5 bg-body-tertiary rounded">
+        <div>
           <div class="d-flex justify-content-center">
             <img
               class=""
               style="width: 200px; height: 200px"
-              src="{{ eq.img }}"
+              [src]="defaultImage || safeImageUrl "
               alt="user Photo"
             />
           </div>
 
+
           <div class="">
             <label for="formFile" class="form-label">Cambiar Imagen</label>
-
             <div class="input-group">
-              <input class="form-control" type="file" id="formFile " />
+              <input class="form-control" type="file" id="formFile" (change)="handleFileInput($event)" />
               <div class="input-group-append">
-                <button class="ms-2 me-2 p-2 btn btn-success" type="button">
+                <button class="ms-2 me-2 p-2 btn btn-success" type="button" (click)="uploadProfilePicture()">
                   Cambiar
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
 
       <div
         style="width: 100ch"

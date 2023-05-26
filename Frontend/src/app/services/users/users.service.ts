@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../inferfaces/User';
 import { filter } from 'rxjs';
 
@@ -97,6 +97,16 @@ export class UsersService {
     // si existe un token, el usuario está autenticado
     //return token !== null;
     return false;
+  }
+  updateProfilePicture(imageFile: File) {
+    const formData = new FormData();
+    formData.append('img', imageFile);
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+    });
+
+    return this._http.post(this.Url +'update_profile_picture', formData, { headers });
   }
 
 

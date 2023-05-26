@@ -5,6 +5,7 @@ import { User } from '../inferfaces/User';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { UsersService } from '../services/users/users.service';
 import { RankingListComponent } from '../ranking/student-ranking-list/ranking-list.component';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-panel',
@@ -18,11 +19,16 @@ export class UserPanelComponent implements OnInit {
   usersListX: User[] = [];
   isTeacher: boolean = false;
   editMode: boolean = false;
+  private selectedFile: File | null = null;
+  safeImageUrl: SafeResourceUrl | undefined;
+  defaultImage = '../../assets/default.png';
+
+
   constructor(
     public router: Router,
     @Inject(SharedService) private sharedService: SharedService,
     private userService: UsersService,
-    
+    private sanitizer: DomSanitizer
   ) {
     this.user = new FormGroup({
       name: new FormControl('', [
@@ -41,25 +47,6 @@ export class UserPanelComponent implements OnInit {
         Validators.minLength(3),
       ]),
     });
-
-    // TODO arreglar foto
-    const UserJSON: string = `{
-        "users": [{
-        "id":"1",
-        "name":"Manolo",
-        "lastname":"Rodriguez",
-        "email":"manolor@correo.com",
-        "date":"14/12/1999",
-        "school":"escuela de sepso",
-        "rol":"teacher",
-        "img":"../../assets/default.png"
-        }
-      ]
-        }`;
-
-    const userDict: any = JSON.parse(UserJSON);
-    this.usersList = userDict['users'];
-    // this.rol = this.usersList[0].rol;
   }
 
   send(): any {
@@ -75,18 +62,50 @@ export class UserPanelComponent implements OnInit {
     this.userService.getUser().subscribe({
       next: (user: User) => {
         this.usersListX.push(user);
-
+        this.safeImageUrl = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + user.img);
         console.log(this.usersListX);
       },
       error: (error) => window.alert(error),
     });
-
-    //TODO pasar rol a show ranking
+  
+    // TODO: Pass role to show ranking
   }
 
   logout() {
     let w = window as any;
     localStorage.removeItem('access_token');
     // w.location.reload();
+  }
+
+  handleFileInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedFile = inputElement.files[0];
+    } else {
+      this.selectedFile = null;
+    }
+  }
+
+  uploadProfilePicture() {
+    if (this.selectedFile) {
+      this.userService.updateProfilePicture(this.selectedFile).subscribe(
+        (response) => {
+          // Handle success response
+          console.log(response);
+        },
+        (error) => {
+          // Handle error response
+          console.error(error);
+        }
+      );
+    } else {
+      // Handle no file selected
+      console.log('No file selected.');
+    }
+  }
+
+  getSafeImageUrl(base64Image: string): SafeResourceUrl {
+    const imageUrl = 'data:image/png;base64,' + base64Image;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(imageUrl);
   }
 }
