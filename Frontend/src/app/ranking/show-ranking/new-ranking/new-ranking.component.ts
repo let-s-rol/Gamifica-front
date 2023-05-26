@@ -63,7 +63,7 @@ export class NewRankingComponent implements OnInit {
     try {
       this.isCreate = true;
       setTimeout(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['user']);
       }, 1000);
     } catch (error) {}
   }
