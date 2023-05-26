@@ -21,7 +21,7 @@ export class UserPanelComponent implements OnInit {
   editMode: boolean = false;
   private selectedFile: File | null = null;
   safeImageUrl: SafeResourceUrl | undefined;
-  defaultImage = '../../assets/default.png';
+  defaultImage = '';
 
 
   constructor(
@@ -62,8 +62,12 @@ export class UserPanelComponent implements OnInit {
     this.userService.getUser().subscribe({
       next: (user: User) => {
         this.usersListX.push(user);
+        if (this.usersListX[0].img === "") {
+          this.defaultImage = '../../assets/default.png';
+        } else {
         this.safeImageUrl = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + user.img);
         console.log(this.usersListX);
+        }
       },
       error: (error) => window.alert(error),
     });
