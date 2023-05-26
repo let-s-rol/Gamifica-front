@@ -23,12 +23,13 @@
         <!--    botón de enviar-->
         <div>
           <div *ngIf="isCreate" class="mt-3 alert alert-success" role="alert">
-            ranking creado correctamente
+            Ranking creado correctamente
           </div>
           <br />
-          <button class="btn btn-success" [disabled]="newRanking.invalid">
+          <button type="button" class="btn btn-success" [disabled]="newRanking.invalid">
             Enviar
           </button>
+
           <button [routerLink]="'/user'" class="btn ms-3 btn-secondary">
             Volver
           </button>

@@ -105,6 +105,7 @@ export class ShowRankingComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
     private userService: UsersService,
+    private solicitudeManagament: SolicitudeManagementService,
 
   ) {}
 
@@ -374,6 +375,12 @@ export class ShowRankingComponent implements OnInit {
         }
       );
     });
+  }
+
+  eliminateStudent(id_ranking:number, id_user:number) {
+
+    this.solicitudeManagament.denyUser(id_ranking, id_user).subscribe()
+
   }
 
 
