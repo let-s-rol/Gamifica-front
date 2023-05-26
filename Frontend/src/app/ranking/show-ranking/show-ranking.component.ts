@@ -58,6 +58,8 @@ export class ShowRankingComponent implements OnInit {
   valorInput: number = 0; // Valor inicial del input
   puntosDisponibles: number = 1000; // Puntos disponibles para asignar
 
+  isCreate: boolean = false;
+  isAlert: boolean = false;
   /**
    * Listado de rankings de estudiantes.
    */
@@ -70,7 +72,7 @@ export class ShowRankingComponent implements OnInit {
 
   elIdRanking!: number;
 
-  idRankingForName!:number;
+  idRankingForName!: number;
 
   inputValues: any = {};
   jsonValor: string = '';
@@ -83,7 +85,7 @@ export class ShowRankingComponent implements OnInit {
   /**
    * Nombre del ranking actual.
    */
-  rankingName: string = "" ;
+  rankingName: string = '';
 
   /**
    * Código de identificación del ranking.
@@ -103,7 +105,6 @@ export class ShowRankingComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
     private userService: UsersService,
-    private solicitudeManagament: SolicitudeManagementService
 
   ) {}
 
@@ -115,39 +116,34 @@ export class ShowRankingComponent implements OnInit {
         console.error('Invalid id:', params['id']);
         return;
       }
-      
 
       this.input.getRankingStudents(id).subscribe((response: Ranking[]) => {
         this.ranking = response;
-        console.log("Ranking: ", this.ranking);
+        console.log('Ranking: ', this.ranking);
 
         this.StudentRankingManagament.getThisStudentsRanking().subscribe(
           (response: Ranking[]) => {
             this.rankingListName = response;
-            console.log("RankingListName: ", this.rankingListName);
-           
+            console.log('RankingListName: ', this.rankingListName);
+
             this.idRankingForName = id;
-            console.log("ID_RANKING_FOR_NAME: ", this.idRankingForName);
-           
-            this.rankingName = this.rankingListName[this.idRankingForName-1].ranking_name
-            console.log("Ranking Name; ", this.rankingName)
-            
-            
-            
+            console.log('ID_RANKING_FOR_NAME: ', this.idRankingForName);
+
+            this.rankingName =
+              this.rankingListName[this.idRankingForName - 1].ranking_name;
+            console.log('Ranking Name; ', this.rankingName);
           }
         );
         this.usersListX = []; // Initialize the usersListX array
-
 
         this.userService.getUser().subscribe({
           next: (user: User) => {
             this.usersListX.push(user);
             console.log(this.usersListX);
-        
-            if (this.usersListX[0].rol === "teacher") {
+
+            if (this.usersListX[0].rol === 'teacher') {
               this.isTeacher = true;
               console.log(this.isTeacher);
-              
             } else {
               this.isTeacher = false;
             }
@@ -155,21 +151,17 @@ export class ShowRankingComponent implements OnInit {
           error: (error) => {
             window.alert(error);
             this.isTeacher = false; // Set isTeacher to false in case of error
-          }
+          },
         });
       });
 
       //PILLAR RANKING
 
-      
-
       //ESTE ES EL GET DE LAS MEDALLAS
-
-
     });
 
     // Obtiene el nombre del ranking del servicio InputService
-   // this.rankingName = this.input.getRankingName();
+    // this.rankingName = this.input.getRankingName();
 
     /*
     // Obtiene el nombre del ranking del servicio StudentRankingName
@@ -187,36 +179,26 @@ export class ShowRankingComponent implements OnInit {
     return '../../../assets/medals/Cooperacion1.png';
   }
 
-  
-  getSkills(id_user: number) {
 
+  getSkills(id_user: number) {
     this.route.params.subscribe((params) => {
       let id = Number.parseInt(params['id']);
       if (Number.isNaN(id)) {
         console.error('Invalid id:', params['id']);
         return;
       }
-       //ESTE ES EL GET DE LAS MEDALLAS
+      //ESTE ES EL GET DE LAS MEDALLAS
 
-       this.input.getSkills(id, id_user).subscribe((response: task[]) => {
+      this.input.getSkills(id, id_user).subscribe((response: task[]) => {
         this.skillArray = response;
         console.log('LOG SKILL', this.skillArray);
       });
     });
-
   }
 
   getIdRank(eq: any) {
     this.elIdRanking = eq.id_ranking;
   }
-
-
-
-    
-
-
-
-
 
   /**
    * Obtiene la suma de los valores de los inputs numéricos presentes en el documento.
@@ -309,6 +291,7 @@ export class ShowRankingComponent implements OnInit {
         },
         error: (error) => window.alert('' + error.toString()),
       });
+    this.isAlert = true;
   }
 
   actualizarMaximos(): void {
@@ -370,6 +353,7 @@ export class ShowRankingComponent implements OnInit {
 
   cambiarCodigo() {
     // Obtiene el ranking de estudiantes del servidor a través del servicio InputService/StudentRankingManagament
+
     this.route.params.subscribe((params) => {
       let id = Number.parseInt(params['id']);
       if (Number.isNaN(id)) {
@@ -380,6 +364,7 @@ export class ShowRankingComponent implements OnInit {
       this.input.regenerateCode(id).subscribe(
         (response) => {
           // Handle the response from the backend
+          this.isCreate = true;
           console.log('Response from backend:', response);
           // You can perform additional operations or update the component based on the response if needed
         },
@@ -391,23 +376,7 @@ export class ShowRankingComponent implements OnInit {
     });
   }
 
-  eliminateStudent(id_ranking: number, id_user: number) {
-    this.solicitudeManagament.denyUser(id_ranking, id_user)
-      .subscribe(
-        (response) => {
-          // Handle the response here
-          console.log(response);
-          // Add your logic to handle the response
-        },
-        (error) => {
-          // Handle errors here
-          console.error(error);
-          // Add your error handling logic
-        }
-      );
 
-
-}
 
 
 

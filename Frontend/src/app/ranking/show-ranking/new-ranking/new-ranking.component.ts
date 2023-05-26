@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { NewRankingServiceService } from 'src/app/services/new-ranking/new-ranking-service.service';
 
 @Component({
+  
   /**
    * Selector del componente
    */
@@ -25,6 +26,7 @@ import { NewRankingServiceService } from 'src/app/services/new-ranking/new-ranki
   styleUrls: ['./new-ranking.component.css'],
 })
 export class NewRankingComponent implements OnInit {
+  isCreate: boolean = false;
   /**
    * Formulario para la creación de un nuevo ranking
    */
@@ -55,7 +57,15 @@ export class NewRankingComponent implements OnInit {
    */
   send() {
     console.log(this.newRanking.value);
+
     this.newRankingService.addNewRanking(this.newRanking.value);
+    this.isCreate =true
+    try {
+      this.isCreate = true;
+      setTimeout(() => {
+        this.router.navigate(['']);
+      }, 1000);
+    } catch (error) {}
   }
 
   ngOnInit(): void {}
