@@ -39,7 +39,7 @@
             </td>
             <td *ngIf="isTeacher">
               <!-- TODO hacer que solo lo muestre los profesores y que valide con un confirmed -->
-              <button *ngIf="isTeacher" class="btn text-center btn-outline-danger">Borrar</button>
+              <button *ngIf="isTeacher" class="btn text-center btn-outline-danger"  (click)="eliminateStudent(eq.id_ranking, eq.id_user )"  >Borrar</button>
             </td>
 
             <td>

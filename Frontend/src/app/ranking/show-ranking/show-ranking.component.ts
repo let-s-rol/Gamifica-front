@@ -46,6 +46,7 @@ import { integratePoints } from 'src/app/inferfaces/integratePoints';
 import { task } from 'src/app/inferfaces/task';
 import { UsersService } from 'src/app/services/users/users.service';
 import { User } from 'src/app/inferfaces/User';
+import { SolicitudeManagementService } from 'src/app/services/solicitude-managment/solicitude-management.service';
 
 @Component({
   selector: 'app-show-ranking',
@@ -102,6 +103,7 @@ export class ShowRankingComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
     private userService: UsersService,
+    private solicitudeManagament: SolicitudeManagementService
 
   ) {}
 
@@ -389,7 +391,23 @@ export class ShowRankingComponent implements OnInit {
     });
   }
 
+  eliminateStudent(id_ranking: number, id_user: number) {
+    this.solicitudeManagament.denyUser(id_ranking, id_user)
+      .subscribe(
+        (response) => {
+          // Handle the response here
+          console.log(response);
+          // Add your logic to handle the response
+        },
+        (error) => {
+          // Handle errors here
+          console.error(error);
+          // Add your error handling logic
+        }
+      );
 
+
+}
 
 
 
